@@ -1,0 +1,1 @@
+"D:\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-2gva005o7c08f44d --n quickstartFunctions --r --project "D:\WorkPlace\WeChatProgram\BarkksForum" --report_first --report
