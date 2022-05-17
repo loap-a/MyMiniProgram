@@ -62,5 +62,12 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  register() {
+    console.log(1);
+    wx.navigateTo({
+      url: '../register/register',
+    })
   }
 })
