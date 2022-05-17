@@ -38,5 +38,9 @@
         "text": "用户"
       }
     ]
-  }
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button",
+    "van-picker": "@vant/weapp/picker/index"
+    }
 }

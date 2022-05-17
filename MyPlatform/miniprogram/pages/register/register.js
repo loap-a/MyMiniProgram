@@ -9,7 +9,7 @@ Page({
     passwd:'',
     phoneNumber:'',
     company:'',
-    location:{}
+    location:''
   },
 
   /**
@@ -107,4 +107,6 @@ register(){
   })
 
 }
+
+
 })

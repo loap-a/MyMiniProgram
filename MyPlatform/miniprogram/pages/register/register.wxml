@@ -1,9 +1,27 @@
-<!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
-<view>
-<input class="input" bindinput="handleUserName"></input>
-<input class="input" bindinput="handlePasswd"></input>
-<input class="input" bindinput="handlePhoneNumber"></input>
+<view class="main-frame">
+<view class="form-box">
+<view class="form-group-top" >
+  <view class="title"> *姓名:</view>
+  <input placeholder="填写您的姓名" placeholder-class="form-group-input-text" model:value="{{userName}}" maxlength="20" class="form-group-input"></input>
+</view>
 
-<button bindtap="register" type="primary">注册</button>
+<view class="form-group">
+  <view class="title"> *密码:</view>
+  <input placeholder="填写您的密码  " placeholder-class="form-group-input-text" model:value="{{passed}}" maxlength="20" class="form-group-input"></input>
+</view>
+
+<view class="form-group">
+  <view class="title"> *手机:</view>
+  <input placeholder="填写您的手机  " placeholder-class="form-group-input-text" model:value="{{phoneNumber}}" maxlength="20" class="form-group-input"></input>
+</view>
+
+<view class="form-group">
+    <view class="title"> *地区:</view>
+    <input placeholder="填写您的地区" 
+    placeholder-class="form-group-input-text" model:value="{{location}}" maxlength="20" class="form-group-input"></input>
+</view>
+
+<button class="form-box-button">提交</button>
+</view>
+
 </view>
