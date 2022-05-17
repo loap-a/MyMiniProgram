@@ -1,0 +1,57 @@
+/* pages/register/register.wxss */
+.input{
+  border: 2px solid gainsboro;
+  margin:30rpx;
+}
+
+.form-box{
+  width: 90%;
+  margin-left: 5%;
+  margin-top:5%;
+  height: 600rpx;
+  background: rgb(236, 236, 236);
+  border-radius: 10rpx;
+  box-shadow: 5px 5px 5px #cdcfcf;
+  position:fixed;
+  justify-content: center;
+}
+.form-group-top{
+    display:flex;
+    align-items: center;
+    margin-top:10rpx;
+    margin-left:5rpx;
+    margin-right:5rpx;
+    height:80rpx;
+    border-radius: 10rpx;
+    background: white;
+    /* box-shadow: 5px 5px 5px #cdcfcf; */
+    border-bottom-style:solid;
+    border-color:rgb(192, 192, 192);
+    border-width:3rpx;
+  }
+.form-group{
+  display:flex;
+  align-items: center;
+  margin-top:0rpx;
+  margin-left:5rpx;
+  margin-right:5rpx;
+  height:80rpx;
+  border-radius: 10rpx;
+  background: white;
+  box-shadow: 5px 5px 5px #cdcfcf;
+  border-bottom-style:solid;
+  border-color:rgb(192, 192, 192);
+  border-width:3rpx;
+}
+
+.form-group-input{
+  margin-left:10rpx;
+}
+
+.form-group-input-text{
+
+}
+
+.form-box-button{
+    margin-top:40rpx;
+}

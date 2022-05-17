@@ -1,2 +1,3 @@
 <!--pages/user/user.wxml-->
 <text>pages/user/user.wxml</text>
+<button bindtap="register" type="primary">注册</button>
