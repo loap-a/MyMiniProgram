@@ -1,3 +1,8 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="top-box">
+  <view class="top-box-avatar">
+  
+  </view>
+  <view class="top-box-text">
+  </view>
+</view>
 <button bindtap="register" type="primary">注册</button>

@@ -1,1 +1,11 @@
 /* pages/user/user.wxss */
+
+page{
+  --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+}
+
+.top-box{
+  background-image: var(--gradualBlue);
+  height:300rpx;
+  width:100%;
+}
