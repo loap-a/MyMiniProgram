@@ -1,2 +1,50 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view class="main">
+<view class="top-bar">
+<view class="top-bar-image"></view>
+<view class="top-bar-title"></view>
+</view>
+
+<view class="middle-bar">
+<view class="middle-bar-item">
+<image class="middle-bar-image" src="../../images/志愿招募.png"/>
+<view class="middle-bar-text">活动招募</view>
+</view>
+<view class="middle-bar-item">
+<image class="middle-bar-image" src="../../images/媒体发布.png"/>
+<view class="middle-bar-text">发起活动</view>
+</view>
+<view class="middle-bar-item">
+<image class="middle-bar-image" src="../../images/地区活动.png"/>
+<view class="middle-bar-text">发起活动</view>
+</view>
+<view class="middle-bar-item">
+<image class="middle-bar-image" src="../../images/社区动态.png"/>
+<view class="middle-bar-text">活动动态</view>
+</view>
+
+<view class="middle-bar-item">
+<image class="middle-bar-image" src="../../images/科普教育.png"/>
+<view class="middle-bar-text">知识宣传</view>
+</view>
+
+<view class="middle-bar-item">
+<image class="middle-bar-image" src="../../images/个人中心.png"/>
+<view class="middle-bar-text">个人中心</view>
+</view>
+
+</view>
+
+<scroll-view class="scroll-bar">
+  <view class="scroll-item"
+           wx:for="{{scrollView}}" 
+           wx:key="unique">
+    <image class="scroll-item-image" src="{{imageList[index].tempFileURL}}"/>
+      <view class="scroll-item-textfield">
+        <view class="scroll-item-title">{{item.title}}</view>
+        <view class="scroll-item-gap"></view>
+        <view class="scroll-item-content">{{item.content}}</view>
+      </view>
+  </view>
+</scroll-view>
+
+</view>
