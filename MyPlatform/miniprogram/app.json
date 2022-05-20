@@ -29,7 +29,7 @@
         "selectedIconPath": "images/tasks-selected.png",
         "iconPath": "images/tasks.png",
         "pagePath": "pages/tasks/tasks",
-        "text": "任务"
+        "text": "活动"
       },
       {
         "selectedIconPath": "images/user-selected.png",
@@ -45,5 +45,5 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-icon": "@vant/weapp/icon/index"
-    }
+  }
 }
