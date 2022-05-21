@@ -1,7 +1,7 @@
 <view class="top-box-user" wx:if="{{isLogin}}">
   <image class="top-box-avatar-user"/>
   <view class="top-box-text-user">
-    <view class="top-box-text-welcome-user">欢迎回来 {{userName}}</view>
+    <view class="top-box-text-welcome-user">欢迎回来 {{userInfo.nickName}}</view>
     <view class="top-box-text-modify-user">修改个人资料</view>
   </view>
 </view>
@@ -34,3 +34,4 @@
 </view>
 
 <button bindtap="register" type="primary">注册</button>
+<button bindtap="login" type="primary">登录</button>

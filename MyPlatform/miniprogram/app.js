@@ -13,9 +13,13 @@ App({
         traceUser: true,
       });
     }
-    this.globalData = {};
+    this.globalData = {
+      login:false,
+      userInfo:null
+    };
   },
   globalData:{
+    login:false,
     userInfo:null
   }
 });

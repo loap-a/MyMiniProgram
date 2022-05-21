@@ -8,14 +8,18 @@ Page({
   data: {
     userName:'barkk',
     phoneNumber:'',
-    isLogin:true
+    isLogin:app.globalData.login,
+    userInfo:app.globalData.userInfo
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.setData({
+      isLogin:app.globalData.login,
+      userInfo:app.globalData.userInfo
+    })
   },
 
   /**
@@ -29,7 +33,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setData({
+      isLogin:app.globalData.login,
+      userInfo:app.globalData.userInfo
+    })
   },
 
   /**
@@ -68,9 +75,13 @@ Page({
   },
 
   register() {
-    console.log(1);
     wx.navigateTo({
       url: '../register/register',
+    })
+  },
+  login() {
+    wx.navigateTo({
+      url: '../login/login',
     })
   }
 })
