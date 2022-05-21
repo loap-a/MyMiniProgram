@@ -1,8 +1,4 @@
-// pages/index/index.js
-const db = wx.cloud.database();
-const infomation = db.collection('information');
-const activities = db.collection('activities');
-const users = db.collection('user');
+// pages/login/login.js
 const app = getApp();
 Page({
 
@@ -10,14 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      scrollView:[
-      {
-      }
-    ],
-    imageList:[],
-    fileIdList:[],
-    hideMain:true,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
   },
 
   /**
@@ -47,54 +36,21 @@ Page({
          });
         }
        });
-      } else {
-       // 用户没有授权
-       // 改变 isHide 的值，显示授权页面
-       that.setData({
-        hideMain: true
-       });
       }
      }
     });
-
-    /////////////////////////
-    db.collection('activities').get().then(res=>{
-      this.setData({
-        scrollView:res.data
-      })
-      var tempFileIdList=[];
-      for(var i=0;i<res.data.length;i++)
-      {
-        tempFileIdList.push(res.data[i].imageId);
-      }
-      this.setData({
-        fileIdList:tempFileIdList
-      })
-    wx.cloud.getTempFileURL({
-      fileList:that.data.fileIdList,
-      success(res){
-        that.setData({
-          imageList:res.fileList
-        })
-        console.log(imageList)
-      }
-    })
-    })
   },
-
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
-        //用户按了允许授权按钮
         var that = this;
-        // 获取到用户的信息了，打印到控制台上看下
         console.log("用户的信息如下：");
         console.log(e.detail.userInfo);
         app.globalData.userInfo=e.detail.userInfo;
         app.globalData.login=true;
-        //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
-        that.setData({
-            hideMain: false
+        wx.switchTab({
+          url: '../user/user',
         });
+        console.log('hello')
     } else {
         //用户按了拒绝按钮
         wx.showModal({
