@@ -1,0 +1,6 @@
+<!--pages/tasks_detail/tasks_detail.wxml-->
+<text>pages/tasks_detail/tasks_detail.wxml</text>
+
+<view class="task-title">
+title
+</view>

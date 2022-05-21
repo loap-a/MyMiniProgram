@@ -18,6 +18,7 @@ Page({
     fileIdList:[],
     hideMain:true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    modalHidden: false
   },
 
   /**
@@ -111,6 +112,14 @@ Page({
         });
     }
 },
+
+  taskNavigate: function(event)
+  {
+    console.log(event);
+    wx.navigateTo({
+      url:'../tasks_detail/tasks_detail'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -158,5 +167,25 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  modalCandel: function () {
+    // do something
+    this.setData({
+      modalHidden: true,
+    })
+  },
+
+  modalConfirm: function () {
+    // do something
+    this.setData({
+      modalHidden: true,
+    })
+  },
+
+  showAction: function () {
+    this.setData({
+      modalHidden: false,
+    })
   }
 })

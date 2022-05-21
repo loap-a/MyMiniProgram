@@ -1,5 +1,6 @@
-<view wx:if="{{hideMain}}">
- <view wx:if="{{canIUse}}" >
+<zy-modal title='美好新乡村志愿者平台' hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
+<view class="index-model">
+ <view>
   <view class='login-header'>
    <image src='../../images/wx_login.png'></image>
   </view>
@@ -8,17 +9,12 @@
    <view>申请获取以下权限</view>
    <text>获得你的公开信息(昵称，头像等)</text>
   </view>
-   
-  <button class='login-bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-   授权登录
-  </button>
  </view>
- <view wx:else>请升级微信版本</view>
 </view>
+</zy-modal>
 
 
-
-<view class="main" wx:if="{{!hideMain}}">
+<view class="main">
 <view class="top-bar">
 <view class="top-bar-image"></view>
 <view class="top-bar-title"></view>
@@ -57,7 +53,9 @@
 <scroll-view class="scroll-bar">
   <view class="scroll-item"
            wx:for="{{scrollView}}" 
-           wx:key="unique">
+           wx:key="unique"
+           bindtap="taskNavigate"
+           data-task="{{item}}">
     <image class="scroll-item-image" src="{{imageList[index].tempFileURL}}"/>
       <view class="scroll-item-textfield">
         <view class="scroll-item-title">{{item.title}}</view>
@@ -73,3 +71,4 @@
 </scroll-view>
 
 </view>
+

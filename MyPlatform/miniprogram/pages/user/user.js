@@ -9,7 +9,8 @@ Page({
     userName:'barkk',
     phoneNumber:'',
     isLogin:app.globalData.login,
-    userInfo:app.globalData.userInfo
+    userInfo:app.globalData.userInfo,
+    modalHidden: true
   },
 
   /**
@@ -82,6 +83,29 @@ Page({
   login() {
     wx.navigateTo({
       url: '../login/login',
+    })
+  },
+  modalCandel: function () {
+    // do something
+    this.setData({
+      modalHidden: true,
+      isLogin:app.globalData.login,
+      userInfo:app.globalData.userInfo
+    })
+  },
+
+  modalConfirm: function () {
+    // do something
+    this.setData({
+      modalHidden: true,
+      isLogin:app.globalData.login,
+      userInfo:app.globalData.userInfo
+    })
+  },
+
+  showAction: function () {
+    this.setData({
+      modalHidden: false,
     })
   }
 })
