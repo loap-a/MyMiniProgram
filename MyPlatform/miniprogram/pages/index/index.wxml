@@ -21,17 +21,17 @@
 </view>
 
 <view class="middle-bar">
-<view class="middle-bar-item">
+<view class="middle-bar-item" bindtap="handleTaskHire">
 <image class="middle-bar-image" src="../../images/志愿招募.png"/>
 <view class="middle-bar-text">活动招募</view>
 </view>
-<view class="middle-bar-item">
+<view class="middle-bar-item" bindtap="handleRaiseTask">
 <image class="middle-bar-image" src="../../images/媒体发布.png"/>
 <view class="middle-bar-text">发起活动</view>
 </view>
-<view class="middle-bar-item">
+<view class="middle-bar-item" >
 <image class="middle-bar-image" src="../../images/地区活动.png"/>
-<view class="middle-bar-text">发起活动</view>
+<view class="middle-bar-text">地点活动</view>
 </view>
 <view class="middle-bar-item">
 <image class="middle-bar-image" src="../../images/社区动态.png"/>
@@ -43,7 +43,7 @@
 <view class="middle-bar-text">知识宣传</view>
 </view>
 
-<view class="middle-bar-item">
+<view class="middle-bar-item" bindtap="handleUser">
 <image class="middle-bar-image" src="../../images/个人中心.png"/>
 <view class="middle-bar-text">个人中心</view>
 </view>

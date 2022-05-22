@@ -2,4 +2,3 @@
 page{
   --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
 }
-

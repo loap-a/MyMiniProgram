@@ -1,2 +1,93 @@
-<!--pages/raise_task/raise_task.wxml-->
-<text>pages/raise_task/raise_task.wxml</text>
+<zy-modal title='美好新乡村志愿者平台' hidden="{{modelHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
+<view class="index-model">
+ <view>
+  <view class='login-header'>
+   <image src='../../images/wx_login.png'></image>
+  </view>
+   
+  <view class='login-content'>
+   <view>申请获取以下权限</view>
+   <text>获得你的公开信息(昵称，头像等)</text>
+  </view>
+ </view>
+</view>
+</zy-modal>
+
+
+<view class="notLogin" wx:if="{{!isLogin}}">
+  <view class="notLogin-text">
+  发起志愿活动请先登录
+  </view>
+  <button bindtap="showAction" type="primary">登录</button>
+</view>
+
+
+<view class="main-body" wx:if="{{isLogin}}">
+  <view class="main-body-title cu-form-group">
+    <view class="title">标题: </view>
+    <input placeholder="请输入标题" class="input"/>
+  </view>
+
+  <view class="main-body-detail">
+    <view class="title-detail">详细: </view>
+    <input placeholder="  请输入详细介绍" class="input-detail"/>
+  </view>
+
+  <view class="cu-bar bg-white margin-top">
+		<view class="action margin-left">
+			图片上传
+		</view>
+		<view class="action margin-right">
+			{{imgList.length}}/4
+		</view>
+	</view>
+	<view class="cu-form-group-1">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+
+
+  <view class="main-body-location cu-form-group">
+    <view class="title">地址选择</view>
+		<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker>
+  </view>
+
+  <view class="main-body-location-detail">
+    <view class="title-detail">详细地址:</view>
+    <input placeholder="  请输入详细地址" class="input-location-detail"/>
+  </view>
+
+  <view class="main-body-reach cu-form-group">
+    <view class="title">联系方式: </view>
+    <input placeholder="请输入联系方式" class="input"/>
+  </view>
+
+  <view class="main-body-date cu-form-group">
+    <view class="title">日期选择</view>
+		<picker mode="date" value="{{date}}" start="2022-05-22" end="2024-09-01" bindchange="DateChange">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
+  </view>
+
+  <view class="main-body-department cu-form-group">
+    <view class="title">组织单位: </view>
+    <input placeholder="请输入组织单位" class="input"/>
+  </view>
+
+  <button type="primary" class="submit-button" bindtap="submit">提交</button>
+</view>
