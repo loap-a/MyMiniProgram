@@ -187,5 +187,21 @@ Page({
     this.setData({
       modalHidden: false,
     })
+  },
+  handleTaskHire(){
+    wx.navigateTo({
+      url: '../tasks/tasks',
+    })
+  },
+  handleRaiseTask(){
+    wx.navigateTo({
+      url: '../raise_task/raise_task',
+    })
+  },
+  handleUser()
+  {
+    wx.navigateTo({
+      url: '../user/user',
+    })
   }
 })
