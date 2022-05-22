@@ -87,9 +87,6 @@ Page({
     if (e.detail.userInfo) {
         //用户按了允许授权按钮
         var that = this;
-        // 获取到用户的信息了，打印到控制台上看下
-        console.log("用户的信息如下：");
-        console.log(e.detail.userInfo);
         app.globalData.userInfo=e.detail.userInfo;
         app.globalData.login=true;
         //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
@@ -115,9 +112,12 @@ Page({
 
   taskNavigate: function(event)
   {
-    console.log(event);
+    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
     wx.navigateTo({
-      url:'../tasks_detail/tasks_detail'
+      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {}
     })
   },
   /**

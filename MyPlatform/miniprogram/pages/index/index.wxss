@@ -109,7 +109,7 @@ margin-top:-40rpx;
 }
 
 .scroll-item-content{
-  height:103rpx;
+  height:101rpx;
   font-size:25rpx;
   overflow: hidden;
 }
