@@ -1,0 +1,17 @@
+<!-- component/zy-modal/zy-modal.wxml -->
+<view class="modal" hidden="{{hidden}}">
+    <view class="container" hidden="{{hidden}}">
+        <view class="title">{{title}}</view>
+        <view class="content">
+            <slot></slot>
+        </view>
+        <view class='modal-btn-wrapper'>
+  <button class='login-bottom'  bindtap='cancel'>
+   取消登录
+  </button>
+  <button class='login-bottom'  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+   授权登录
+  </button>
+        </view>
+    </view>
+</view>

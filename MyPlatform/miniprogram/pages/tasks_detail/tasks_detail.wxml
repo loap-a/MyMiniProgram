@@ -1,0 +1,70 @@
+<view class="task-title">
+  {{selectTask.title}}
+</view>
+
+<!-- <view class="gap"></view> -->
+
+<view class="main-body">
+  <view class="sidebar">
+    <view class="{{mainDetail? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarDetail">
+      详细
+    </view>
+    <view class="{{mainTime? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarTime">
+      选择时间
+    </view>
+    <view class="{{mainNeed? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarEmployee">
+      发起方
+    </view>
+  </view>
+  <view class="main-detail" wx:if="{{mainDetail}}">
+    <view class="main-detail-swiper">
+      <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+        <swiper-item wx:for="{{swiperList}}" wx:key>
+          <image src="{{item.url}}" mode="aspectFill"></image>
+          <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="main-detail-gap"></view>
+    <view class="main-detail-text">{{selectTask.content}}</view>
+  </view>
+
+  <view class="main-time" wx:if="{{mainTime}}">
+
+    <my-calendar title="指定日期选择"
+     useType="touch" date="{{date}}"  
+     min="{{availableDate.start}}"
+     max="{{availableDate.end}}"
+     bind:confirm="select" 
+     background="{{theme.bg}}" 
+     touchColor="{{theme.touchColor}}" 
+     isRound="{{theme.isRound}}" 
+     fontColor="{{theme.fontColor}}" 
+     rangeColor="{{theme.rangeColor}}"
+     rangeStartColor="{{theme.rangeStartColor}}"
+     rangeEndColor="{{theme.rangeEndColor}}" />
+
+  </view>
+
+  <view class="main-need " wx:if="{{mainNeed}}">
+    <view class="main-need-swiper" wx:if="{{taskRaiser.imageURL.length>0?true:false}}">
+      <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+        <swiper-item wx:for="{{taskRaiser.imageURL}}" wx:key>
+          <image src="{{item.url}}" mode="aspectFill"></image>
+          <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="main-need-content">
+      <van-cell-group inset >
+        <van-cell title="发起人: " value="">{{taskRaiser.nickName}}</van-cell>
+        <van-cell title="地址: " value="">{{taskRaiser.address}}</van-cell>
+        <van-cell title="介绍: " value="">{{taskRaiser.introduction}}</van-cell>
+        <van-cell title="联系方式: " value="">{{taskRaiser.phoneNumber}}</van-cell>
+      </van-cell-group>
+      <button class="main-need-content-reach">在线联系</button>
+
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,218 @@
+/* pages/tasks_detail/tasks_detail.wxss */
+page{
+  height:100%;
+}
+
+.task-title{
+  margin-top:20rpx;
+  text-align: center;
+  font-size:50rpx;
+  border-bottom: solid;
+  border-width: 3rpx;
+}
+
+/* .my-calender{
+  height:500rpx;
+  width:500rpx;
+} */
+
+/* .gap{
+  width:95%;
+  height:10rpx;
+  border-radius: 100rpx;
+  margin-top:10rpx;
+  margin-bottom: 10rpx;
+  margin-left:20rpx;
+  background-color: #c5c9ca;
+} */
+
+.main-body{
+  height:100%;
+  width:100%;
+  background-color: #c5c9ca;
+  position:fixed;
+  display:flex;
+}
+
+.sidebar{
+  margin-top:10rpx;
+  margin-left:10rpx;
+  height:93.5%;
+  width:170rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  position:fixed;
+  
+}
+
+.sidebar-item{
+  width:100%;
+  height:100rpx;
+  background-color:#67c147;
+  margin-top:20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  line-height:100rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  color:#000000;
+
+
+  /* backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(209, 213, 219, 0.3); */
+}
+.sidebar-item-selected{
+  width:100%;
+  height:100rpx;
+  background-color:#9b9b9b;
+  margin-top:20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  line-height:100rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  color:#000000;
+}
+
+.main-detail{
+  height:93.5%;
+  width:80%;
+  margin-left:200rpx;
+  margin-top:10rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+
+
+.main-detail-gap{
+  width:90%;
+  margin-left:20rpx;
+  height:5rpx;
+  border-radius: 100rpx;
+  margin-top:10rpx;
+  margin-bottom: 10rpx;
+  background-color: #c5c9ca;
+}
+
+.main-detail-text{
+  margin-top:20rpx;
+  user-select:text;
+  text-align:left;
+  text-indent:2em;
+  word-break: break-all;
+}
+
+.main-detail-swiper{
+  width:90%;
+  margin-left:30rpx;
+  margin-top:20rpx;
+  border-radius: 20rpx;
+}
+
+
+.main-need-swiper{
+  width:90%;
+  margin-left:30rpx;
+  margin-top:20rpx;
+  border-radius: 20rpx;
+}
+
+.main-time{
+  height:93.5%;
+  width:80%;
+  margin-left:200rpx;
+  margin-top:10rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+
+.main-need{
+  height:93.5%;
+  width:80%;
+  margin-left:200rpx;
+  margin-top:10rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+
+.main-time-calender{
+  height:500rpx;
+  width:100%;
+}
+/*
+
+*/
+
+
+swiper .a-swiper-dot {
+	display: inline-block;
+	width: 16rpx;
+	height: 16rpx;
+	background: rgba(0, 0, 0, .3);
+	border-radius: 50%;
+	vertical-align: middle;
+}
+
+swiper[class*="-dot"] .wx-swiper-dots {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+}
+
+swiper.square-dot .wx-swiper-dot {
+	background-color: #ffffff;
+	opacity: 0.4;
+	width: 10rpx;
+	height: 10rpx;
+	border-radius: 20rpx;
+	margin: 0 8rpx !important;
+}
+
+swiper.square-dot .wx-swiper-dot.wx-swiper-dot-active {
+	opacity: 1;
+	width: 30rpx;
+}
+
+swiper.round-dot .wx-swiper-dot {
+	width: 10rpx;
+	height: 10rpx;
+	position: relative;
+	margin: 4rpx 8rpx !important;
+}
+
+swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active::after {
+	content: "";
+	position: absolute;
+	width: 10rpx;
+	height: 10rpx;
+	top: 0rpx;
+	left: 0rpx;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: #ffffff;
+	border-radius: 20rpx;
+}
+
+swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active {
+	width: 18rpx;
+	height: 18rpx;
+}
+
+.screen-swiper {
+	min-height: 375rpx;
+}
+
+.screen-swiper image,
+.screen-swiper video,
+.swiper-item image,
+.swiper-item video {
+	width: 100%;
+	display: block;
+	height: 100%;
+	margin: 0;
+	pointer-events: none;
+}

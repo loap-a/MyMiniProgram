@@ -1,3 +1,19 @@
+<zy-modal title='美好新乡村志愿者平台' hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
+<view class="index-model">
+ <view>
+  <view class='login-header'>
+   <image src='../../images/wx_login.png'></image>
+  </view>
+   
+  <view class='login-content'>
+   <view>申请获取以下权限</view>
+   <text>获得你的公开信息(昵称，头像等)</text>
+  </view>
+ </view>
+</view>
+</zy-modal>
+
+
 <view class="top-box-user" wx:if="{{isLogin}}">
   <image class="top-box-avatar-user"/>
   <view class="top-box-text-user">
@@ -11,9 +27,6 @@
   <view class="top-box-text-tourist">
     <view class="top-box-text-model-tourist">
   游客模式
-    </view>
-    <view class="top-box-text-register-tourist">
-  前往注册
     </view>
   </view>
 </view>
@@ -33,5 +46,4 @@
 </van-cell-group>
 </view>
 
-<button bindtap="register" type="primary">注册</button>
-<button bindtap="login" type="primary">登录</button>
+<button bindtap="showAction" type="primary" wx:if="{{!isLogin}}">登录</button>
