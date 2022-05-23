@@ -113,5 +113,7 @@ Page({
         isLogin:false,
         userInfo:null
       })
+      app.globalData.login=false;
+      app.globalData.userInfo=null;
   }
 })
