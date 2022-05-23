@@ -37,11 +37,10 @@ Page({
          wx.login({
           success: res => {
            // 获取到用户的 code 之后：res.code
-           console.log("用户的code:" + res.code);
            wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx9cdb0e0b9205e3ea&secret=1630ed107ccc6e9b7f4aaf218068a775&js_code=' + res.code + '&grant_type=authorization_code',
             success: res => {
-             console.log("用户的openid:" + res.data.openid);
+          
             }
            });
           }
@@ -59,10 +58,10 @@ Page({
     });
 
     /////////////////////////
-    db.collection('activities').get().then(res=>{
+    db.collection('tasks').get().then(res=>{
       this.setData({
         scrollView:res.data
-      })
+      });
       var tempFileIdList=[];
       for(var i=0;i<res.data.length;i++)
       {
@@ -77,7 +76,6 @@ Page({
         that.setData({
           imageList:res.fileList
         })
-        console.log(imageList)
       }
     })
     })
@@ -103,7 +101,6 @@ Page({
             success: function(res) {
                 // 用户没有授权成功，不需要改变 isHide 的值
                 if (res.confirm) {
-                    console.log('用户点击了“返回授权”');
                 }
             }
         });
@@ -189,7 +186,7 @@ Page({
     })
   },
   handleTaskHire(){
-    wx.navigateTo({
+    wx.switchTab({
       url: '../tasks/tasks',
     })
   },
@@ -200,7 +197,7 @@ Page({
   },
   handleUser()
   {
-    wx.navigateTo({
+    wx.switchTab({
       url: '../user/user',
     })
   }

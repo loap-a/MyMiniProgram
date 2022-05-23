@@ -107,5 +107,11 @@ Page({
     this.setData({
       modalHidden: false,
     })
+  },
+  logout(){
+      this.setData({
+        isLogin:false,
+        userInfo:null
+      })
   }
 })

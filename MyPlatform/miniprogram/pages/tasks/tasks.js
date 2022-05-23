@@ -11,9 +11,20 @@ Page({
    */
   data: {
     inputShowed: false,
-    activities:[],
+    tasks:[],
     imageList:[],
     fileIdList:[]
+  },
+
+  taskNavigate: function(event)
+  {
+    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
+    wx.navigateTo({
+      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {}
+    })
   },
   showInput: function () {
     this.setData({
@@ -30,9 +41,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    db.collection('activities').get().then(res=>{
+    db.collection('tasks').get().then(res=>{
       this.setData({
-        activities:res.data
+        tasks:res.data
       })
       var tempFileIdList=[];
       for(var i=0;i<res.data.length;i++)
@@ -49,7 +60,6 @@ Page({
         that.setData({
           imageList:res.fileList
         })
-        console.log(imageList)
       }
     })
     })

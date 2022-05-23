@@ -25,11 +25,11 @@ Page({
          wx.login({
           success: res => {
            // 获取到用户的 code 之后：res.code
-           console.log("用户的code:" + res.code);
+
            wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx9cdb0e0b9205e3ea&secret=1630ed107ccc6e9b7f4aaf218068a775&js_code=' + res.code + '&grant_type=authorization_code',
             success: res => {
-             console.log("用户的openid:" + res.data.openid);
+            
             }
            });
           }
@@ -43,14 +43,13 @@ Page({
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
         var that = this;
-        console.log("用户的信息如下：");
-        console.log(e.detail.userInfo);
+
         app.globalData.userInfo=e.detail.userInfo;
         app.globalData.login=true;
         wx.switchTab({
           url: '../user/user',
         });
-        console.log('hello')
+
     } else {
         //用户按了拒绝按钮
         wx.showModal({
@@ -61,7 +60,7 @@ Page({
             success: function(res) {
                 // 用户没有授权成功，不需要改变 isHide 的值
                 if (res.confirm) {
-                    console.log('用户点击了“返回授权”');
+                   
                 }
             }
         });

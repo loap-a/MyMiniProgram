@@ -17,8 +17,10 @@
 <scroll-view class="scroll-view">
 
   <view class="scroll-item"
-  wx:for="{{activities}}"
-  wx:key="unique">
+  wx:for="{{tasks}}"
+  wx:key="unique"
+  bindtap="taskNavigate"
+  data-task="{{item}}">
 
     <image class="scroll-item-image" src="{{imageList[index].tempFileURL}}"/>
       <view class="scroll-item-textfield">
