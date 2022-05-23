@@ -18,7 +18,8 @@ Page({
     fileIdList:[],
     hideMain:true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    modalHidden: false
+    modalHidden: false,
+    value:null
   },
 
   /**
@@ -26,6 +27,12 @@ Page({
    */
   onLoad(options) {
     var that = this;
+    db.collection('myValue').get().then(res=>{
+      that.setData({
+        value:res.data[0].value
+      })
+    })
+    
     wx.getSetting({
      success: function(res) {
       if (res.authSetting['scope.userInfo']) {
@@ -38,7 +45,7 @@ Page({
           success: res => {
            // 获取到用户的 code 之后：res.code
            wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx9cdb0e0b9205e3ea&secret=1630ed107ccc6e9b7f4aaf218068a775&js_code=' + res.code + '&grant_type=authorization_code',
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx9cdb0e0b9205e3ea&secret='+that.data.value+'&js_code=' + res.code + '&grant_type=authorization_code',
             success: res => {
           
             }
