@@ -13,8 +13,11 @@ Page({
     isLogin:app.globalData.login,
     userInfo:app.globalData.userInfo,
     modelHidden:true,
+
     detailImageList: [],
     proveImageList:[],
+    tempDetailImageList:[],
+    tempProveImageList:[],
 
       title:"",
       detail:"",
@@ -73,22 +76,22 @@ Page({
   
   ViewImage(e) {
     wx.previewImage({
-      urls: this.data.detailImageList,
+      urls: this.data.tempDetailImageList,
       current: e.currentTarget.dataset.url
     });
   },
 
   DelImg(e) {
     wx.showModal({
-      title: '召唤师',
-      content: '确定要删除这段回忆吗？',
-      cancelText: '再看看',
-      confirmText: '再见',
+      title: '确认',
+      content: '确定要删除这张照片吗？',
+      cancelText: '取消',
+      confirmText: '确认',
       success: res => {
         if (res.confirm) {
-          this.data.detailImageList.splice(e.currentTarget.dataset.index, 1);
+          this.data.tempDetailImageList.splice(e.currentTarget.dataset.index, 1);
           this.setData({
-            detailImageList: this.data.detailImageList
+            tempDetailImageList: this.data.tempDetailImageList
           })
         }
       }
@@ -96,6 +99,7 @@ Page({
   },
 
   ChooseImage() {
+    var that=this;
     wx.chooseImage({
       count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -103,13 +107,33 @@ Page({
       success: (res) => {
         if (this.data.detailImageList.length != 0) {
           this.setData({
-            detailImageList: this.data.detailImageList.concat(res.tempFilePaths)
+            tempDetailImageList: this.data.tempDetailImageList.concat(res.tempFilePaths)
           })
+          
         } else {
           this.setData({
-            detailImageList: res.tempFilePaths
+            tempDetailImageList: res.tempFilePaths
           })
         }
+
+        const urls = res.tempFilePaths;
+        var fileIDs = that.data.detailImageList.length==0?[]:that.data.detailImageList;
+
+        for(var i=0;i<urls.length;i++)
+        {
+          var cloudPath="userPhoto/"+Date.now()+i+".jpg";
+          wx.cloud.uploadFile({
+            cloudPath,
+            filePath: urls[i]
+          }).then(res=>{
+            fileIDs.push(res.fileID);
+          })
+        }
+        that.setData({
+          detailImageList:fileIDs
+        })
+        console.log(that.data)
+
       }
     });
   },
@@ -218,22 +242,22 @@ Page({
 
   ViewImageProve(e) {
     wx.previewImage({
-      urls: this.data.proveImageList,
+      urls: this.data.tempProveImageList,
       current: e.currentTarget.dataset.url
     });
   },
 
   DelImgProve(e) {
     wx.showModal({
-      title: '召唤师',
-      content: '确定要删除这段回忆吗？',
-      cancelText: '再看看',
-      confirmText: '再见',
+      title: '确认',
+      content: '确定要删除这张照片吗？',
+      cancelText: '取消',
+      confirmText: '确认',
       success: res => {
         if (res.confirm) {
-          this.data.proveImageList.splice(e.currentTarget.dataset.index, 1);
+          this.data.tempProveImageList.splice(e.currentTarget.dataset.index, 1);
           this.setData({
-            proveImageList: this.data.proveImageList
+            tempProveImageList: this.data.tempProveImageList
           })
         }
       }
@@ -241,20 +265,39 @@ Page({
   },
 
   ChooseImageProve() {
+    var that=this;
     wx.chooseImage({
       count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.proveImageList.length != 0) {
+        if (this.data.tempProveImageList.length != 0) {
           this.setData({
-            imgList: this.data.proveImageList.concat(res.tempFilePaths)
+            tempProveImageList: this.data.tempProveImageList.concat(res.tempFilePaths)
           })
         } else {
           this.setData({
-            proveImageList: res.tempFilePaths
+            tempProveImageList: res.tempFilePaths
           })
         }
+  
+        const urls = res.tempFilePaths;
+        var fileIDs = that.data.proveImageList.length==0?[]:that.data.proveImageList;
+
+        for(var i=0;i<urls.length;i++)
+        {
+          var cloudPath="userPhoto/"+Date.now()+i+".jpg";
+          wx.cloud.uploadFile({
+            cloudPath,
+            filePath: urls[i]
+          }).then(res=>{
+            fileIDs.push(res.fileID);
+          })
+        }
+        that.setData({
+          proveImageList:fileIDs
+        })
+        console.log(that.data)
       }
     });
   },

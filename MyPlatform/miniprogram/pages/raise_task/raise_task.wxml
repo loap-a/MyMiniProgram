@@ -38,18 +38,18 @@
 			图片上传
 		</view>
 		<view class="action margin-right">
-			{{detailImageList.length}}/4
+			{{tempDetailImageList.length}}/4
 		</view>
 	</view>
 	<view class="cu-form-group-1">
 		<view class="grid col-4 grid-square flex-sub">
-			<view class="bg-img" wx:for="{{detailImageList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{detailImageList[index]}}">
-				<image src='{{detailImageList[index]}}' mode='aspectFill'></image>
+			<view class="bg-img" wx:for="{{tempDetailImageList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{tempDetailImageList[index]}}">
+				<image src='{{tempDetailImageList[index]}}' mode='aspectFill'></image>
 				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
 					<text class="cuIcon-close"></text>
 				</view>
 			</view>
-			<view class="solids" bindtap="ChooseImage" wx:if="{{detailImageList.length<4}}">
+			<view class="solids" bindtap="ChooseImage" wx:if="{{tempDetailImageList.length<4}}">
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
@@ -113,18 +113,18 @@
 			* 上传资质证明材料
 		</view>
 		<view class="action margin-right">
-			{{proveImageList.length}}/4
+			{{tempProveImageList.length}}/4
 		</view>
 	</view>
 	<view class="cu-form-group-1">
 		<view class="grid col-4 grid-square flex-sub">
-			<view class="bg-img" wx:for="{{proveImageList}}" wx:key="{{index}}" bindtap="ViewImageProve" data-url="{{proveImageList[index]}}">
-				<image src='{{proveImageList[index]}}' mode='aspectFill'></image>
+			<view class="bg-img" wx:for="{{tempProveImageList}}" wx:key="{{index}}" bindtap="ViewImageProve" data-url="{{tempProveImageList[index]}}">
+				<image src='{{tempProveImageList[index]}}' mode='aspectFill'></image>
 				<view class="cu-tag bg-red" catchtap="DelImgProve" data-index="{{index}}">
 					<text class="cuIcon-close"></text>
 				</view>
 			</view>
-			<view class="solids" bindtap="ChooseImageProve" wx:if="{{proveImageList.length<4}}">
+			<view class="solids" bindtap="ChooseImageProve" wx:if="{{tempProveImageList.length<4}}">
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>

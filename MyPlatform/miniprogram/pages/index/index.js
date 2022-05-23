@@ -135,7 +135,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    var that=this
+    db.collection('tasks').get().then(res=>{
+      this.setData({
+        scrollView:res.data
+      });
+      var tempFileIdList=[];
+      for(var i=0;i<res.data.length;i++)
+      {
+        tempFileIdList.push(res.data[i].imageId);
+      }
+      this.setData({
+        fileIdList:tempFileIdList
+      })
+    wx.cloud.getTempFileURL({
+      fileList:that.data.fileIdList,
+      success(res){
+        that.setData({
+          imageList:res.fileList
+        })
+      }
+    })
+    })
   },
 
   /**
