@@ -24,13 +24,13 @@
 
 <view class="main-body" wx:if="{{isLogin}}">
   <view class="main-body-title cu-form-group">
-    <view class="title">标题: </view>
-    <input placeholder="请输入标题" class="input"/>
+    <view class="title">* 标题: </view>
+    <input placeholder="请输入标题" class="input" model:value="{{title}}"/>
   </view>
 
   <view class="main-body-detail">
-    <view class="title-detail">详细: </view>
-    <input placeholder="  请输入详细介绍" class="input-detail"/>
+    <view class="title-detail">* 详细: </view>
+    <input placeholder="  请输入详细介绍" class="input-detail" model:value="{{detail}}"/>
   </view>
 
   <view class="cu-bar bg-white margin-top">
@@ -38,18 +38,18 @@
 			图片上传
 		</view>
 		<view class="action margin-right">
-			{{imgList.length}}/4
+			{{detailImageList.length}}/4
 		</view>
 	</view>
 	<view class="cu-form-group-1">
 		<view class="grid col-4 grid-square flex-sub">
-			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
-				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+			<view class="bg-img" wx:for="{{detailImageList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{detailImageList[index]}}">
+				<image src='{{detailImageList[index]}}' mode='aspectFill'></image>
 				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
 					<text class="cuIcon-close"></text>
 				</view>
 			</view>
-			<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+			<view class="solids" bindtap="ChooseImage" wx:if="{{detailImageList.length<4}}">
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
@@ -57,37 +57,78 @@
 
 
   <view class="main-body-location cu-form-group">
-    <view class="title">地址选择</view>
-		<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="title">* 地址选择</view>
+		<picker mode="region" bindchange="RegionChange" value="{{address}}" custom-item="{{customItem}}">
 			<view class="picker">
-				{{region[0]}}，{{region[1]}}，{{region[2]}}
+				{{ address[0]}}，{{ address[1]}}，{{ address[2]}}
 			</view>
 		</picker>
   </view>
 
   <view class="main-body-location-detail">
-    <view class="title-detail">详细地址:</view>
-    <input placeholder="  请输入详细地址" class="input-location-detail"/>
+    <view class="title-detail">* 详细地址:</view>
+    <input placeholder="  请输入详细地址" class="input-location-detail" model:value="{{addressDetail}}"/>
   </view>
 
   <view class="main-body-reach cu-form-group">
-    <view class="title">联系方式: </view>
-    <input placeholder="请输入联系方式" class="input"/>
+    <view class="title">* 联系方式: </view>
+    <input placeholder="请输入联系方式" class="input" model:value="{{ phoneNumber}}"/>
   </view>
 
   <view class="main-body-date cu-form-group">
-    <view class="title">日期选择</view>
-		<picker mode="date" value="{{date}}" start="2022-05-22" end="2024-09-01" bindchange="DateChange">
+    <view class="title">* 起始日期</view>
+		<picker mode="date" value="{{startDate}}" start="2022-05-22" end="2024-09-01" bindchange="DateChangeStart">
 			<view class="picker">
-				{{date}}
+				{{startDate}}
+			</view>
+		</picker>
+  </view>
+
+  <view class="main-body-date cu-form-group">
+    <view class="title">* 结束日期</view>
+		<picker mode="date" value="{{endDate}}" start="2022-05-22" end="2024-09-01" bindchange="DateChangeEnd">
+			<view class="picker">
+				{{endDate}}
 			</view>
 		</picker>
   </view>
 
   <view class="main-body-department cu-form-group">
-    <view class="title">组织单位: </view>
-    <input placeholder="请输入组织单位" class="input"/>
+    <view class="title">* 组织单位: </view>
+    <input placeholder="请输入组织单位名称" class="input" model:value="{{raiserName}}"/>
   </view>
+
+  <view class="main-body-location-detail">
+    <view class="title-detail">* 单位地址:</view>
+    <input placeholder="  请输入详细地址" class="input-location-detail" model:value="{{raiserAddress}}"/>
+  </view>
+
+  <view class="main-body-detail">
+    <view class="title-detail">单位介绍: </view>
+    <input placeholder="  请输入单位详细介绍" class="input-detail" model:value="{{raiserIntroduction}}"/>
+  </view>
+
+  <view class="cu-bar bg-white margin-top">
+		<view class="action margin-left">
+			* 上传资质证明材料
+		</view>
+		<view class="action margin-right">
+			{{proveImageList.length}}/4
+		</view>
+	</view>
+	<view class="cu-form-group-1">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{proveImageList}}" wx:key="{{index}}" bindtap="ViewImageProve" data-url="{{proveImageList[index]}}">
+				<image src='{{proveImageList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImgProve" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImageProve" wx:if="{{proveImageList.length<4}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
 
   <button type="primary" class="submit-button" bindtap="submit">提交</button>
 </view>

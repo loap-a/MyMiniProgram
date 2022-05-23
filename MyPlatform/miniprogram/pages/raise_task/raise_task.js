@@ -1,4 +1,8 @@
 // pages/raise_task/raise_task.js
+const db = wx.cloud.database();
+const infomation = db.collection('information');
+const activities = db.collection('activities');
+const users = db.collection('user');
 const app = getApp();
 Page({
 
@@ -9,17 +13,67 @@ Page({
     isLogin:app.globalData.login,
     userInfo:app.globalData.userInfo,
     modelHidden:true,
-    region: ['广东省', '广州市', '海珠区'],
-    date: '2022-05-23',
-    imgList: [],
+    detailImageList: [],
+    proveImageList:[],
+
+      title:"",
+      detail:"",
+      imgURL:[],
+      address:['广东省', '广州市', '海珠区'],
+      addressDetail:"",
+      phoneNumber:"",
+      startDate:"2022-05-23",
+      endDate:"2022-05-24",
+      raiserName:"",
+      raiserAddress:"",
+      raiserIntroduction:"",
+      raiserImgURL:[]
+    
+    
   },
   submit(){
+
+    db.collection('tasks').add({
+      data:{
+        title:this.data.title,
+        content:this.data.detail,
+        imageId:this.data.detailImageList[0],
+        images:this.data.detailImageList,
+        address:this.data.address,
+        addressDetail:this.data.addressDetail,
+        phoneNumber:this.data.phoneNumber,
+        startDate:this.data.startDate,
+        endData:this.data.endDate,
+        raiserName:this.data.raiserName,
+        raiserAddress:this.data.raiserAddress,
+        raiserIntroduction:this.data.raiserIntroduction,
+        raiserImages:this.data.proveImageList,
+        visit:0,
+        thumbUp:0,
+        comment:0,
+        comments:[]
+      },
+      success(res){
+        wx.showToast({
+          title:"成功",
+          duration:2000,
+          mask:false,
+          success:function(){},
+
+          fail:function(){},
+    
+          complete:function(){}
+        });
+
+      }
+    })
+
 
   },
   
   ViewImage(e) {
     wx.previewImage({
-      urls: this.data.imgList,
+      urls: this.data.detailImageList,
       current: e.currentTarget.dataset.url
     });
   },
@@ -32,9 +86,9 @@ Page({
       confirmText: '再见',
       success: res => {
         if (res.confirm) {
-          this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+          this.data.detailImageList.splice(e.currentTarget.dataset.index, 1);
           this.setData({
-            imgList: this.data.imgList
+            detailImageList: this.data.detailImageList
           })
         }
       }
@@ -47,13 +101,13 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length != 0) {
+        if (this.data.detailImageList.length != 0) {
           this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
+            detailImageList: this.data.detailImageList.concat(res.tempFilePaths)
           })
         } else {
           this.setData({
-            imgList: res.tempFilePaths
+            detailImageList: res.tempFilePaths
           })
         }
       }
@@ -62,16 +116,21 @@ Page({
 
   RegionChange: function(e) {
     this.setData({
-      region: e.detail.value
+      address: e.detail.value
     })
   },
 
-  DateChange(e) {
+  DateChangeStart(e) {
     this.setData({
-      date: e.detail.value
+      startDate: e.detail.value
     })
   },
 
+  DateChangeEnd(e) {
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -154,6 +213,50 @@ Page({
     this.setData({
       modelHidden: false,
     })
-  }
+  },
+
+
+  ViewImageProve(e) {
+    wx.previewImage({
+      urls: this.data.proveImageList,
+      current: e.currentTarget.dataset.url
+    });
+  },
+
+  DelImgProve(e) {
+    wx.showModal({
+      title: '召唤师',
+      content: '确定要删除这段回忆吗？',
+      cancelText: '再看看',
+      confirmText: '再见',
+      success: res => {
+        if (res.confirm) {
+          this.data.proveImageList.splice(e.currentTarget.dataset.index, 1);
+          this.setData({
+            proveImageList: this.data.proveImageList
+          })
+        }
+      }
+    })
+  },
+
+  ChooseImageProve() {
+    wx.chooseImage({
+      count: 4, //默认9
+      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album'], //从相册选择
+      success: (res) => {
+        if (this.data.proveImageList.length != 0) {
+          this.setData({
+            imgList: this.data.proveImageList.concat(res.tempFilePaths)
+          })
+        } else {
+          this.setData({
+            proveImageList: res.tempFilePaths
+          })
+        }
+      }
+    });
+  },
   
 })

@@ -71,7 +71,6 @@ Page({
     this.setData({
       userName:event.detail.value
     })
-    console.log(this.data.userName)
   },
   handlePasswd(event){
     this.setData({
@@ -99,7 +98,6 @@ register(){
       phoneNumber:phoneNumber
     },
     success(res){
-      console.log('注册成功',res)
       wx.showToast({
         title:'success'
       })

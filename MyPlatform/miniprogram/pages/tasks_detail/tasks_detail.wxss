@@ -9,6 +9,7 @@ page{
   font-size:50rpx;
   border-bottom: solid;
   border-width: 3rpx;
+  align-items: center;
 }
 
 /* .my-calender{
@@ -117,6 +118,31 @@ page{
   margin-left:30rpx;
   margin-top:20rpx;
   border-radius: 20rpx;
+}
+
+.main-need-content{
+  width:100%;
+  margin-top:30rpx;
+}
+
+.main-need-content-item{
+  display:flex;
+  min-height:100rpx;
+  border-style: solid;
+  border-width:0.5rpx;
+  border-color:#efeff4;
+  border-left:none;
+  border-right:none;
+  align-items: center;
+}
+
+.main-need-content-item-title{
+margin-left:20rpx;
+min-width:100rpx;
+}
+
+.main-need-content-item-text{
+margin-left:20rpx;
 }
 
 .main-time{

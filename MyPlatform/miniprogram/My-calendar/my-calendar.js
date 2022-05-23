@@ -391,7 +391,6 @@ Component({
      * @description 设置月份里mix-max选择范围 
      */
     setMinMax () {
-      console.log(this.properties.actives);
       if (this.properties.actives && (this.properties.min || this.properties.max)) {
         this.throwErr("min、max属性不能跟actives属性同时使用");
         return;
