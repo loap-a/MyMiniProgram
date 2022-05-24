@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "my-calendar": "../../My-calendar/my-calendar"
+    "my-calendar": "../../components/My-calendar/my-calendar"
   }
 }

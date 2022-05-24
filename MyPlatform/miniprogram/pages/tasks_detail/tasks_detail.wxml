@@ -32,6 +32,7 @@
   <view class="main-time" wx:if="{{mainTime}}">
 
     <my-calendar title="日期选择"
+    class="my-calendar"
      useType="touch" date="{{date}}"  
      min="{{availableDate.start}}"
      max="{{availableDate.end}}"

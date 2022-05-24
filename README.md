@@ -4,6 +4,10 @@
 
 已将老师和助教学长微信号设为体验用户
 
-![avatar](./体验版.png)
+- 发布版
+  - ![avatar](./qrcode.png)
+
+- 体验版
+  - ![avatar](./体验版.png)
 
 ![avatar](./体验版.jpg)
