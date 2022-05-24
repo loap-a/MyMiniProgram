@@ -20,7 +20,7 @@ page{
 }
 
 .title-detail{
-  width:140rpx;
+  width:160rpx;
 }
 
 .cu-form-group {

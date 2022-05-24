@@ -6,6 +6,10 @@
 
 - 文档链接 https://nankai.feishu.cn/docs/doccnJq8QcPZapRMuKRJJoXZX4g
 
-![avatar](./体验版.png)
+- 发布版
+  - ![avatar](./qrcode.png)
+
+- 体验版
+  - ![avatar](./体验版.png)
 
 ![avatar](./体验版.jpg)

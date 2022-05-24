@@ -86,7 +86,9 @@ page{
   border-radius: 10rpx;
 }
 
-
+.my-calendar{
+  height:auto;
+}
 .main-detail-gap{
   width:90%;
   margin-left:20rpx;

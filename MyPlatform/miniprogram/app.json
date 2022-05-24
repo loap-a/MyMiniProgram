@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/user/user",
     "pages/tasks/tasks",
-    "pages/register/register",
     "pages/login/login",
     "pages/tasks_detail/tasks_detail",
     "pages/test/test",

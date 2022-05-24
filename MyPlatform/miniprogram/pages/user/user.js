@@ -75,11 +75,6 @@ Page({
 
   },
 
-  register() {
-    wx.navigateTo({
-      url: '../register/register',
-    })
-  },
   login() {
     wx.navigateTo({
       url: '../login/login',

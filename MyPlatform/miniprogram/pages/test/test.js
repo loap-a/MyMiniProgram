@@ -1,32 +1,66 @@
+// pages/test/test.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    start: "",
-    stop: "",
-    theme: {
-        bg: "#409efe",
-        fontColor: "#fff",
-        rangeStartColor: "#79bbff",
-        rangeColor: "#b3d8ff",
-        rangeEndColor: "#79bbff"
-    },
-    actives: [
-        {date: "2022-05-24", text: "￥1333.3"}
-    ],/*指定允许选择的日期*/
-    date: "",
-  },
-  onLoad () {
 
   },
-  select ({detail}) {
-    this.setData({ date: detail.text });
-    this.offCalendar();
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
-  openCalendar () {
-    this.setData({calendarShow: true});
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
-  offCalendar () {
-    this.setData({ calendarShow: false });
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
   }
-
-
 })
