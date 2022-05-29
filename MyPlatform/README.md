@@ -10,3 +10,6 @@
 
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
+### Iteration 2 
+- 签到打卡
+- 活动记录, 累计积分
