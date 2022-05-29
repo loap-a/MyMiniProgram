@@ -17,7 +17,9 @@
 <view class="top-box-user" wx:if="{{isLogin}}">
   <image class="top-box-avatar-user" src="{{userInfo.avatarUrl}}"/>
   <view class="top-box-text-user">
-    <view class="top-box-text-welcome-user">欢迎回来 {{userInfo.nickName}}</view>
+    <view class="top-box-text-welcome-user">欢迎回来 </view>
+    <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
+    <view class="top-box-text-welcome-user">后续可能添加自定义头像</view>
     <view class="top-box-text-modify-user">修改个人资料</view>
   </view>
 </view>

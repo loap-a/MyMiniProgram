@@ -35,7 +35,12 @@ Page({
     
   },
   submit(){
-
+      if(this.data.detailImageList.length==0)
+      {
+        this.setData({
+          detailImageList: ["cloud://cloud1-2gva005o7c08f44d.636c-cloud1-2gva005o7c08f44d-1311808483/wx.png"]
+        })
+      }
     db.collection('tasks').add({
       data:{
         title:this.data.title,
@@ -132,7 +137,6 @@ Page({
         that.setData({
           detailImageList:fileIDs
         })
-        console.log(that.data)
 
       }
     });
@@ -297,7 +301,6 @@ Page({
         that.setData({
           proveImageList:fileIDs
         })
-        console.log(that.data)
       }
     });
   },

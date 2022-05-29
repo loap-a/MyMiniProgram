@@ -1,6 +1,8 @@
 // component/zy-modal/zy-modal.js
 var util = require('../../utils/util')
 const app = getApp();
+const db = wx.cloud.database();
+
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -73,7 +75,26 @@ Component({
               }
           });
       }
+      db.collection('users').where({
+        openId: app.globalData.openId
+      }).get({
+        success: function(res){
+          if(res.data.length == 0)
+          {
+            db.collection('users').add({
+              data:{
+                openId: app.globalData.openId,
+                nickName: '缺省昵称',
+                registedTasks:[]
+              }
+            })
+          }
+        }
+      })
+
       this.triggerEvent('confirm');
+
+
   },
   },
 
