@@ -1,8 +1,5 @@
 // pages/index/index.js
 const db = wx.cloud.database();
-const infomation = db.collection('information');
-const activities = db.collection('activities');
-const users = db.collection('user');
 const app = getApp();
 Page({
 
@@ -21,7 +18,12 @@ Page({
     modalHidden: false,
     value:null
   },
-
+  handleTaskInfo()
+  {
+    wx.navigateTo({
+      url: "../task_info/task_info"
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -42,9 +42,9 @@ page{
 }
 
 .middle-bar{
-  width:85%;
-  margin:40rpx auto;
-  height:200rpx;
+  width:75%;
+  margin:55rpx auto;
+  height:430rpx;
   background-color: #FFFFFF;
   box-shadow:10rpx 5rpx 5rpx #c5c9ca;
   border-radius: 20rpx;
@@ -58,9 +58,9 @@ page{
 }
 
 .middle-bar-item{
-  width:150rpx;
-  height:145rpx;
-  margin-left:50rpx;
+  width:180rpx;
+  height:165rpx;
+  margin-left:65rpx;
   margin-top:20rpx;
 }
 

@@ -33,12 +33,12 @@
 <image class="middle-bar-image" src="../../images/地区活动.png"/>
 <view class="middle-bar-text">地点活动</view>
 </view> -->
-<!-- <view class="middle-bar-item">
+<view class="middle-bar-item" bindtap="handleTaskInfo">
 <image class="middle-bar-image" src="../../images/社区动态.png"/>
 <view class="middle-bar-text">活动动态</view>
 </view>
 
-<view class="middle-bar-item">
+<!-- <view class="middle-bar-item">
 <image class="middle-bar-image" src="../../images/科普教育.png"/>
 <view class="middle-bar-text">知识宣传</view>
 </view> -->
