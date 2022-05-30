@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "my-calendar-user": "../../components/My-calendar-user/my-calendar-user"
+  }
 }

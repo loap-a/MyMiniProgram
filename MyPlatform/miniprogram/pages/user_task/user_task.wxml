@@ -14,6 +14,7 @@
 <scroll-view class="tasks-scroll-view">
 <view class="scroll-item"
 wx:for="{{tasks}}"
+bindtap="taskNavigate"
 wx:key="unique"
 data-task="{{item}}">
 
@@ -34,5 +35,16 @@ data-task="{{item}}">
 
 
 <view class="calendar-container" wx:if = "{{TabCur==1}}">
+
+  <my-calendar-user title="预约表"
+    class="my-calendar"
+     useType="touch"
+     background="{{theme.bg}}" 
+     touchColor="{{theme.touchColor}}" 
+     isRound="{{theme.isRound}}" 
+     fontColor="{{theme.fontColor}}" 
+     rangeColor="{{theme.rangeColor}}"
+     rangeStartColor="{{theme.rangeStartColor}}"
+     rangeEndColor="{{theme.rangeEndColor}}" />
 
 </view>

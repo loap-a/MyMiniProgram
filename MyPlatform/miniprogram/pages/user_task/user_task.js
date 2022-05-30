@@ -13,7 +13,17 @@ Page({
     scrollLeft:0,
     tasks: [],
     titleImageUrlList:[],
-    dateList:[]
+    dateList:[],
+    theme: {
+      bg: "#409efe",
+      fontColor: "#fff",
+      rangeStartColor: "#79bbff",
+      rangeColor: "#b3d8ff",
+      rangeEndColor: "#79bbff",
+      touchColor:"#67c147",
+      isRound:"true"
+    
+  },
   },
 
   tabSelect(e) {
@@ -22,7 +32,16 @@ Page({
       scrollLeft: (e.currentTarget.dataset.id-1)*60
     })
   },
-
+  taskNavigate: function(event)
+  {
+    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
+    wx.navigateTo({
+      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {}
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
