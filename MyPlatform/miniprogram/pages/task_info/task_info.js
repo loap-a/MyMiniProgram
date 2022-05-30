@@ -8,16 +8,17 @@ Page({
    */
   data: {
     inputShowed: false,
-    tasks:[],
+    task_info:[],
     imageList:[],
     fileIdList:[]
   },
 
   taskNavigate: function(event)
   {
-    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
+    var taskInfoJson = JSON.stringify(event.currentTarget.dataset.info);
     wx.navigateTo({
-      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      url:'../task_info_detail/task_info_detail?info='+taskInfoJson,
+      // url:'../tasks_detail/tasks_detail?task='+taskInfoJson,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}
@@ -38,9 +39,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    db.collection('tasks').get().then(res=>{
+    db.collection('news').get().then(res=>{
       this.setData({
-        tasks:res.data
+        task_info:res.data
       })
       var tempFileIdList=[];
       for(var i=0;i<res.data.length;i++)
@@ -73,9 +74,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    db.collection('tasks').get().then(res=>{
+    db.collection('news').get().then(res=>{
       this.setData({
-        tasks:res.data
+        task_info:res.data
       })
       var tempFileIdList=[];
       for(var i=0;i<res.data.length;i++)

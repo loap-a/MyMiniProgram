@@ -1,8 +1,5 @@
 // pages/raise_task/raise_task.js
 const db = wx.cloud.database();
-const infomation = db.collection('information');
-const activities = db.collection('activities');
-const users = db.collection('user');
 const app = getApp();
 Page({
 
