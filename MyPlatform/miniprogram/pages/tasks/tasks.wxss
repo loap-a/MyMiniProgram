@@ -52,7 +52,7 @@ page{
     background-color: #c5c9ca;
   }
   
-  .scroll-item-sub{
+  .scroll-item-sub-diy{
     font-size:20rpx;
     margin-left:170rpx;
   }

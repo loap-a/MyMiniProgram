@@ -1,10 +1,16 @@
 // pages/tasks_detail/tasks_detail.js
+const app = getApp();
+const db = wx.cloud.database();
+const _ = db.command;
+var util = require('../../utils/util');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    data:"",
     selectTask:null,
     mainDetail:true,
     mainTime:false,
@@ -35,7 +41,37 @@ Page({
   },
 
   select ({detail}) {
+    var that = this;
     this.setData({ date: detail.text });
+    db.collection('task_user').where({
+      _openid: app.globalData.openId
+    }).get({
+      success: function(res){
+        if(res.data.length==0)
+        {
+          db.collection('task_user').add({
+            data:{
+            signedTasks: [{
+              task: that.data.selectTask,
+              date: that.data.date
+            }]
+            }
+          })
+        }
+        else{
+          db.collection('task_user').where({
+            _openid: app.globalData.openId
+          }).update({
+            data:{
+              signedTasks:_.push({
+                task: that.data.selectTask,
+                date: that.data.date
+              })
+            }
+          })
+        }
+      }
+    })
     wx.showToast({
       title:"成功",
       duration:2000,
