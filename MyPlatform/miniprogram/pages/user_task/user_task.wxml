@@ -1,0 +1,38 @@
+<view class="top-bar">
+  我的活动
+</view>
+<scroll-view scroll-x class="bg-green nav text-center">
+  <view class="cu-item {{0==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="0">
+    <text class="cuIcon-form"></text> 所有活动
+  </view>
+  <view class="cu-item {{1==TabCur?'text-white cur':''}}" bindtap="tabSelect" data-id="1">
+    <text class="cuIcon-calendar"></text> 日历
+  </view>
+</scroll-view>
+
+<view class="all-tasks-container" wx:if = "{{TabCur==0}}">
+<scroll-view class="tasks-scroll-view">
+<view class="scroll-item"
+wx:for="{{tasks}}"
+wx:key="unique"
+data-task="{{item}}">
+
+  <image class="scroll-item-image" src="{{titleImageUrlList[index].tempFileURL}}"/>
+    <view class="scroll-item-textfield">
+      <view class="scroll-item-title">{{item.title}} {{dateList[index]}}</view>
+      <view class="scroll-item-gap"></view>
+      <view class="scroll-item-content">{{item.content}}</view>
+      <view class="scroll-item-sub-diy">
+        <text class="cuIcon-attentionfill margin-lr-xs"></text> 10
+        <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+        <text class="cuIcon-messagefill margin-lr-xs"></text> 30
+      </view>
+    </view>
+</view>
+</scroll-view>
+</view>
+
+
+<view class="calendar-container" wx:if = "{{TabCur==1}}">
+
+</view>

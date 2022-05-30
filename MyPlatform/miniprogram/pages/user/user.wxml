@@ -53,7 +53,7 @@
 
 <view class="cells-first">
 <van-cell-group inset >
-  <van-cell title="我的活动" value="" icon="flag-o" is-link="true"/>
+  <van-cell title="我的活动" value="" icon="flag-o" is-link="true" bindtap="handleUserTask"/>
   <van-cell title="修改个人资料" value="" icon="edit" is-link="true"/>
 </van-cell-group>
 </view>
