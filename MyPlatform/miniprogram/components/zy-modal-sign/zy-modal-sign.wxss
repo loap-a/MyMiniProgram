@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 69%;
+    height: 71%;
     background-color: white;
     border-radius: 10rpx;
 }
@@ -40,20 +40,19 @@
 }
 
 .modal-btn-wrapper {
-    position: absolute;
-    bottom: 0;
+    margin-top:10rpx;
     left: 0;
     display: flex;
     flex-direction: row;
-    height: 100rpx;
-    line-height: 100rpx;
+    height: 60rpx;
     border-top: 1rpx solid rgba(7,17,27,0.1);
     width: 100%;
 }
  
-.cancel-btn, .confirm-btn {
- height: 100rpx;
- line-height: 100rpx;
+.cancel-btn{
+  align-items:center;
+  margin-top:10rpx;
+ height: 60rpx;
  text-align: center;
  font-size: 32rpx;
  width: 50%;

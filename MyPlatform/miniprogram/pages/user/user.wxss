@@ -35,8 +35,8 @@ page{
 	position: relative;
 	width: 120rpx;
 	height: 120rpx;
-	background-size: cover;
-	background-position: center;
+	background-size:cover;
+	background-position:center;
 	vertical-align: middle;
   font-size: 1.5em;
   border-radius: 5000rpx;
@@ -97,11 +97,26 @@ page{
   box-shadow:1rpx 1rpx 1rpx #b5b7b8;
 }
 
+.cells-third{
+  /* width:90%;
+  text-align:center; */
+  margin:30rpx auto;
+  box-shadow:1rpx 1rpx 1rpx #b5b7b8;
+}
+
+
 
 
 .index-model{
   margin:0 auto;
   height:600rpx;
+  width:600rpx;
+}
+
+.sign-calender-model{
+  /* margin:0 auto; */
+  margin-left:-12rpx;
+  height:700rpx;
   width:600rpx;
 }
 

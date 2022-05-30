@@ -1,6 +1,9 @@
 // pages/user/user.js
 const app = getApp();
 const db = wx.cloud.database();
+const _ = db.command;
+var util = require('../../utils/util');
+
 Page({
 
   /**
@@ -11,7 +14,21 @@ Page({
     phoneNumber:'',
     isLogin:app.globalData.login,
     userInfo:app.globalData.userInfo,
-    modalHidden: true
+    modalHidden: true,
+    isSignin: false,
+    signInModalHidden: true,
+    signedDays:[],
+    theme: {
+      bg: "#409efe",
+      fontColor: "#fff",
+      rangeStartColor: "#79bbff",
+      rangeColor: "#b3d8ff",
+      rangeEndColor: "#79bbff",
+      touchColor:"#67c147",
+      isRound:"true"
+    
+  },
+  date:""
   },
 
   /**
@@ -55,6 +72,42 @@ Page({
       }
      });
 
+     var today = util.formatTimeSimplify(new Date())
+     db.collection('signIn').where({
+       _openid: app.globalData.openId,
+       dates: _.elemMatch(_.eq(today))
+     }).get({
+       success: function(res){
+         if(res.data.length == 0)
+         {
+           that.setData({
+             isSignin:false
+           })
+         }
+         else{
+           that.setData({
+             isSignin:true
+           })
+         }
+ 
+       }
+     })
+
+     db.collection('signIn').where({
+      _openid:app.globalData.openId
+    }).get({
+      success: function(res){
+        var temp = []
+        for(var i=0;i<res.data[0].dates.length;i++)
+        {
+          temp.push({
+            date: res.data[0].dates[i],
+            text: "已签到"
+          })
+        }
+        app.globalData.actives = temp
+      }
+    })
   },
 
   /**
@@ -72,6 +125,45 @@ Page({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
     })
+
+    var that = this;
+    var today = util.formatTimeSimplify(new Date())
+    db.collection('signIn').where({
+      _openid: app.globalData.openId,
+      dates: _.elemMatch(_.eq(today))
+    }).get({
+      success: function(res){
+        if(res.data.length == 0)
+        {
+          that.setData({
+            isSignin:false
+          })
+        }
+        else{
+          that.setData({
+            isSignin:true
+          })
+        }
+
+      }
+    })
+
+    db.collection('signIn').where({
+      _openid:app.globalData.openId
+    }).get({
+      success: function(res){
+        var temp = []
+        for(var i=0;i<res.data[0].dates.length;i++)
+        {
+          temp.push({
+            date: res.data[0].dates[i],
+            text: "已签到"
+          })
+        }
+        app.globalData.actives = temp
+      }
+    })
+
   },
 
   /**
@@ -132,6 +224,20 @@ Page({
     })
   },
 
+  signInCandel: function () {
+    // do something
+    this.setData({
+      signInModalHidden: true
+    })
+  },
+
+  signInConfirm: function () {
+    // do something
+    this.setData({
+      signInModalHidden: true,
+    })
+  },
+
   showAction: function () {
     this.setData({
       modalHidden: false,
@@ -144,5 +250,72 @@ Page({
       })
       app.globalData.login=false;
       app.globalData.userInfo=null;
+      wx.showToast({
+        title: '退出成功'
+      })
+  },
+  signIn()
+  {
+    var that = this;
+    if(this.data.isSignin)
+    {
+      db.collection('signIn').where({
+        _openid:app.globalData.openId
+      }).get({
+        success: function(res){
+          var temp = []
+          for(var i=0;i<res.data[0].dates.length;i++)
+          {
+            temp.push({
+              date: res.data[0].dates[i],
+              text: "已签到"
+            })
+          }
+          app.globalData.actives = temp
+          that.setData({
+            signInModalHidden:false
+          })
+          that.onLoad()
+        }
+      })
+
+    }
+    else{
+    var today = util.formatTimeSimplify(new Date())
+    db.collection('signIn').where({
+      _openid: app.globalData.openId,
+      dates: _.elemMatch(_.eq(today))
+    }).get({
+      success: function(res){
+        if(res.data.length == 0)
+        {
+          db.collection('signIn').where({
+            _openid: app.globalData.openId
+          }).update({
+            data:{
+              dates:_.push(today)
+            },
+            success:function(res){
+              that.setData({
+                isSignin:true
+              })
+              wx.showToast({
+                title: '签到成功',
+              })
+              that.onLoad()
+              console.log('onLoad')
+            }
+          })
+        }
+        else{
+          that.setData({
+            isSignin:true
+          })
+        }
+
+      }
+    })
+
+    }
   }
 })

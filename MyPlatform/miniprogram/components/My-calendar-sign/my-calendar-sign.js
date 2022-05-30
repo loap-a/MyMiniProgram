@@ -175,9 +175,27 @@ Component({
 
   },
 
+  onShow(){
+    console.log('onShow');
+  },
   ready () {
-    this.init();
-
+    var that = this;
+    db.collection('signIn').where({
+      _openid:app.globalData.openId
+    }).get({
+      success: function(res){
+        var temp = []
+        for(var i=0;i<res.data[0].dates.length;i++)
+        {
+          temp.push({
+            date: res.data[0].dates[i],
+            text: "已签到"
+          })
+        }
+        that.properties.actives = temp 
+        that.init();
+      }
+    })
   },
 
   methods: {
@@ -186,8 +204,10 @@ Component({
      * @description 初始化 
      */
     init () {
+
       //单选模式
       if(this.properties.useType === "touch"){
+        this.properties.actives = app.globalData.actives
         this.setData({type: "touch"});
         this.initTouch();
         this.getMonthData();

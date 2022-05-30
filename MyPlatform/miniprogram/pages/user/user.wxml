@@ -1,4 +1,4 @@
-<zy-modal title='美好新乡村志愿者平台' hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
+<zy-modal title='美好新乡村志愿者平台'  hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
 <view class="index-model">
  <view>
   <view class='login-header'>
@@ -13,6 +13,24 @@
 </view>
 </zy-modal>
 
+<zy-modal-sign title='签到记录' wx:if="{{!signInModalHidden}}" hidden="{{signInModalHidden}}" bindconfirm="signInConfirm" bindcancel="signInCandel" confirmText="确认">
+<view class="sign-calender-model">
+  <my-calendar title="日期选择"
+    class="my-calendar"
+     useType="touch"
+     actives="{{signedDays}}"
+     background="{{theme.bg}}" 
+     touchColor="{{theme.touchColor}}" 
+     isRound="{{theme.isRound}}" 
+     fontColor="{{theme.fontColor}}" 
+     rangeColor="{{theme.rangeColor}}"
+     rangeStartColor="{{theme.rangeStartColor}}"
+     rangeEndColor="{{theme.rangeEndColor}}" />
+
+</view>
+</zy-modal-sign>
+
+
 
 <view class="top-box-user" wx:if="{{isLogin}}">
   <image class="top-box-avatar-user" src="{{userInfo.avatarUrl}}"/>
@@ -20,7 +38,7 @@
     <view class="top-box-text-welcome-user">欢迎回来 </view>
     <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
     <view class="top-box-text-welcome-user">后续可能添加自定义头像</view>
-    <view class="top-box-text-modify-user">修改个人资料</view>
+    <!-- <view class="top-box-text-modify-user">修改个人资料</view> -->
   </view>
 </view>
 
@@ -45,6 +63,12 @@
   <van-cell title="关于制作者" value="" icon="contact" is-link="true"/>
   <van-cell title="联系制作者" value="" icon="phone-circle-o" is-link="true"/>
   <van-cell title="设置" value="" icon="setting-o" is-link="true"/>
+</van-cell-group>
+</view>
+
+<view class="cells-third" wx:if="{{isLogin}}">
+<van-cell-group inset >
+  <van-cell title="{{isSignin?'已签到  查看签到记录':'签到'}}" value="" icon="star-o" bindtap="signIn" is-link="true"/>
 </van-cell-group>
 </view>
 

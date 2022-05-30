@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "zy-modal": "../../components/zy-modal/zy-modal"
+    "zy-modal": "../../components/zy-modal/zy-modal",
+    "zy-modal-sign": "../../components/zy-modal-sign/zy-modal-sign",
+    "my-calendar": "../../components/My-calendar-sign/my-calendar-sign"
   }
 }

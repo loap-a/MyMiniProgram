@@ -1,0 +1,14 @@
+<!-- component/zy-modal/zy-modal.wxml -->
+<view class="modal" hidden="{{hidden}}">
+    <view class="container" hidden="{{hidden}}">
+        <view class="title">{{title}}</view>
+        <view class="content">
+            <slot></slot>
+        </view>
+        <view class='modal-btn-wrapper'>
+  <button class='cancel-btn'  bindtap='cancel'>
+   关闭
+  </button>
+        </view>
+    </view>
+</view>
