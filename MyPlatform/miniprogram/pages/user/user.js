@@ -1,6 +1,8 @@
 // pages/user/user.js
 const app = getApp();
 const db = wx.cloud.database();
+var util = require('../../utils/util');
+
 Page({
 
   /**
@@ -11,7 +13,8 @@ Page({
     phoneNumber:'',
     isLogin:app.globalData.login,
     userInfo:app.globalData.userInfo,
-    modalHidden: true
+    modalHidden: true,
+    isSignin: false
   },
 
   /**
@@ -55,6 +58,30 @@ Page({
       }
      });
 
+     var today = util.formatTimeSimplify(new Date())
+     console.log('onload ',today)
+     console.log(app.globalData.openId)
+     db.collection('signIn').where({
+       _openid: app.globalData.openId,
+       data: today
+     }).get({
+       success: function(res){
+         if(res.data.length == 0)
+         {
+           that.setData({
+             isSignin:false
+           })
+         }
+         else{
+           console.log('onload 1')
+           that.setData({
+             isSignin:true
+           })
+         }
+ 
+       }
+     })
+
   },
 
   /**
@@ -72,6 +99,29 @@ Page({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
     })
+
+    var that = this;
+    var today = util.formatTimeSimplify(new Date())
+    db.collection('signIn').where({
+      _openid: app.globalData.openId,
+      data: today
+    }).get({
+      success: function(res){
+        if(res.data.length == 0)
+        {
+          that.setData({
+            isSignin:false
+          })
+        }
+        else{
+          that.setData({
+            isSignin:true
+          })
+        }
+
+      }
+    })
+
   },
 
   /**
@@ -144,5 +194,44 @@ Page({
       })
       app.globalData.login=false;
       app.globalData.userInfo=null;
+      wx.showToast({
+        title: '退出成功'
+      })
+  },
+  signIn()
+  {
+    var that = this;
+    var today = util.formatTimeSimplify(new Date())
+    console.log(today)
+    db.collection('signIn').where({
+      _openid: app.globalData.openId,
+      data: today
+    }).get({
+      success: function(res){
+        if(res.data.length == 0)
+        {
+          db.collection('signIn').add({
+            data:{
+              data:today
+            },
+            success:function(res){
+              that.setData({
+                isSignin:true
+              })
+              wx.showToast({
+                title: '签到成功',
+              })
+            }
+          })
+        }
+        else{
+          that.setData({
+            isSignin:true
+          })
+        }
+
+      }
+    })
+
   }
 })

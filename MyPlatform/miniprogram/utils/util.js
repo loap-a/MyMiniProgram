@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const formatTimeSimplify = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('/')
+}
 /**
  * 将小程序的API封装成支持Promise的API
  * @params fn {Function} 小程序原始API，如wx.login
@@ -36,5 +43,6 @@ const wxPromisify = fn => {
 
 module.exports = {
   formatTime: formatTime,
+  formatTimeSimplify: formatTimeSimplify,
   wxPromisify: wxPromisify
 }
