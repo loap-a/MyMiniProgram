@@ -19,7 +19,7 @@ const formatTimeSimplify = date => {
   const month = date.getMonth() + 1
   const day = date.getDate()
 
-  return [year, month, day].map(formatNumber).join('/')
+  return [year, month, day].map(formatNumber).join('-')
 }
 /**
  * 将小程序的API封装成支持Promise的API

@@ -113,6 +113,13 @@ page{
   width:600rpx;
 }
 
+.sign-calender-model{
+  /* margin:0 auto; */
+  margin-left:-12rpx;
+  height:700rpx;
+  width:600rpx;
+}
+
 .login-header {
   border-bottom: 1px solid #ccc;
   text-align: center;

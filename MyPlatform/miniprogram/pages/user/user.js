@@ -1,6 +1,7 @@
 // pages/user/user.js
 const app = getApp();
 const db = wx.cloud.database();
+const _ = db.command;
 var util = require('../../utils/util');
 
 Page({
@@ -14,7 +15,20 @@ Page({
     isLogin:app.globalData.login,
     userInfo:app.globalData.userInfo,
     modalHidden: true,
-    isSignin: false
+    isSignin: false,
+    signInModalHidden: true,
+    signedDays:[],
+    theme: {
+      bg: "#409efe",
+      fontColor: "#fff",
+      rangeStartColor: "#79bbff",
+      rangeColor: "#b3d8ff",
+      rangeEndColor: "#79bbff",
+      touchColor:"#67c147",
+      isRound:"true"
+    
+  },
+  date:""
   },
 
   /**
@@ -59,11 +73,9 @@ Page({
      });
 
      var today = util.formatTimeSimplify(new Date())
-     console.log('onload ',today)
-     console.log(app.globalData.openId)
      db.collection('signIn').where({
        _openid: app.globalData.openId,
-       data: today
+       dates: _.elemMatch(_.eq(today))
      }).get({
        success: function(res){
          if(res.data.length == 0)
@@ -73,7 +85,6 @@ Page({
            })
          }
          else{
-           console.log('onload 1')
            that.setData({
              isSignin:true
            })
@@ -82,6 +93,21 @@ Page({
        }
      })
 
+     db.collection('signIn').where({
+      _openid:app.globalData.openId
+    }).get({
+      success: function(res){
+        var temp = []
+        for(var i=0;i<res.data[0].dates.length;i++)
+        {
+          temp.push({
+            date: res.data[0].dates[i],
+            text: "已签到"
+          })
+        }
+        app.globalData.actives = temp
+      }
+    })
   },
 
   /**
@@ -104,7 +130,7 @@ Page({
     var today = util.formatTimeSimplify(new Date())
     db.collection('signIn').where({
       _openid: app.globalData.openId,
-      data: today
+      dates: _.elemMatch(_.eq(today))
     }).get({
       success: function(res){
         if(res.data.length == 0)
@@ -119,6 +145,22 @@ Page({
           })
         }
 
+      }
+    })
+
+    db.collection('signIn').where({
+      _openid:app.globalData.openId
+    }).get({
+      success: function(res){
+        var temp = []
+        for(var i=0;i<res.data[0].dates.length;i++)
+        {
+          temp.push({
+            date: res.data[0].dates[i],
+            text: "已签到"
+          })
+        }
+        app.globalData.actives = temp
       }
     })
 
@@ -182,6 +224,20 @@ Page({
     })
   },
 
+  signInCandel: function () {
+    // do something
+    this.setData({
+      signInModalHidden: true
+    })
+  },
+
+  signInConfirm: function () {
+    // do something
+    this.setData({
+      signInModalHidden: true,
+    })
+  },
+
   showAction: function () {
     this.setData({
       modalHidden: false,
@@ -201,18 +257,43 @@ Page({
   signIn()
   {
     var that = this;
+    if(this.data.isSignin)
+    {
+      db.collection('signIn').where({
+        _openid:app.globalData.openId
+      }).get({
+        success: function(res){
+          var temp = []
+          for(var i=0;i<res.data[0].dates.length;i++)
+          {
+            temp.push({
+              date: res.data[0].dates[i],
+              text: "已签到"
+            })
+          }
+          app.globalData.actives = temp
+          that.setData({
+            signInModalHidden:false
+          })
+          that.onLoad()
+        }
+      })
+
+    }
+    else{
     var today = util.formatTimeSimplify(new Date())
-    console.log(today)
     db.collection('signIn').where({
       _openid: app.globalData.openId,
-      data: today
+      dates: _.elemMatch(_.eq(today))
     }).get({
       success: function(res){
         if(res.data.length == 0)
         {
-          db.collection('signIn').add({
+          db.collection('signIn').where({
+            _openid: app.globalData.openId
+          }).update({
             data:{
-              data:today
+              dates:_.push(today)
             },
             success:function(res){
               that.setData({
@@ -221,6 +302,8 @@ Page({
               wx.showToast({
                 title: '签到成功',
               })
+              that.onLoad()
+              console.log('onLoad')
             }
           })
         }
@@ -233,5 +316,6 @@ Page({
       }
     })
 
+    }
   }
 })
