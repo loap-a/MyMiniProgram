@@ -1,4 +1,4 @@
-<zy-modal title='美好新乡村志愿者平台' hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
+<!-- <zy-modal title='美好新乡村志愿者平台' hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel" confirmText="确认">
 <view class="index-model">
  <view>
   <view class='login-header'>
@@ -11,7 +11,7 @@
   </view>
  </view>
 </view>
-</zy-modal>
+</zy-modal> -->
 
 
 <view class="main">
