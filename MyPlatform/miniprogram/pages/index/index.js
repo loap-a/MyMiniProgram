@@ -20,8 +20,8 @@ Page({
   },
   handleTaskInfo()
   {
-    wx.navigateTo({
-      url: "../task_info/task_info"
+    wx.switchTab({
+      url: '../task_info/task_info',
     })
   },
   /**
