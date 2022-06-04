@@ -25,10 +25,8 @@ Page({
         isRound:"true"
       
     },
-    availableDate:{
-      start:"2022-05-05",
-      end:"2022-05-29"
-    },
+    startDate:"2022-06-10",
+    endDate:"2022-06-30",
     taskImageUrlList:[],
     taskRaiserImageUrlList:[],
     taskRaiser:{
@@ -92,7 +90,9 @@ Page({
   onLoad(options) {
     var currentTask = JSON.parse(options.task);
     this.setData({
-      selectTask:currentTask
+      selectTask:currentTask,
+      startDate:currentTask.startDate,
+      endDate:currentTask.endDate
     });
     var that = this;
   wx.cloud.getTempFileURL({

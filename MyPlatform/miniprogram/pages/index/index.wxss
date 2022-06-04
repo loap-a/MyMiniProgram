@@ -42,8 +42,8 @@ page{
 }
 
 .middle-bar{
-  width:75%;
-  margin:55rpx auto;
+  width:90%;
+  margin:35rpx auto;
   height:430rpx;
   background-color: #FFFFFF;
   box-shadow:10rpx 5rpx 5rpx #c5c9ca;
@@ -54,13 +54,13 @@ page{
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
-  padding-left:30rpx;
+  padding-left:10rpx;
 }
 
 .middle-bar-item{
-  width:180rpx;
-  height:165rpx;
-  margin-left:65rpx;
+  width:160rpx;
+  height:145rpx;
+  margin-left:50rpx;
   margin-top:20rpx;
 }
 

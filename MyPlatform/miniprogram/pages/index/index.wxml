@@ -29,10 +29,10 @@
 <image class="middle-bar-image" src="../../images/媒体发布.png"/>
 <view class="middle-bar-text">发起活动</view>
 </view>
-<!-- <view class="middle-bar-item" >
+<view class="middle-bar-item" bindtap="handleMap">
 <image class="middle-bar-image" src="../../images/地区活动.png"/>
 <view class="middle-bar-text">地点活动</view>
-</view> -->
+</view>
 <view class="middle-bar-item" bindtap="handleTaskInfo">
 <image class="middle-bar-image" src="../../images/社区动态.png"/>
 <view class="middle-bar-text">活动动态</view>

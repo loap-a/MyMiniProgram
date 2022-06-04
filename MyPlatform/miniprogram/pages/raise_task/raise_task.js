@@ -19,19 +19,62 @@ Page({
       title:"",
       detail:"",
       imgURL:[],
-      address:['广东省', '广州市', '海珠区'],
-      addressDetail:"",
+      addressChoosed:false,
+      addressName:"滨海新区南开大学泰达学院",
+      addressLatitude:"39.026114",
+      addressLongtitude:"117.714096",
       phoneNumber:"",
       startDate:"2022-05-23",
       endDate:"2022-05-24",
+      startDateChoosed:false,
+      endDateChoosed:false,
       raiserName:"",
-      raiserAddress:"",
       raiserIntroduction:"",
       raiserImgURL:[]
     
     
   },
   submit(){
+    if(this.data.title=="")
+    {
+      wx.showToast({
+        title: '请填写标题',
+        icon:'error'
+      })
+      return
+    }
+    if(this.data.addressName=="")
+    {
+      wx.showToast({
+        title: '请填写活动地址',
+        icon:'error'
+      })
+      return
+    }
+    if(this.data.raiserName=="")
+    {
+      wx.showToast({
+        title: '请填写组织单位',
+        icon:'error'
+      })
+      return
+    }
+    if(this.data.phoneNumber=="")
+    {
+      wx.showToast({
+        title: '请填写联系方式',
+        icon:'error'
+      })
+      return
+    }
+    if(!(this.data.startDateChoosed && this.data.endDateChoosed))
+    {
+      wx.showToast({
+        title: '请填写起始日期和结束日期',
+        icon:'error'
+      })
+      return
+    }
       if(this.data.detailImageList.length==0)
       {
         this.setData({
@@ -44,13 +87,15 @@ Page({
         content:this.data.detail,
         imageId:this.data.detailImageList[0],
         images:this.data.detailImageList,
-        address:this.data.address,
-        addressDetail:this.data.addressDetail,
+        // address:this.data.address,
+        // addressDetail:this.data.addressDetail,
+        addressName: this.data.addressName,
+        addressLongtitude: this.data.addressLongtitude,
+        addressLatitude: this.data.addressLatitude,
         phoneNumber:this.data.phoneNumber,
         startDate:this.data.startDate,
         endData:this.data.endDate,
         raiserName:this.data.raiserName,
-        raiserAddress:this.data.raiserAddress,
         raiserIntroduction:this.data.raiserIntroduction,
         raiserImages:this.data.proveImageList,
         visit:0,
@@ -75,7 +120,27 @@ Page({
 
 
   },
-  
+  chooseLocation(){
+    var that = this;
+    wx.chooseLocation({
+      latitude: this.data.addressLatitude,
+      longitude: this.data.addressLongtitude,
+      success: function(res){
+        that.setData({
+          addressLatitude: res.latitude,
+          addressLongtitude: res.longitude,
+          addressName: res.name,
+          addressChoosed: true
+        })
+        if(res.name=="")
+        {
+          that.setData({
+            addressName: "滨海新区南开大学泰达学院"
+          })
+        }
+      }
+})
+  },
   ViewImage(e) {
     wx.previewImage({
       urls: this.data.tempDetailImageList,
@@ -147,13 +212,15 @@ Page({
 
   DateChangeStart(e) {
     this.setData({
-      startDate: e.detail.value
+      startDate: e.detail.value,
+      startDateChoosed: true
     })
   },
 
   DateChangeEnd(e) {
     this.setData({
-      endDate: e.detail.value
+      endDate: e.detail.value,
+      endDateChoosed:true
     })
   },
   /**
