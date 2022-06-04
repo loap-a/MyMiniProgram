@@ -29,7 +29,7 @@
   </view>
 
   <view class="main-body-detail">
-    <view class="title-detail">* 详细: </view>
+    <view class="title-detail"> 详细: </view>
     <input placeholder="  请输入详细介绍" class="input-detail" model:value="{{detail}}"/>
   </view>
 
@@ -58,17 +58,19 @@
 
   <view class="main-body-location cu-form-group">
     <view class="title">* 地址选择</view>
-		<picker mode="region" bindchange="RegionChange" value="{{address}}" custom-item="{{customItem}}">
+		<!-- <picker mode="region" bindchange="RegionChange" value="{{address}}" custom-item="{{customItem}}">
 			<view class="picker">
 				{{ address[0]}}，{{ address[1]}}，{{ address[2]}}
 			</view>
-		</picker>
+		</picker> -->
+    <button class="location-choose" bindtap="chooseLocation" wx:if="{{!addressChoosed}}">选择地址</button>
+    <view class="location-choose-name" wx:if="{{addressChoosed}}">{{addressName}}</view>
   </view>
 
-  <view class="main-body-location-detail">
+  <!-- <view class="main-body-location-detail">
     <view class="title-detail">* 详细地址:</view>
     <input placeholder="  请输入详细地址" class="input-location-detail" model:value="{{addressDetail}}"/>
-  </view>
+  </view> -->
 
   <view class="main-body-reach cu-form-group">
     <view class="title">* 联系方式: </view>
@@ -98,17 +100,17 @@
     <input placeholder="请输入组织单位名称" class="input" model:value="{{raiserName}}"/>
   </view>
 
-  <view class="main-body-location-detail">
+  <!-- <view class="main-body-location-detail">
     <view class="title-detail">* 单位地址:</view>
     <input placeholder="  请输入详细地址" class="input-location-detail" model:value="{{raiserAddress}}"/>
-  </view>
+  </view> -->
 
   <view class="main-body-detail">
     <view class="title-detail">单位介绍: </view>
     <input placeholder="  请输入单位详细介绍" class="input-detail" model:value="{{raiserIntroduction}}"/>
   </view>
 
-  <view class="cu-bar bg-white margin-top">
+  <!-- <view class="cu-bar bg-white margin-top">
 		<view class="action margin-left">
 			* 上传资质证明材料
 		</view>
@@ -128,7 +130,7 @@
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
-	</view>
+	</view> -->
 
   <button type="primary" class="submit-button" bindtap="submit">提交</button>
 </view>

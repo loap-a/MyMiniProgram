@@ -24,6 +24,12 @@ Page({
       url: '../task_info/task_info',
     })
   },
+  handleMap()
+  {
+    wx.navigateTo({
+      url: '../map_task/map_task',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

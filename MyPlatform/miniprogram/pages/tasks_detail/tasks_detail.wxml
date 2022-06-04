@@ -34,8 +34,8 @@
     <my-calendar title="日期选择"
     class="my-calendar"
      useType="touch" date="{{date}}"  
-     min="{{availableDate.start}}"
-     max="{{availableDate.end}}"
+     min="{{startDate}}"
+     max="{{endDate}}"
      bind:confirm="select" 
      background="{{theme.bg}}" 
      touchColor="{{theme.touchColor}}" 
@@ -60,10 +60,6 @@
       <view class="main-need-content-item">
         <view class="main-need-content-item-title">发起人:</view>
         <view class="main-need-content-item-text">{{selectTask.raiserName}}</view>
-      </view>
-      <view class="main-need-content-item">
-        <view class="main-need-content-item-title">地址:</view>
-        <view class="main-need-content-item-text">{{selectTask.raiserAddress}}</view>
       </view>
       <view class="main-need-content-item">
         <view class="main-need-content-item-title">介绍:</view>

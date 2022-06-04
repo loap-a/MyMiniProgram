@@ -1,0 +1,4 @@
+/* pages/map_task/map_task.wxss */
+.choose-my-location{
+  margin-top: 10rpx;
+}
