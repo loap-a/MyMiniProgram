@@ -31,6 +31,11 @@ Page({
   date:""
   },
 
+  modifyUserProfile(){
+    wx.navigateTo({
+      url: '../modify_user_profile/modify_user_profile',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -246,6 +251,12 @@ Page({
   showAction: function () {
     this.setData({
       modalHidden: false,
+    })
+  },
+  handleSetting(){
+    wx.showToast({
+      title: '此功能尚未开放, 敬请期待',
+      icon:'none'
     })
   },
   logout(){

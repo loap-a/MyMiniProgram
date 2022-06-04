@@ -1,0 +1,25 @@
+<view class="main-body-nickname">
+  <view class="title">* 昵称: </view>
+  <input placeholder="  请输入昵称" class="input" model:value="{{nickName}}"/>
+</view>
+
+<view class="cu-bar bg-white margin-top">
+		<view class="action margin-left">
+			头像上传
+		</view>
+	</view>
+	<view class="cu-form-group-1">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{tempAvatarPath}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{tempDetailImageList[index]}}">
+				<image src='{{tempAvatarPath[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{tempAvatarPath.length<1}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+
+<button class="submit" bindtap="submit" type="primary">提交</button>
