@@ -13,6 +13,7 @@ Page({
 markertap: function(e)
 {
   var taskJson = JSON.stringify(this.data.taskList[e.detail.markerId]);
+  console.log('map', this.data.taskList[e.detail.markerId])
   wx.navigateTo({
     url:'../tasks_detail/tasks_detail?task='+taskJson,
     success: function(res) {},
@@ -67,7 +68,23 @@ chooseLocation(){
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    var that = this;
+    wx.cloud.callFunction({
+      name:'getMapMarkers',
+      data:{
+        
+      },
+      success: function(res){
+        that.setData({
+          markers: res.result.markerList,
+          taskList:res.result.taskList
+        })
+      },
+      fail:function(res){
+        
+      }
+    })
+    this.onLoad();
   },
 
   /**

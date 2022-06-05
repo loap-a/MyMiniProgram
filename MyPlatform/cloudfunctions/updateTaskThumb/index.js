@@ -35,7 +35,7 @@ exports.main = async (event, context) => {
       _id: task._id
     }).update({
       data:{
-        thumbUp: task.thumbUp - 1,
+        thumbUp: tempOpenIdList.length,
         thumbUser: tempOpenIdList
       }
     })
