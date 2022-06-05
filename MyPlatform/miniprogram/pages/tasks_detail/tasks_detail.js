@@ -72,17 +72,11 @@ Page({
     })
     wx.showToast({
       title:"成功",
-      duration:2000,
-      mask:false,
-      success:function(){
-      },
-
-      fail:function(){},
-
-      complete:function(){
-      }
+      icon:'success'
     });
-
+    wx.switchTab({
+      url: '../index/index',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -92,8 +86,10 @@ Page({
     this.setData({
       selectTask:currentTask,
       startDate:currentTask.startDate,
-      endDate:currentTask.endDate
+      endDate:currentTask.endDate,
+      date:currentTask.startDate.substring(0,7)+'-01'
     });
+    console.log(this.data.date)
     var that = this;
   wx.cloud.getTempFileURL({
     fileList:currentTask.images,

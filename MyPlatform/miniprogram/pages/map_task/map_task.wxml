@@ -1,5 +1,5 @@
 <map id="map" longitude="{{longitude}}"
-latitude="{{latitude}}" scale="12" 
+latitude="{{latitude}}" scale="10" 
     controls="{{controls}}" 
     markers="{{markers}}" 
      bindmarkertap="markertap" 

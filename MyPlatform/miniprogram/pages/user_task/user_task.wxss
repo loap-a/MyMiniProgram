@@ -46,7 +46,7 @@ page{
   }
   
   .scroll-item-title{
-    font-size: 30rpx;
+    font-size: 25rpx;
     overflow: hidden;
   }
   

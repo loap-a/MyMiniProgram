@@ -1,0 +1,41 @@
+/* pages/modify_user_profile/modify_user_profile.wxss */
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
+page{
+  height:100%;
+  background-color: #efeff4;
+}
+
+  .main-body-nickname{
+    margin-top:30rpx;
+    height: 100rpx;
+    display:flex;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-width: 0.3rpx;
+    border-color: rgb(192, 192, 192);
+    align-items: center;
+    background-color: #ffffff;
+  }
+
+  .cu-form-group-1 {
+    background-color: #ffffff;
+    padding: 1rpx 30rpx;
+    display: flex;
+    align-items: center;
+    min-height: 100rpx;
+    justify-content: space-between;
+  }
+
+  .submit{
+    margin-top:30rpx;
+  }
+
+  .input{
+    margin-left:30rpx;
+  }
+
+  .title{
+    margin-left:20rpx;
+  }

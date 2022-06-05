@@ -94,7 +94,7 @@ Page({
         addressLatitude: this.data.addressLatitude,
         phoneNumber:this.data.phoneNumber,
         startDate:this.data.startDate,
-        endData:this.data.endDate,
+        endDate:this.data.endDate,
         raiserName:this.data.raiserName,
         raiserIntroduction:this.data.raiserIntroduction,
         raiserImages:this.data.proveImageList,
@@ -106,18 +106,16 @@ Page({
       success(res){
         wx.showToast({
           title:"成功",
-          duration:2000,
-          mask:false,
-          success:function(){},
-
-          fail:function(){},
-    
-          complete:function(){}
+          icon:'success'
         });
 
-      }
-    })
 
+      }
+      
+    })
+    wx.switchTab({
+      url: '../index/index',
+    })
 
   },
   chooseLocation(){

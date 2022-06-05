@@ -8,8 +8,8 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  tasks = db.collection("tasks");
-  res = await tasks.get();
+  var tasks = db.collection("tasks");
+  var res = await tasks.get();
   var taskList = res.data;
   var imageIdList = [];
   for(var i=0;i<taskList.length;i++)

@@ -18,6 +18,8 @@ Page({
     isSignin: false,
     signInModalHidden: true,
     signedDays:[],
+    nickName:"",
+    avatarURL:"",
     theme: {
       bg: "#409efe",
       fontColor: "#fff",
@@ -31,6 +33,11 @@ Page({
   date:""
   },
 
+  modifyUserProfile(){
+    wx.navigateTo({
+      url: '../modify_user_profile/modify_user_profile',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -108,6 +115,24 @@ Page({
         app.globalData.actives = temp
       }
     })
+
+    wx.cloud.callFunction({
+      name:"getUserInfo",
+      data:{
+
+      },
+      success:function(res){
+        that.setData({
+          nickName: res.result.nickName,
+          avatarURL: res.result.avatarURL
+        })
+
+        console.log(res)
+      },
+      fail: function(res){
+        console.log(res)
+      }
+    })
   },
 
   handleUserTask(){
@@ -126,6 +151,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    this.onLoad();
     this.setData({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
@@ -168,7 +194,23 @@ Page({
         app.globalData.actives = temp
       }
     })
+    wx.cloud.callFunction({
+      name:"getUserInfo",
+      data:{
 
+      },
+      success:function(res){
+        that.setData({
+          nickName: res.result.nickName,
+          avatarURL: res.result.avatarURL
+        })
+
+        console.log(res)
+      },
+      fail: function(res){
+        console.log(res)
+      }
+    })
   },
 
   /**
@@ -246,6 +288,12 @@ Page({
   showAction: function () {
     this.setData({
       modalHidden: false,
+    })
+  },
+  handleSetting(){
+    wx.showToast({
+      title: '此功能尚未开放, 敬请期待',
+      icon:'none'
     })
   },
   logout(){

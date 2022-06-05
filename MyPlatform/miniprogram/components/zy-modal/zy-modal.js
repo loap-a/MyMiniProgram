@@ -83,9 +83,9 @@ Component({
           {
             db.collection('users').add({
               data:{
-                openId: app.globalData.openId,
-                nickName: '缺省昵称',
-                registedTasks:[]
+                _openid: app.globalData.openId,
+                nickName: '微信用户',
+                avatarId: 'cloud://cloud1-2gva005o7c08f44d.636c-cloud1-2gva005o7c08f44d-1311808483/wx.png'
               }
             })
           }

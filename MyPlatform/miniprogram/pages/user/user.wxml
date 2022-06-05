@@ -33,11 +33,11 @@
 
 
 <view class="top-box-user" wx:if="{{isLogin}}">
-  <image class="top-box-avatar-user" src="{{userInfo.avatarUrl}}"/>
+  <image class="top-box-avatar-user" src="{{avatarURL}}"/>
   <view class="top-box-text-user">
-    <view class="top-box-text-welcome-user">欢迎回来 </view>
+    <view class="top-box-text-welcome-user">欢迎回来 {{nickName}}</view>
     <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
-    <view class="top-box-text-welcome-user">后续可能添加自定义头像</view>
+    <view class="top-box-text-welcome-user">自定义头像昵称可点击下方修改</view>
     <!-- <view class="top-box-text-modify-user">修改个人资料</view> -->
   </view>
 </view>
@@ -54,15 +54,14 @@
 <view class="cells-first" wx:if="{{isLogin}}">
 <van-cell-group inset >
   <van-cell title="我的活动" value="" icon="flag-o" is-link="true" bindtap="handleUserTask"/>
-  <van-cell title="修改个人资料" value="" icon="edit" is-link="true"/>
+  <van-cell title="修改个人资料" value="" icon="edit" is-link="true" bindtap="modifyUserProfile"/>
 </van-cell-group>
 </view>
 
 <view class="cells-second">
 <van-cell-group inset >
   <van-cell title="关于制作者" value="" icon="contact" is-link="true"/>
-  <van-cell title="联系制作者" value="" icon="phone-circle-o" is-link="true"/>
-  <van-cell title="设置" value="" icon="setting-o" is-link="true"/>
+  <van-cell title="设置" value="" icon="setting-o" is-link="true" bindtap="handleSetting"/>
 </van-cell-group>
 </view>
 
