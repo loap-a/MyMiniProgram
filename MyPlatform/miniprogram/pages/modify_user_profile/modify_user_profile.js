@@ -66,6 +66,7 @@ Page({
 
   },
   submit(){
+    var that = this;
     if(this.data.nickName.length==0)
     {
       wx.showToast({
@@ -85,11 +86,29 @@ Page({
 
     if(this.data.avatarImageId.length==0)
     {
+      that.setData({
+        avatarImageId:['cloud://cloud1-2gva005o7c08f44d.636c-cloud1-2gva005o7c08f44d-1311808483/wx.png']
+      })
+    }
 
-    }
-    else{
-      
-    }
+    console.log(that.data.avatarImageId)
+    wx.cloud.callFunction({
+      name:"modifyUserProfile",
+      data:{
+        nickName: that.data.nickName,
+        avatarId: that.data.avatarImageId[0]
+      },
+      success: function(res)
+      {
+        wx.showToast({
+          title: '修改成功',
+        })
+
+      }
+    })
+    wx.switchTab({
+      url: '../user/user',
+    })
 
   },
   ViewImage(e) {

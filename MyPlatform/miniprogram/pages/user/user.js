@@ -18,6 +18,8 @@ Page({
     isSignin: false,
     signInModalHidden: true,
     signedDays:[],
+    nickName:"",
+    avatarURL:"",
     theme: {
       bg: "#409efe",
       fontColor: "#fff",
@@ -113,6 +115,24 @@ Page({
         app.globalData.actives = temp
       }
     })
+
+    wx.cloud.callFunction({
+      name:"getUserInfo",
+      data:{
+
+      },
+      success:function(res){
+        that.setData({
+          nickName: res.result.nickName,
+          avatarURL: res.result.avatarURL
+        })
+
+        console.log(res)
+      },
+      fail: function(res){
+        console.log(res)
+      }
+    })
   },
 
   handleUserTask(){
@@ -131,6 +151,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    this.onLoad();
     this.setData({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
@@ -173,7 +194,23 @@ Page({
         app.globalData.actives = temp
       }
     })
+    wx.cloud.callFunction({
+      name:"getUserInfo",
+      data:{
 
+      },
+      success:function(res){
+        that.setData({
+          nickName: res.result.nickName,
+          avatarURL: res.result.avatarURL
+        })
+
+        console.log(res)
+      },
+      fail: function(res){
+        console.log(res)
+      }
+    })
   },
 
   /**
