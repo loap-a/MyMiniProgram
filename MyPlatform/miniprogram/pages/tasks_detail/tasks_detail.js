@@ -91,6 +91,7 @@ Page({
       date:currentTask.startDate.substring(0,7)+'-01'
     });
     var that = this;
+    console.log('detail', that.data.selectTask)
     for(var i=0;i<that.data.selectTask.thumbUser.length;i++)
     {
       if(app.globalData.openId == that.data.selectTask.thumbUser[i])
