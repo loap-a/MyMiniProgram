@@ -54,7 +54,7 @@ page{
   
   .scroll-item-sub{
     font-size:20rpx;
-    margin-left:170rpx;
+    margin-left:250rpx;
   }
   
 

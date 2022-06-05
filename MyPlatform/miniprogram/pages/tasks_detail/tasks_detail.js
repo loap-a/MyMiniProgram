@@ -34,7 +34,8 @@ Page({
       address:"宣武区著北纬路甲一号德云社",
       introduction:"擅长模仿",
       phoneNumber:"114514",
-    }
+    },
+    thumb:"点赞"
 
   },
 
@@ -89,8 +90,16 @@ Page({
       endDate:currentTask.endDate,
       date:currentTask.startDate.substring(0,7)+'-01'
     });
-    console.log(this.data.date)
     var that = this;
+    for(var i=0;i<that.data.selectTask.thumbUser.length;i++)
+    {
+      if(app.globalData.openId == that.data.selectTask.thumbUser[i])
+      {
+        that.setData({
+          thumb:"取消"
+        })
+      }
+    }
   wx.cloud.getTempFileURL({
     fileList:currentTask.images,
     success(res){
@@ -109,6 +118,59 @@ Page({
     }
   });
 
+
+
+  wx.cloud.callFunction({
+    name: "updateTaskView",
+    data: {
+      task: that.data.selectTask
+    },
+    success: function(res){
+    },
+    fail: function(res){
+    }
+  })
+
+
+
+  },
+
+  handleSidebarThumb(){
+    var that = this;
+    if(that.data.thumb=='点赞')
+    {
+      that.setData({
+        thumb:"取消"
+      })
+    wx.cloud.callFunction({
+      name: "updateTaskThumb",
+      data:{
+        task: that.data.selectTask,
+        plus: true
+      },
+      success: function(res){
+
+      },
+      fail: function(res){
+      }
+    })
+  }
+  else {
+    that.setData({
+      thumb:"点赞"
+    })
+    wx.cloud.callFunction({
+      name: "updateTaskThumb",
+      data:{
+        task: that.data.selectTask,
+        plus: false
+      },
+      success: function(res){
+      },
+      fail:function(res){
+      }
+    })
+  }
   },
 
    handleTest(){
