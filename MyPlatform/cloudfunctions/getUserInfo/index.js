@@ -25,10 +25,12 @@ exports.main = async (event, context) => {
   });
 
   avatarURL = imageUrlList.fileList[0].tempFileURL;
-  nickName = res.data[0].nickName 
+  nickName = res.data[0].nickName ;
+  score = res.data[0].score;
   return {
     nickName:nickName,
-    avatarURL:avatarURL
+    avatarURL:avatarURL,
+    score: score
   }
 
 }

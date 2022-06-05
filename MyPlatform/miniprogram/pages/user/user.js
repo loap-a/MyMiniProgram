@@ -30,6 +30,7 @@ Page({
       isRound:"true"
     
   },
+  score:0,
   date:""
   },
 
@@ -124,14 +125,22 @@ Page({
       success:function(res){
         that.setData({
           nickName: res.result.nickName,
-          avatarURL: res.result.avatarURL
+          avatarURL: res.result.avatarURL,
+          score: res.result.score
         })
-
+        app.globalData.score = that.data.score;
         console.log(res)
       },
       fail: function(res){
         console.log(res)
       }
+    })
+  },
+
+  handleScore()
+  {
+    wx.navigateTo({
+      url: '../score_reward/score_reward',
     })
   },
 
@@ -202,7 +211,8 @@ Page({
       success:function(res){
         that.setData({
           nickName: res.result.nickName,
-          avatarURL: res.result.avatarURL
+          avatarURL: res.result.avatarURL,
+          score: res.result.score
         })
 
         console.log(res)
