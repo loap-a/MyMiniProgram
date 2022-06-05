@@ -90,7 +90,7 @@ Component({
      */
     confirmText: {
       type: String,
-      value: "确定"
+      value: "报名"
     },
     /**
      * @description  完成类型，分为选择出发完成 和 点击按钮出发完成

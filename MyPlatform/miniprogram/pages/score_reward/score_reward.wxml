@@ -1,0 +1,22 @@
+<view class="score-title">我的积分: {{score}}</view>
+
+
+
+<scroll-view scroll-y="true">
+<view class="main-body">
+<view class="award-container">
+
+
+  <view class="cu-list grid col-3">
+    <view class="cu-item" wx:for="{{awardList}}" bindtap="handleChange" data-item="{{item}}">
+      <image class="award-image" src="{{item.imageUrl}}" />
+      <text>{{item.name}}</text>
+      <text>积分: {{item.score}}</text>
+    </view>
+  </view>
+
+
+
+</view>
+</view>
+</scroll-view>
