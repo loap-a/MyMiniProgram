@@ -67,6 +67,6 @@ page{
   
   .scroll-item-sub-diy{
     font-size:20rpx;
-    margin-left:120rpx;
+    margin-left:210rpx;
   }
   

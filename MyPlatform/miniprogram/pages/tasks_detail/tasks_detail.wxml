@@ -15,6 +15,10 @@
     <view class="{{mainNeed? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarEmployee">
       发起方
     </view>
+    <view class="{{thumb=='点赞'? 'sidebar-thumb':'sidebar-thumb-up'}}" bindtap="handleSidebarThumb">
+      <text class="cuIcon-appreciate"></text>
+      {{thumb}}
+    </view>
   </view>
   <view class="main-detail" wx:if="{{mainDetail}}">
     <view class="main-detail-swiper">

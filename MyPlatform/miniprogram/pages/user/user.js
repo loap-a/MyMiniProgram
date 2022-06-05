@@ -160,7 +160,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.onLoad();
+
     this.setData({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
@@ -221,6 +221,7 @@ Page({
         console.log(res)
       }
     })
+    this.onLoad();
   },
 
   /**

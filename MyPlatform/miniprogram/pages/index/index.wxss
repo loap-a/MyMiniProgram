@@ -125,7 +125,7 @@ margin-top:-40rpx;
 
 .scroll-item-sub{
   font-size:20rpx;
-  margin-left:170rpx;
+  margin-left:250rpx;
 }
 
 .cuIcon-attentionfill:before {
