@@ -74,7 +74,7 @@
 
   <view class="main-body-reach cu-form-group">
     <view class="title">* 联系方式: </view>
-    <input placeholder="请输入联系方式" class="input" model:value="{{ phoneNumber}}"/>
+    <input placeholder="此联系方式用于与志愿者联系" class="input" model:value="{{ phoneNumber}}"/>
   </view>
 
   <view class="main-body-date cu-form-group">
