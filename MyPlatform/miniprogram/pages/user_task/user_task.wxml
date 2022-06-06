@@ -24,9 +24,9 @@ data-task="{{item}}">
       <view class="scroll-item-gap"></view>
       <view class="scroll-item-content">{{item.content}}</view>
       <view class="scroll-item-sub-diy">
-        <text class="cuIcon-attentionfill margin-lr-xs">  {{item.view}}  </text>
+        <!-- <text class="cuIcon-attentionfill margin-lr-xs">  {{item.view}}  </text>
           <text class="cuIcon-appreciatefill margin-lr-xs">  {{item.thumbUp}}  </text>
-          <!-- <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
+          <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
       </view>
     </view>
 </view>

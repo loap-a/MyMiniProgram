@@ -15,7 +15,7 @@
 
 <zy-modal-sign title='签到记录' wx:if="{{!signInModalHidden}}" hidden="{{signInModalHidden}}" bindconfirm="signInConfirm" bindcancel="signInCandel" confirmText="确认">
 <view class="sign-calender-model">
-  <my-calendar title="日期选择"
+  <my-calendar title=""
     class="my-calendar"
      useType="touch"
      actives="{{signedDays}}"

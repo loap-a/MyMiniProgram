@@ -44,6 +44,23 @@ Page({
    */
   onLoad(options) {
     var that = this;
+    wx.cloud.callFunction({
+      name:"getUserInfo",
+      data:{
+
+      },
+      success:function(res){
+        that.setData({
+          nickName: res.result.nickName,
+          avatarURL: res.result.avatarURL,
+          score: res.result.score
+        })
+        app.globalData.score = that.data.score;
+      },
+      fail: function(res){
+      }
+    })
+    
     this.setData({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
@@ -117,24 +134,7 @@ Page({
       }
     })
 
-    wx.cloud.callFunction({
-      name:"getUserInfo",
-      data:{
 
-      },
-      success:function(res){
-        that.setData({
-          nickName: res.result.nickName,
-          avatarURL: res.result.avatarURL,
-          score: res.result.score
-        })
-        app.globalData.score = that.data.score;
-        console.log(res)
-      },
-      fail: function(res){
-        console.log(res)
-      }
-    })
   },
 
   handleScore()
@@ -160,13 +160,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    var that = this;
+      wx.cloud.callFunction({
+      name:"getUserInfo",
+      data:{
+
+      },
+      success:function(res){
+        that.setData({
+          nickName: res.result.nickName,
+          avatarURL: res.result.avatarURL,
+          score: res.result.score
+        })
+
+      },
+      fail: function(res){
+      }
+    })
 
     this.setData({
       isLogin:app.globalData.login,
       userInfo:app.globalData.userInfo
     })
 
-    var that = this;
+  
     var today = util.formatTimeSimplify(new Date())
     db.collection('signIn').where({
       _openid: app.globalData.openId,
@@ -203,24 +220,7 @@ Page({
         app.globalData.actives = temp
       }
     })
-    wx.cloud.callFunction({
-      name:"getUserInfo",
-      data:{
 
-      },
-      success:function(res){
-        that.setData({
-          nickName: res.result.nickName,
-          avatarURL: res.result.avatarURL,
-          score: res.result.score
-        })
-
-        console.log(res)
-      },
-      fail: function(res){
-        console.log(res)
-      }
-    })
     this.onLoad();
   },
 
