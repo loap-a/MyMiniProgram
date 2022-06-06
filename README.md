@@ -16,4 +16,4 @@
 - 由于个人主体的小程序涉及信息发布平台功能无法通过审核, 所以不得不弃用发布版
   - ![avatar](./notpass.jpg)
 - !!!已弃用 发布版(迭代二)
-  - ![avatar](D:\WorkPlace\MyMiniProgram\已弃用.png)
+  - ![avatar](./已弃用.png)
