@@ -91,11 +91,12 @@ Page({
       date:currentTask.startDate.substring(0,7)+'-01'
     });
     var that = this;
+    console.log('detail', that.data.selectTask)
     for(var i=0;i<that.data.selectTask.thumbUser.length;i++)
     {
       if(app.globalData.openId == that.data.selectTask.thumbUser[i])
       {
-        this.setData({
+        that.setData({
           thumb:"取消"
         })
       }
@@ -139,7 +140,7 @@ Page({
     var that = this;
     if(that.data.thumb=='点赞')
     {
-      this.setData({
+      that.setData({
         thumb:"取消"
       })
     wx.cloud.callFunction({
@@ -156,7 +157,7 @@ Page({
     })
   }
   else {
-    this.setData({
+    that.setData({
       thumb:"点赞"
     })
     wx.cloud.callFunction({
