@@ -10,7 +10,7 @@
       详细
     </view>
     <view class="{{mainTime? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarTime">
-      选择时间
+      报名
     </view>
     <view class="{{mainNeed? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarEmployee">
       发起方

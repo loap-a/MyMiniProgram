@@ -92,31 +92,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    var that = this;
-    wx.cloud.callFunction({
-      name: "getUserInfo",
-      data: {
+    // var that = this;
+    // wx.cloud.callFunction({
+    //   name: "getUserInfo",
+    //   data: {
 
-      },
-      success: function (res) {
-        that.setData({
-          nickName: res.result.nickName,
-          avatarURL: res.result.avatarURL,
-          score: res.result.score
-        })
+    //   },
+    //   success: function (res) {
+    //     that.setData({
+    //       nickName: res.result.nickName,
+    //       avatarURL: res.result.avatarURL,
+    //       score: res.result.score
+    //     })
 
-      },
-      fail: function (res) {}
-    })
+    //   },
+    //   fail: function (res) {}
+    // })
 
-    this.setData({
-      isLogin: app.globalData.login,
-      userInfo: app.globalData.userInfo
-    })
+    // this.setData({
+    //   isLogin: app.globalData.login,
+
+    // })
 
 
-
-    this.onLoad();
+    // this.onLoad();
   },
 
   /**

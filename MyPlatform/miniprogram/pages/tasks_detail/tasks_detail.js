@@ -42,41 +42,27 @@ Page({
   select ({detail}) {
     var that = this;
     this.setData({ date: detail.text });
-    db.collection('task_user').where({
-      _openid: app.globalData.openId
-    }).get({
+
+    wx.cloud.callFunction({
+      name: 'userSignTask',
+      data:{
+        date: that.data.date,
+        taskId: that.data.selectTask._id
+      },
       success: function(res){
-        if(res.data.length==0)
-        {
-          db.collection('task_user').add({
-            data:{
-            signedTasks: [{
-              task: that.data.selectTask,
-              date: that.data.date
-            }]
-            }
+        if(res.result == 'fail'){
+          wx.showToast({
+            title: '您当日已报名',
+            icon: 'error'
           })
         }
         else{
-          db.collection('task_user').where({
-            _openid: app.globalData.openId
-          }).update({
-            data:{
-              signedTasks:_.push({
-                task: that.data.selectTask,
-                date: that.data.date
-              })
-            }
+          wx.showToast({
+            title: '报名成功',
           })
         }
       }
-    })
-    wx.showToast({
-      title:"成功",
-      icon:'success'
-    });
-    wx.switchTab({
-      url: '../index/index',
+      
     })
   },
   /**
