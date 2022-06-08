@@ -22,7 +22,10 @@
   bindtap="taskNavigate"
   data-task="{{item}}">
 
+  <view class="scroll-item-image-container">
     <image class="scroll-item-image" src="{{imageList[index]}}"/>
+    <text class="task-type">{{item.taskType}}</text>
+    </view>
       <view class="scroll-item-textfield">
         <view class="scroll-item-title">{{item.title}}</view>
         <view class="scroll-item-gap"></view>

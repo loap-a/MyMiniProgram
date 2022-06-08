@@ -33,6 +33,17 @@
     <input placeholder="  请输入详细介绍" class="input-detail" model:value="{{detail}}"/>
   </view>
 
+  <view class="main-body-title cu-form-group">
+    <view class="title">* 类型: </view>
+
+    <picker bindchange="bindPickerChange" value="{{taskTypeIndex}}" range="{{taskTypes}}">
+    <view class="picker">
+      当前选择：{{taskTypes[taskTypeIndex]}}
+    </view>
+  </picker>
+
+  </view>
+  
   <view class="cu-bar bg-white margin-top">
 		<view class="action margin-left">
 			图片上传
