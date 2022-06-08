@@ -1,5 +1,5 @@
-<view class="search-bar">
-  <view class="search-bar-form">
+
+  <!-- <view class="search-bar-form">
     <view class="search-bar-box">
       <icon class="icon-search-in-box" type="search" size="14"></icon>
       <input type="text" class="search-bar-input" placeholder="搜索" />
@@ -11,8 +11,17 @@
     </label>
   </view>
 
-  <view class="search-bar-cancel" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-</view>
+  <view class="search-bar-cancel" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view> -->
+  <view class="cu-bar search bg-white">
+    <select class="top-select" options="{{taskTypes}}" key="type_id" text="typeName" bind:change="typeChange"></select>
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+    </view>
+
+    <button class="search-button" size="mini" type="primary" plain="true">搜索</button>
+  </view>
+
 
 <scroll-view class="scroll-view">
 
@@ -31,8 +40,8 @@
         <view class="scroll-item-gap"></view>
         <view class="scroll-item-content">{{item.content}}</view>
         <view class="scroll-item-sub">
-          <text class="cuIcon-attentionfill margin-lr-xs">  {{item.view}}  </text>
-          <text class="cuIcon-appreciatefill margin-lr-xs">  {{item.thumbUp}}  </text>
+          <text class="cuIcon-attentionfill">  {{item.view}}  </text>
+          <text class="cuIcon-appreciatefill">  {{item.thumbUp}}  </text>
           <!-- <text class="cuIcon-messagefill margin-lr-xs"></text> 30 -->
         </view>
       </view>
@@ -40,3 +49,5 @@
   </view>
 
 </scroll-view>
+
+<view class="empty-hint" wx:if="{{tasks.length==0}}">{{hint}}</view>

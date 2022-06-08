@@ -10,7 +10,25 @@ Page({
     inputShowed: false,
     tasks:[],
     imageList:[],
-    fileIdList:[]
+    fileIdList:[],
+    currentType:'全部',
+    taskTypes:[
+      {typeId: '01',
+        typeName:'疫情防控'},
+        {typeId: '02',
+        typeName:'理论宣讲'},
+        {typeId: '03',
+        typeName:'阳光助残'},
+        {typeId: '04',
+        typeName:'少年助学'},
+        {typeId: '05',
+        typeName:'生态建设'},
+        {typeId: '06',
+        typeName:'抢险救灾'},
+        {typeId: '07',
+        typeName:'其他'},
+    ],
+    hint:""
   },
 
   taskNavigate: function(event)
@@ -32,6 +50,41 @@ Page({
     this.setData({
       inputShowed: false
     });
+  },
+
+  typeChange(event){
+    
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration: 800
+    })
+    var that = this;
+    this.setData({
+      currentType: event.detail.name
+    })
+
+    wx.cloud.callFunction({
+      name: 'getTasksByType',
+      data:{
+        type: that.data.currentType
+      },
+      success: function(res){
+        that.setData({
+          tasks: res.result.taskList,
+          imageList: res.result.imageUrlList
+        })
+        if(that.data.tasks.length==0)
+        {
+          that.setData({
+            hint: "暂无此类型活动"
+          })
+        }
+      },
+      fail: function(res){
+        console.log(res)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
