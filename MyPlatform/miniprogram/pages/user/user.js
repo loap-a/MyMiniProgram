@@ -112,21 +112,21 @@ Page({
        }
      })
 
-     db.collection('signIn').where({
-      _openid:app.globalData.openId
-    }).get({
-      success: function(res){
-        var temp = []
-        for(var i=0;i<res.data[0].dates.length;i++)
-        {
-          temp.push({
-            date: res.data[0].dates[i],
-            text: "已签到"
-          })
-        }
-        app.globalData.actives = temp
-      }
-    })
+    //  db.collection('signIn').where({
+    //   _openid:app.globalData.openId
+    // }).get({
+    //   success: function(res){
+    //     var temp = []
+    //     for(var i=0;i<res.data[0].dates.length;i++)
+    //     {
+    //       temp.push({
+    //         date: res.data[0].dates[i],
+    //         text: "已签到"
+    //       })
+    //     }
+    //     app.globalData.actives = temp
+    //   }
+    // })
 
 
   },
@@ -315,65 +315,38 @@ Page({
   signIn()
   {
     var that = this;
-    if(this.data.isSignin)
-    {
-      db.collection('signIn').where({
-        _openid:app.globalData.openId
-      }).get({
-        success: function(res){
-          var temp = []
-          for(var i=0;i<res.data[0].dates.length;i++)
-          {
-            temp.push({
-              date: res.data[0].dates[i],
-              text: "已签到"
-            })
-          }
-          app.globalData.actives = temp
-          that.setData({
-            signInModalHidden:false
-          })
-          that.onLoad()
-        }
-      })
 
-    }
-    else{
-    var today = util.formatTimeSimplify(new Date())
-    db.collection('signIn').where({
-      _openid: app.globalData.openId,
-      dates: _.elemMatch(_.eq(today))
-    }).get({
+    wx.cloud.callFunction({
+      name: 'getSignDays',
       success: function(res){
-        if(res.data.length == 0)
+        app.globalData.actives = res.result;
+        var today = util.formatTimeSimplify(new Date())
+        if(that.data.isSignin)
         {
-          db.collection('signIn').where({
-            _openid: app.globalData.openId
-          }).update({
+          that.setData({
+            signInModalHidden: false
+          })
+        }
+
+        else{
+          wx.cloud.callFunction({
+            name: 'userSignIn',
             data:{
-              dates:_.push(today)
+              today: today
             },
-            success:function(res){
+            success: function(res){
               that.setData({
-                isSignin:true
+                isSignin: true
               })
               wx.showToast({
                 title: '签到成功',
               })
-              that.onLoad()
-              console.log('onLoad')
             }
-          })
-        }
-        else{
-          that.setData({
-            isSignin:true
-          })
-        }
 
+          })
+        }
       }
     })
 
-    }
   }
 })
