@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    taskTypeIndex:0,
+    taskTypes:['疫情防控','理论宣讲','阳光助残', '青少年助学', '生态建设', '抢险救灾', '其他'],
     isLogin:app.globalData.login,
     userInfo:app.globalData.userInfo,
     modelHidden:true,
@@ -98,6 +100,7 @@ Page({
         raiserName:this.data.raiserName,
         raiserIntroduction:this.data.raiserIntroduction,
         raiserImages:this.data.proveImageList,
+        taskType: that.data.taskTypes[that.data.taskTypeIndex],
         view:0,
         thumbUser:[],
         thumbUp:0,
@@ -221,6 +224,13 @@ Page({
       endDate: e.detail.value,
       endDateChoosed:true
     })
+  },
+
+  bindPickerChange(event){
+    this.setData({
+      taskTypeIndex: event.detail.value
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载

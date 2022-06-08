@@ -19,12 +19,25 @@ page{
     display:flex;
   }
   
+  .scroll-item-image-container{
+    display: flex;
+    flex-direction: column;
+  }
+  
   .scroll-item-image{
-    margin-top:30rpx;
+    margin-top:20rpx;
     margin-left:20rpx;
     width:220rpx;
     height:150rpx;
     border-radius: 20rpx;
+  }
+  .task-type{
+    line-height:25rpx;
+    height:20rpx;
+    font-size: 25rpx;
+    margin-top:13rpx;
+    margin-left: 90rpx;
+    color: #14abc8;
   }
   
   .scroll-item-textfield{

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "zy-modal": "../../components/zy-modal/zy-modal"
+    "zy-modal": "../../components/zy-modal/zy-modal",
+    "van-picker": "@vant/weapp/picker/index"
   }
 }

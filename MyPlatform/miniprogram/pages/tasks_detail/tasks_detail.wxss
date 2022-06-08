@@ -1,15 +1,19 @@
 /* pages/tasks_detail/tasks_detail.wxss */
 page{
   height:100%;
+  --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+  --gradualGrey: linear-gradient(45deg, #707273 , #b3b7b8);
+  --ShadowSize: 6rpx 6rpx 8rpx;
+  --white: #ffffff;
 }
 
 .task-title{
-  margin-top:20rpx;
   text-align: center;
   font-size:50rpx;
   border-bottom: solid;
   border-width: 3rpx;
   align-items: center;
+  background-image: linear-gradient(25deg, #e4dff6, #c1e0dc, #9bdfc3, #6ddeaa)
 }
 
 /* .my-calender{
@@ -49,7 +53,8 @@ page{
 .sidebar-item{
   width:100%;
   height:100rpx;
-  background-color:#67c147;
+  background-color:#9b9b9b;
+  background-image: var(--gradualGrey);
   margin-top:20rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
@@ -67,7 +72,7 @@ page{
 .sidebar-item-selected{
   width:100%;
   height:100rpx;
-  background-color:#9b9b9b;
+  background-image: var(--gradualBlue);
   margin-top:20rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
@@ -81,7 +86,7 @@ page{
 
   width:100%;
   height:100rpx;
-  background-color:#54b6c2;
+  background-image: linear-gradient(25deg, #dd3742, #f2807a, #fdbeb6, #fffbf6);
   margin-top:160rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
@@ -94,7 +99,7 @@ page{
 
   width:100%;
   height:100rpx;
-  background-color:#f85d28;
+  background-image: linear-gradient(25deg, #315ed1, #6c8db7, #83be99, #8af173);
   margin-top:160rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
@@ -178,6 +183,32 @@ min-width:100rpx;
 }
 
 .main-need-content-item-text{
+margin-left:20rpx;
+}
+
+.main-detail-sub{
+  width:100%;
+  margin-top:50rpx;
+}
+
+.main-detail-sub-item{
+  display:flex;
+  min-height:80rpx;
+  border-style: solid;
+  border-width:0.5rpx;
+  border-color:#efeff4;
+  border-left:none;
+  border-right:none;
+  align-items: center;
+  font-size:25rpx;
+}
+
+.main-detail-sub-item-title{
+margin-left:20rpx;
+min-width:100rpx;
+}
+
+.main-detail-sub-item-text{
 margin-left:20rpx;
 }
 

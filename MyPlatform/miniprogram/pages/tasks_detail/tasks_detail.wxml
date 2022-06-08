@@ -31,6 +31,18 @@
     </view>
     <view class="main-detail-gap"></view>
     <view class="main-detail-text">{{selectTask.content}}</view>
+
+    <view class="main-detail-sub">
+    <view class="main-detail-sub-item">
+      <view class="main-detail-sub-item-title">活动类型</view>
+      <view class="main-detail-sub-item-text">{{selectTask.taskType}}</view>
+    </view>
+    <view class="main-detail-sub-item">
+      <view class="main-detail-sub-item-title">活动地址</view>
+      <view class="main-detail-sub-item-text">{{selectTask.addressName}}</view>
+    </view>
+    </view>
+
   </view>
 
   <view class="main-time" wx:if="{{mainTime}}">

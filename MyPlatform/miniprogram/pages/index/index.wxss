@@ -1,5 +1,6 @@
 page{
   --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+  --gradualGrey: linear-gradient(45deg, #c5c9ca, #ffffff);
   --ShadowSize: 6rpx 6rpx 8rpx;
   --white: #ffffff;
   height:100%;
@@ -89,13 +90,25 @@ margin-top:-40rpx;
   border-radius: 20rpx;
   display:flex;
 }
+.scroll-item-image-container{
+  display: flex;
+  flex-direction: column;
+}
 
 .scroll-item-image{
-  margin-top:30rpx;
+  margin-top:20rpx;
   margin-left:20rpx;
   width:220rpx;
   height:150rpx;
   border-radius: 20rpx;
+}
+.task-type{
+  line-height:25rpx;
+  height:20rpx;
+  font-size: 25rpx;
+  margin-top:13rpx;
+  margin-left: 90rpx;
+  color: #14abc8;
 }
 
 .scroll-item-textfield{
@@ -262,4 +275,3 @@ margin-top:-40rpx;
 	min-height: 100rpx;
 	justify-content: space-between;
 } */
-
