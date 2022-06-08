@@ -5,19 +5,21 @@ cloud.init()
 
 const db = cloud.database()
 
+const _ = db.command
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   const openId = event.userInfo.openId;
-  var task = event.task;
+  var taskId = event.taskId;
   var tasks = db.collection('tasks');
 
   var res = await tasks.where({
-    _id: task._id
+    _id: taskId
   }).update({
     data:{
-      view: task.view + 1
+      view: _.inc(1)
     }
   })
 

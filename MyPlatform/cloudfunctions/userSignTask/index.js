@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
   var signedTasks = res.data[0].signedTasks;
   for(var i=0;i<signedTasks.length;i++)
   {
-    if(taskId == signedTasks[i].taskId && date == signedTasks[i].date)
+    if(taskId == signedTasks[i].taskId)
     {
       return 'fail'
     }

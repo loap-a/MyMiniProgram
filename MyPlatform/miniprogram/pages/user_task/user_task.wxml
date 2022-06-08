@@ -18,7 +18,7 @@ bindtap="taskNavigate"
 wx:key="unique"
 data-task="{{item}}">
 
-  <image class="scroll-item-image" src="{{titleImageUrlList[index].tempFileURL}}"/>
+  <image class="scroll-item-image" src="{{titleImageUrlList[index]}}"/>
     <view class="scroll-item-textfield">
       <view class="scroll-item-title">{{item.title}} {{dateList[index]}}</view>
       <view class="scroll-item-gap"></view>

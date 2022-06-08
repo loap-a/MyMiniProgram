@@ -176,27 +176,12 @@ Component({
   },
 
   onShow(){
-    console.log('onShow');
   },
   ready () {
-    console.log(132456)
-    var that = this;
-    db.collection('task_user').where({
-      _openid:app.globalData.openId
-    }).get({
-      success: function(res){
-        var temp = []
-        for(var i=0;i<res.data[0].signedTasks.length;i++)
-        {
-          temp.push({
-            date: res.data[0].signedTasks[i].date,
-            text: "活动"+(i+1)
-          })
-        }
-        that.properties.actives = temp 
-        that.init();
-      }
-    })
+
+    this.properties.actives = app.globalData.userTaskActives; 
+    this.init();
+
   },
 
   methods: {

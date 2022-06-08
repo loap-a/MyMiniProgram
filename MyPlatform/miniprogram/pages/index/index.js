@@ -134,9 +134,8 @@ Page({
 
   taskNavigate: function(event)
   {
-    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
     wx.navigateTo({
-      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      url:'../tasks_detail/tasks_detail?taskId='+event.currentTarget.dataset.task._id,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}

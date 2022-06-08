@@ -68,52 +68,47 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    var currentTask = JSON.parse(options.task);
-    this.setData({
-      selectTask:currentTask,
-      startDate:currentTask.startDate,
-      endDate:currentTask.endDate,
-      date:currentTask.startDate.substring(0,7)+'-01'
-    });
+  onLoad(options) { 
     var that = this;
-    for(var i=0;i<that.data.selectTask.thumbUser.length;i++)
-    {
-      if(app.globalData.openId == that.data.selectTask.thumbUser[i])
-      {
-        this.setData({
-          thumb:"取消"
+    wx.cloud.callFunction({
+      name: 'getTaskDetailById',
+      data:{
+        taskId: options.taskId
+      },
+      success: function(res){
+        that.setData({
+          selectTask: res.result.task,
+          taskImageUrlList:res.result.taskImageUrlList,
+          taskRaiserImageUrlList:res.result.taskRaiserImageUrlList,
+          startDate: res.result.task.startDate,
+          endDate: res.result.task.endDate
         })
+        if(res.result.hasThumbed)
+        {
+          that.setData({
+            thumb:'取消'
+          })
+        }
+        var date = that.data.startDate.substring(0,8)+'01';
+        that.setData({
+          date: date
+        })
+      },
+      fail: function(res)
+      {
       }
-    }
-  wx.cloud.getTempFileURL({
-    fileList:currentTask.images,
-    success(res){
-      that.setData({
-        taskImageUrlList:res.fileList
-      })
-    }
-  });
-
-  wx.cloud.getTempFileURL({
-    fileList:currentTask.raiserImages,
-    success(res){
-      that.setData({
-        taskRaiserImageUrlList:res.fileList
-      })
-    }
-  });
-
-
+    })
 
   wx.cloud.callFunction({
     name: "updateTaskView",
     data: {
-      task: that.data.selectTask
+      taskId: options.taskId
     },
     success: function(res){
+      console.log('updatetaskview',res)
     },
     fail: function(res){
+      console.log('updatetaskview fail',res)
     }
   })
 
@@ -175,21 +170,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.onUnload();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+  
   },
 
   /**
