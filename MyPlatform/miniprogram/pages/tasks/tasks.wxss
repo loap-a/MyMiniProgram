@@ -1,3 +1,7 @@
+/* pages/user_task/user_task.wxss */
+@import "../../colorui/main.wxss";
+@import "../../colorui/icon.wxss";
+
 page{
   height:100%;
   background-color: #efeff4;
@@ -193,4 +197,19 @@ page{
 		/* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
 		url('//at.alicdn.com/t/font_533566_yfq2d9wdij.svg?t=1545239985831#iconfont') format('svg');
 	/* iOS 4.1- */
+}
+
+.search-button{
+ margin-right:20rpx;
+ border-radius: 30rpx;
+}
+
+.top-select{
+  width: 180rpx;
+  margin-left:20rpx;
+}
+
+.empty-hint{
+  margin-left:280rpx;
+  margin-top: 60rpx;
 }

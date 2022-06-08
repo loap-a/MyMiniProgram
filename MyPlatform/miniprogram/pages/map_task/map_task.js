@@ -23,6 +23,11 @@ markertap: function(e)
    * 生命周期函数--监听页面加载
    */
 onLoad(options){
+  wx.showToast({
+    title: '加载中',
+    icon:'loading',
+    duration: 1200
+  })
   var that = this;
   wx.cloud.callFunction({
     name:'getMapMarkers',
