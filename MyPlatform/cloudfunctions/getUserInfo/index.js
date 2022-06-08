@@ -19,6 +19,16 @@ exports.main = async (event, context) => {
     _openid: openId
   }).get({});
 
+  var userSignDates = res.data[0].signDates;
+  var actives = [];
+  for(var i=0;i<userSignDates.length;i++)
+  {
+    actives.push({
+      date: userSignDates[i],
+      text: '已签到'
+    })
+  }
+
   avatarId.push(res.data[0].avatarId);
   const imageUrlList = await cloud.getTempFileURL({
     fileList:avatarId
@@ -30,7 +40,8 @@ exports.main = async (event, context) => {
   return {
     nickName:nickName,
     avatarUrl:avatarUrl,
-    score: score
+    score: score,
+    actives: actives
   }
 
 }

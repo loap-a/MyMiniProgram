@@ -10,30 +10,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userName:'barkk',
-    isLogin:app.globalData.login,
-    userInfo:app.globalData.userInfo,
+    userName: 'barkk',
+    isLogin: app.globalData.login,
+    userInfo: app.globalData.userInfo,
     modalHidden: true,
     isSignin: false,
     signInModalHidden: true,
-    signedDays:[],
-    nickName:"",
-    avatarUrl:"",
+    signedDays: [],
+    nickName: "",
+    avatarUrl: "",
     theme: {
       bg: "#409efe",
       fontColor: "#fff",
       rangeStartColor: "#79bbff",
       rangeColor: "#b3d8ff",
       rangeEndColor: "#79bbff",
-      touchColor:"#67c147",
-      isRound:"true"
-    
-  },
-  score:0,
-  date:""
+      touchColor: "#67c147",
+      isRound: "true"
+
+    },
+    score: 0,
+    date: ""
   },
 
-  modifyUserProfile(){
+  modifyUserProfile() {
     wx.navigateTo({
       url: '../modify_user_profile/modify_user_profile',
     })
@@ -44,101 +44,39 @@ Page({
   onLoad(options) {
     var that = this;
     wx.cloud.callFunction({
-      name:"getUserInfo",
-      data:{},
-      success:function(res){
+      name: "getUserInfo",
+      data: {},
+      success: function (res) {
         that.setData({
           nickName: res.result.nickName,
           avatarUrl: res.result.avatarUrl,
           score: res.result.score,
-          isLogin:app.globalData.login,
+          isLogin: app.globalData.login,
         })
         app.globalData.score = that.data.score;
+        app.globalData.actives = res.result.actives;
+        var today = util.formatTimeSimplify(new Date())
+        for (var i = 0; i < app.globalData.actives.length; i++) {
+          if (today == app.globalData.actives[i].date) {
+            that.setData({
+              isSignin: true
+            })
+          }
+        }
       },
-      fail: function(res){
-      }
+      fail: function (res) {}
     })
-    
-
-    // wx.getSetting({
-    //   success: function(res) {
-    //    if (res.authSetting['scope.userInfo']) {
-    //     wx.getUserInfo({
-    //      success: function(res) {
-    //       // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
-    //       // 根据自己的需求有其他操作再补充
-    //       // 我这里实现的是在用户授权成功后，调用微信的 wx.login 接口，从而获取code
-    //       wx.login({
-    //        success: res => {
-    //         // 获取到用户的 code 之后：res.code
-    //         wx.request({
-    //          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx9cdb0e0b9205e3ea&secret='+that.data.value+'&js_code=' + res.code + '&grant_type=authorization_code',
-    //          success: res => {
-    //            app.globalData.openId = res.data.openid
-    //          }
-    //         });
-    //        }
-    //       });
-    //      }
-    //     });
-    //    } else {
-    //     // 用户没有授权
-    //     // 改变 isHide 的值，显示授权页面
-    //     that.setData({
-    //      hideMain: true
-    //     });
-    //    }
-    //   }
-    //  });
-
-     var today = util.formatTimeSimplify(new Date())
-     db.collection('signIn').where({
-       _openid: app.globalData.openId,
-       dates: _.elemMatch(_.eq(today))
-     }).get({
-       success: function(res){
-         if(res.data.length == 0)
-         {
-           that.setData({
-             isSignin:false
-           })
-         }
-         else{
-           that.setData({
-             isSignin:true
-           })
-         }
- 
-       }
-     })
-
-    //  db.collection('signIn').where({
-    //   _openid:app.globalData.openId
-    // }).get({
-    //   success: function(res){
-    //     var temp = []
-    //     for(var i=0;i<res.data[0].dates.length;i++)
-    //     {
-    //       temp.push({
-    //         date: res.data[0].dates[i],
-    //         text: "已签到"
-    //       })
-    //     }
-    //     app.globalData.actives = temp
-    //   }
-    // })
 
 
   },
 
-  handleScore()
-  {
+  handleScore() {
     wx.navigateTo({
       url: '../score_reward/score_reward',
     })
   },
 
-  handleUserTask(){
+  handleUserTask() {
     wx.navigateTo({
       url: '../user_task/user_task'
     })
@@ -155,12 +93,12 @@ Page({
    */
   onShow() {
     var that = this;
-      wx.cloud.callFunction({
-      name:"getUserInfo",
-      data:{
+    wx.cloud.callFunction({
+      name: "getUserInfo",
+      data: {
 
       },
-      success:function(res){
+      success: function (res) {
         that.setData({
           nickName: res.result.nickName,
           avatarURL: res.result.avatarURL,
@@ -168,52 +106,15 @@ Page({
         })
 
       },
-      fail: function(res){
-      }
+      fail: function (res) {}
     })
 
     this.setData({
-      isLogin:app.globalData.login,
-      userInfo:app.globalData.userInfo
+      isLogin: app.globalData.login,
+      userInfo: app.globalData.userInfo
     })
 
-  
-    var today = util.formatTimeSimplify(new Date())
-    db.collection('signIn').where({
-      _openid: app.globalData.openId,
-      dates: _.elemMatch(_.eq(today))
-    }).get({
-      success: function(res){
-        if(res.data.length == 0)
-        {
-          that.setData({
-            isSignin:false
-          })
-        }
-        else{
-          that.setData({
-            isSignin:true
-          })
-        }
 
-      }
-    })
-
-    db.collection('signIn').where({
-      _openid:app.globalData.openId
-    }).get({
-      success: function(res){
-        var temp = []
-        for(var i=0;i<res.data[0].dates.length;i++)
-        {
-          temp.push({
-            date: res.data[0].dates[i],
-            text: "已签到"
-          })
-        }
-        app.globalData.actives = temp
-      }
-    })
 
     this.onLoad();
   },
@@ -262,8 +163,8 @@ Page({
     // do something
     this.setData({
       modalHidden: true,
-      isLogin:app.globalData.login,
-      userInfo:app.globalData.userInfo
+      isLogin: app.globalData.login,
+      userInfo: app.globalData.userInfo
     })
   },
 
@@ -271,8 +172,8 @@ Page({
     // do something
     this.setData({
       modalHidden: true,
-      isLogin:app.globalData.login,
-      userInfo:app.globalData.userInfo
+      isLogin: app.globalData.login,
+      userInfo: app.globalData.userInfo
     })
   },
 
@@ -295,58 +196,56 @@ Page({
       modalHidden: false,
     })
   },
-  handleSetting(){
+  handleSetting() {
     wx.showToast({
       title: '此功能尚未开放, 敬请期待',
-      icon:'none'
+      icon: 'none'
     })
   },
-  logout(){
-      this.setData({
-        isLogin:false,
-        userInfo:null
-      })
-      app.globalData.login=false;
-      app.globalData.userInfo=null;
-      wx.showToast({
-        title: '退出成功'
-      })
+  logout() {
+    this.setData({
+      isLogin: false,
+      userInfo: null
+    })
+    app.globalData.login = false;
+    app.globalData.userInfo = null;
+    wx.showToast({
+      title: '退出成功'
+    })
   },
-  signIn()
-  {
+  signIn() {
     var that = this;
 
-    wx.cloud.callFunction({
-      name: 'getSignDays',
-      success: function(res){
-        app.globalData.actives = res.result;
-        var today = util.formatTimeSimplify(new Date())
-        if(that.data.isSignin)
-        {
+    if (that.data.isSignin) {
+      that.setData({
+        signInModalHidden: false
+      })
+    }
+     else {
+      var today = util.formatTimeSimplify(new Date())
+      wx.cloud.callFunction({
+        name: 'userSignIn',
+        data: {
+          today: today
+        },
+        success: function (res) {
           that.setData({
-            signInModalHidden: false
+            isSignin: true
           })
+          app.globalData.actives.push({
+            date: today,
+            text: '已签到'
+          })
+          wx.showToast({
+            title: '签到成功',
+          })
+          that.onLoad();
+        },
+        fail: function(res){
         }
 
-        else{
-          wx.cloud.callFunction({
-            name: 'userSignIn',
-            data:{
-              today: today
-            },
-            success: function(res){
-              that.setData({
-                isSignin: true
-              })
-              wx.showToast({
-                title: '签到成功',
-              })
-            }
-
-          })
-        }
-      }
-    })
-
+      })
+    }
   }
+
 })
