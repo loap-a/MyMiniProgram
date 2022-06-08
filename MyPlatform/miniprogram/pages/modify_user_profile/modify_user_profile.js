@@ -102,13 +102,21 @@ Page({
       {
         wx.showToast({
           title: '修改成功',
+          duration: 1000,
+          success(){
+            wx.switchTab({
+              url: '../user/user',
+              success: function () {
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                page.onLoad(); //重新刷新device-info页面
+              }
+            })
+          }
         })
-
       }
     })
-    wx.switchTab({
-      url: '../user/user',
-    })
+
 
   },
   ViewImage(e) {

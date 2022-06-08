@@ -42,92 +42,73 @@ Page({
   select ({detail}) {
     var that = this;
     this.setData({ date: detail.text });
-    db.collection('task_user').where({
-      _openid: app.globalData.openId
-    }).get({
+
+    wx.cloud.callFunction({
+      name: 'userSignTask',
+      data:{
+        date: that.data.date,
+        taskId: that.data.selectTask._id
+      },
       success: function(res){
-        if(res.data.length==0)
-        {
-          db.collection('task_user').add({
-            data:{
-            signedTasks: [{
-              task: that.data.selectTask,
-              date: that.data.date
-            }]
-            }
+        if(res.result == 'fail'){
+          wx.showToast({
+            title: '您当日已报名',
+            icon: 'error'
           })
         }
         else{
-          db.collection('task_user').where({
-            _openid: app.globalData.openId
-          }).update({
-            data:{
-              signedTasks:_.push({
-                task: that.data.selectTask,
-                date: that.data.date
-              })
-            }
+          wx.showToast({
+            title: '报名成功',
           })
         }
       }
-    })
-    wx.showToast({
-      title:"成功",
-      icon:'success'
-    });
-    wx.switchTab({
-      url: '../index/index',
+      
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    var currentTask = JSON.parse(options.task);
-    this.setData({
-      selectTask:currentTask,
-      startDate:currentTask.startDate,
-      endDate:currentTask.endDate,
-      date:currentTask.startDate.substring(0,7)+'-01'
-    });
+  onLoad(options) { 
     var that = this;
-    for(var i=0;i<that.data.selectTask.thumbUser.length;i++)
-    {
-      if(app.globalData.openId == that.data.selectTask.thumbUser[i])
-      {
-        this.setData({
-          thumb:"取消"
+    wx.cloud.callFunction({
+      name: 'getTaskDetailById',
+      data:{
+        taskId: options.taskId
+      },
+      success: function(res){
+        that.setData({
+          selectTask: res.result.task,
+          taskImageUrlList:res.result.taskImageUrlList,
+          taskRaiserImageUrlList:res.result.taskRaiserImageUrlList,
+          startDate: res.result.task.startDate,
+          endDate: res.result.task.endDate
         })
+        if(res.result.hasThumbed)
+        {
+          that.setData({
+            thumb:'取消'
+          })
+        }
+        var date = that.data.startDate.substring(0,8)+'01';
+        that.setData({
+          date: date
+        })
+      },
+      fail: function(res)
+      {
       }
-    }
-  wx.cloud.getTempFileURL({
-    fileList:currentTask.images,
-    success(res){
-      that.setData({
-        taskImageUrlList:res.fileList
-      })
-    }
-  });
-
-  wx.cloud.getTempFileURL({
-    fileList:currentTask.raiserImages,
-    success(res){
-      that.setData({
-        taskRaiserImageUrlList:res.fileList
-      })
-    }
-  });
-
-
+    })
 
   wx.cloud.callFunction({
     name: "updateTaskView",
     data: {
-      task: that.data.selectTask
+      taskId: options.taskId
     },
     success: function(res){
+      console.log('updatetaskview',res)
     },
     fail: function(res){
+      console.log('updatetaskview fail',res)
     }
   })
 
@@ -189,21 +170,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.onUnload();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+  
   },
 
   /**

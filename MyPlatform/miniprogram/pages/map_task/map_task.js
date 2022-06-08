@@ -12,10 +12,8 @@ Page({
   },
 markertap: function(e)
 {
-  var taskJson = JSON.stringify(this.data.taskList[e.detail.markerId]);
-  console.log('map', this.data.taskList[e.detail.markerId])
   wx.navigateTo({
-    url:'../tasks_detail/tasks_detail?task='+taskJson,
+    url:'../tasks_detail/tasks_detail?taskId='+this.data.taskList[e.detail.markerId]._id,
     success: function(res) {},
     fail: function(res) {},
     complete: function(res) {}

@@ -10,7 +10,7 @@
       详细
     </view>
     <view class="{{mainTime? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarTime">
-      选择时间
+      报名
     </view>
     <view class="{{mainNeed? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarEmployee">
       发起方
@@ -24,7 +24,7 @@
     <view class="main-detail-swiper">
       <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
         <swiper-item wx:for="{{taskImageUrlList}}" wx:key>
-          <image src="{{item.tempFileURL}}" mode="aspectFill"></image>
+          <image src="{{item}}" mode="aspectFill"></image>
           <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
         </swiper-item>
       </swiper>
@@ -55,7 +55,7 @@
     <view class="main-need-swiper" wx:if="{{taskRaiserImageUrlList.length>0?true:false}}">
       <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
         <swiper-item wx:for="{{taskRaiserImageUrlList}}" wx:key>
-          <image src="{{item.tempFileURL}}" mode="aspectFill"></image>
+          <image src="{{item}}" mode="aspectFill"></image>
           <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
         </swiper-item>
       </swiper>

@@ -46,39 +46,61 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log('user task onload')
     var that = this;
-    db.collection('task_user').where({
-      _openid: app.globalData.openId,
-    }).get({
+    wx.cloud.callFunction({
+      name: 'getUserSignedTasks',
       success: function(res){
-        console.log(res)
-        var temp = []
-        var tempFileIdList=[]
-        var tempDateList=[]
-        for(var i =0;i<res.data[0].signedTasks.length;i++)
-        {
-          tempDateList.push(res.data[0].signedTasks[i].date)
-          temp.push(res.data[0].signedTasks[i].task)
-          tempFileIdList.push(res.data[0].signedTasks[i].task.imageId)
-        }
         that.setData({
-          tasks: temp,
-          dateList: tempDateList
+          tasks: res.result.tasks,
+          dateList: res.result.dateList,
+          titleImageUrlList: res.result.imageUrlList
         })
-        wx.cloud.getTempFileURL({
-          fileList:tempFileIdList,
-          success(res){
-            that.setData({
-              titleImageUrlList:res.fileList
-            })
-          }
-        })
-
-      },
-      fail: function(res){
-        console.log('error')
+        var userTaskActives = [];
+        for(var i =0;i<res.result.tasks.length;i++)
+        {
+          userTaskActives.push({
+            date: res.result.dateList[i],
+            text: '活动'+ parseInt(i+1)
+          })
+        }
+        app.globalData.userTaskActives = userTaskActives;
       }
     })
+
+    // var that = this;
+    // db.collection('task_user').where({
+    //   _openid: app.globalData.openId,
+    // }).get({
+    //   success: function(res){
+    //     console.log(res)
+    //     var temp = []
+    //     var tempFileIdList=[]
+    //     var tempDateList=[]
+    //     for(var i =0;i<res.data[0].signedTasks.length;i++)
+    //     {
+    //       tempDateList.push(res.data[0].signedTasks[i].date)
+    //       temp.push(res.data[0].signedTasks[i].task)
+    //       tempFileIdList.push(res.data[0].signedTasks[i].task.imageId)
+    //     }
+    //     that.setData({
+    //       tasks: temp,
+    //       dateList: tempDateList
+    //     })
+    //     wx.cloud.getTempFileURL({
+    //       fileList:tempFileIdList,
+    //       success(res){
+    //         that.setData({
+    //           titleImageUrlList:res.fileList
+    //         })
+    //       }
+    //     })
+
+    //   },
+    //   fail: function(res){
+    //     console.log('error')
+    //   }
+    // })
 
 
 
@@ -102,7 +124,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.onUnload();
   },
 
   /**

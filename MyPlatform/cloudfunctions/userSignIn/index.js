@@ -12,16 +12,18 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   const openId = event.userInfo.openId;
-  var taskId = event.taskId;
-  var tasks = db.collection('tasks');
 
-  var res = await tasks.where({
-    _id: taskId
+  const users = db.collection('users');
+
+  var today = event.today;
+
+  users.where({
+    _openid: openId
   }).update({
     data:{
-      view: _.inc(1)
+    signDates: _.push(today)
     }
   })
 
-  return res;
+  return today;
 }

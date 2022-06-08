@@ -15,9 +15,8 @@ Page({
 
   taskNavigate: function(event)
   {
-    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
     wx.navigateTo({
-      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      url:'../tasks_detail/tasks_detail?taskId='+event.currentTarget.dataset.task._id,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}
@@ -38,28 +37,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    db.collection('tasks').get().then(res=>{
-      this.setData({
-        tasks:res.data
-      })
-      var tempFileIdList=[];
-      for(var i=0;i<res.data.length;i++)
-      {
-        tempFileIdList.push(res.data[i].imageId);
-      }
-      this.setData({
-        fileIdList:tempFileIdList
-      })
-      var that = this;
-    wx.cloud.getTempFileURL({
-      fileList:that.data.fileIdList,
-      success(res){
+    var that = this;
+    wx.cloud.callFunction({
+      name:"getAllTasks",
+      success: function(res){
         that.setData({
-          imageList:res.fileList
+          tasks: res.result.taskList,
+          imageList: res.result.imageUrlList
         })
       }
     })
-    })
+    // db.collection('tasks').get().then(res=>{
+    //   this.setData({
+    //     tasks:res.data
+    //   })
+    //   var tempFileIdList=[];
+    //   for(var i=0;i<res.data.length;i++)
+    //   {
+    //     tempFileIdList.push(res.data[i].imageId);
+    //   }
+    //   this.setData({
+    //     fileIdList:tempFileIdList
+    //   })
+    //   var that = this;
+    // wx.cloud.getTempFileURL({
+    //   fileList:that.data.fileIdList,
+    //   success(res){
+    //     that.setData({
+    //       imageList:res.fileList
+    //     })
+    //   }
+    // })
+    // })
   },
 
   /**
@@ -73,28 +82,39 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    db.collection('tasks').get().then(res=>{
-      this.setData({
-        tasks:res.data
-      })
-      var tempFileIdList=[];
-      for(var i=0;i<res.data.length;i++)
-      {
-        tempFileIdList.push(res.data[i].imageId);
-      }
-      this.setData({
-        fileIdList:tempFileIdList
-      })
-      var that = this;
-    wx.cloud.getTempFileURL({
-      fileList:that.data.fileIdList,
-      success(res){
-        that.setData({
-          imageList:res.fileList
-        })
-      }
-    })
-    })
+    this.onLoad();
+    // var that = this;
+    // wx.cloud.callFunction({
+    //   name:"getAllTasks",
+    //   success: function(res){
+    //     that.setData({
+    //       tasks: res.result.taskList,
+    //       imageList: res.result.imageUrlList
+    //     })
+    //   }
+    // })
+    // db.collection('tasks').get().then(res=>{
+    //   this.setData({
+    //     tasks:res.data
+    //   })
+    //   var tempFileIdList=[];
+    //   for(var i=0;i<res.data.length;i++)
+    //   {
+    //     tempFileIdList.push(res.data[i].imageId);
+    //   }
+    //   this.setData({
+    //     fileIdList:tempFileIdList
+    //   })
+    //   var that = this;
+    // wx.cloud.getTempFileURL({
+    //   fileList:that.data.fileIdList,
+    //   success(res){
+    //     that.setData({
+    //       imageList:res.fileList
+    //     })
+    //   }
+    // })
+    // })
   },
 
   /**

@@ -7,10 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      scrollView:[
-      {
-      }
-    ],
+    tasks:[],
     imageList:[],
     fileIdList:[],
     hideMain:true,
@@ -72,27 +69,38 @@ Page({
      }
     });
 
-    db.collection('tasks').get().then(res=>{
-      this.setData({
-        scrollView:res.data
-      });
-      var tempFileIdList=[];
-      for(var i=0;i<res.data.length;i++)
-      {
-        tempFileIdList.push(res.data[i].imageId);
-      }
-      this.setData({
-        fileIdList:tempFileIdList
-      })
-    wx.cloud.getTempFileURL({
-      fileList:that.data.fileIdList,
-      success(res){
+    var that = this;
+    wx.cloud.callFunction({
+      name:"getAllTasks",
+      success: function(res){
         that.setData({
-          imageList:res.fileList
+          tasks: res.result.taskList,
+          imageList: res.result.imageUrlList
         })
       }
     })
-    })
+
+    // db.collection('tasks').get().then(res=>{
+    //   this.setData({
+    //     scrollView:res.data
+    //   });
+    //   var tempFileIdList=[];
+    //   for(var i=0;i<res.data.length;i++)
+    //   {
+    //     tempFileIdList.push(res.data[i].imageId);
+    //   }
+    //   this.setData({
+    //     fileIdList:tempFileIdList
+    //   })
+    // wx.cloud.getTempFileURL({
+    //   fileList:that.data.fileIdList,
+    //   success(res){
+    //     that.setData({
+    //       imageList:res.fileList
+    //     })
+    //   }
+    // })
+    // })
 
   },
 
@@ -126,9 +134,8 @@ Page({
 
   taskNavigate: function(event)
   {
-    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
     wx.navigateTo({
-      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      url:'../tasks_detail/tasks_detail?taskId='+event.currentTarget.dataset.task._id,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}
@@ -145,28 +152,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    var that=this
-    db.collection('tasks').get().then(res=>{
-      this.setData({
-        scrollView:res.data
-      });
-      var tempFileIdList=[];
-      for(var i=0;i<res.data.length;i++)
-      {
-        tempFileIdList.push(res.data[i].imageId);
-      }
-      this.setData({
-        fileIdList:tempFileIdList
-      })
-    wx.cloud.getTempFileURL({
-      fileList:that.data.fileIdList,
-      success(res){
-        that.setData({
-          imageList:res.fileList
-        })
-      }
-    })
-    })
+    this.onLoad();
+    // var that=this
+    // db.collection('tasks').get().then(res=>{
+    //   this.setData({
+    //     scrollView:res.data
+    //   });
+    //   var tempFileIdList=[];
+    //   for(var i=0;i<res.data.length;i++)
+    //   {
+    //     tempFileIdList.push(res.data[i].imageId);
+    //   }
+    //   this.setData({
+    //     fileIdList:tempFileIdList
+    //   })
+    // wx.cloud.getTempFileURL({
+    //   fileList:that.data.fileIdList,
+    //   success(res){
+    //     that.setData({
+    //       imageList:res.fileList
+    //     })
+    //   }
+    // })
+    // })
   },
 
   /**

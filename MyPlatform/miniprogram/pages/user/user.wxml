@@ -33,7 +33,7 @@
 
 
 <view class="top-box-user" wx:if="{{isLogin}}">
-  <image class="top-box-avatar-user" src="{{avatarURL}}"/>
+  <image class="top-box-avatar-user" src="{{avatarUrl}}"/>
   <view class="top-box-text-user">
     <view class="top-box-text-welcome-user">欢迎回来 {{nickName}}</view>
     <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
