@@ -1,18 +1,13 @@
-<view class="search-bar">
-  <view class="search-bar-form">
-    <view class="search-bar-box">
-      <icon class="icon-search-in-box" type="search" size="14"></icon>
-      <input type="text" class="search-bar-input" placeholder="搜索" />
+  <view class="cu-bar search bg-white">
+    <select class="top-select" options="{{newsTypes}}" key="typeId" text="typeName" bind:change="typeChange"></select>
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索资讯" confirm-type="search" model:value="{{searchContent}}"></input>
     </view>
 
-    <label class="search-bar-label" hidden="{{inputShowed}}" bindtap="showInput">
-      <icon class="icon-search" type="search" size="14"></icon>
-      <view class="search-bar-text">搜索</view>
-    </label>
+    <button class="search-button" size="mini" type="primary" plain="true" bindtap="handleSearch" bindinput="tapevent">搜索</button>
   </view>
 
-  <view class="search-bar-cancel" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-</view>
 
 <scroll-view class="scroll-view">
 
@@ -22,18 +17,18 @@
   bindtap="taskNavigate"
   data-info="{{item}}">
 
-    <image class="scroll-item-image" src="{{imageList[index].tempFileURL}}"/>
+    <image class="scroll-item-image" src="{{imageList[index]}}"/>
       <view class="scroll-item-textfield">
         <view class="scroll-item-title">{{item.title}}</view>
         <view class="scroll-item-gap"></view>
         <view class="scroll-item-content">{{item.content}}</view>
         <view class="scroll-item-sub">
-          <text class="cuIcon-attentionfill margin-lr-xs"></text> 10
-          <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
-          <text class="cuIcon-messagefill margin-lr-xs"></text> 30
+          <text class="cuIcon-attentionfill margin-lr-xs">{{item.view}}</text>
         </view>
       </view>
 
   </view>
 
 </scroll-view>
+
+<view class="empty-hint" wx:if="{{tasks.length==0}}">{{hint}}</view>
