@@ -21,7 +21,8 @@ exports.main = async (event, context) => {
     _openid: openId
   }).update({
     data:{
-    signDates: _.push(today)
+    signDates: _.push(today),
+    score: _.inc(1)
     }
   })
 
