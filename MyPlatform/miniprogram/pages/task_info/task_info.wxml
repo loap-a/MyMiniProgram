@@ -17,7 +17,11 @@
   bindtap="taskNavigate"
   data-info="{{item}}">
 
+  <view class="scroll-item-image-container">
     <image class="scroll-item-image" src="{{imageList[index]}}"/>
+    <text class="news-type">{{item.type}}</text>
+    </view>
+
       <view class="scroll-item-textfield">
         <view class="scroll-item-title">{{item.title}}</view>
         <view class="scroll-item-gap"></view>
@@ -31,4 +35,4 @@
 
 </scroll-view>
 
-<view class="empty-hint" wx:if="{{tasks.length==0}}">{{hint}}</view>
+<view class="empty-hint" wx:if="{{task_info.length==0}}">{{hint}}</view>

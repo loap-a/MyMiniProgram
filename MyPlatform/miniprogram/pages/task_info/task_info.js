@@ -45,7 +45,7 @@ Page({
           task_info: res.result.newsList,
           imageList: res.result.imageUrlList
         })
-        if(that.data.tasks.length==0)
+        if(that.data.task_info.length==0)
         {
           that.setData({
             hint: "暂无此类型内容"
