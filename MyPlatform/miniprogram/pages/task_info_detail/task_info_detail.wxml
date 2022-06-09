@@ -6,7 +6,7 @@
     <view class="main-detail-swiper">
       <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
         <swiper-item wx:for="{{infoImageUrlList}}" wx:key>
-          <image src="{{item.tempFileURL}}" mode="aspectFill"></image>
+          <image src="{{item}}" mode="aspectFill"></image>
           <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
         </swiper-item>
       </swiper>

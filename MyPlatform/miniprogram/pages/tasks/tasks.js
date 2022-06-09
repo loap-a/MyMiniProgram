@@ -119,7 +119,7 @@ Page({
     wx.showToast({
       title: '加载中',
       icon:'loading',
-      duration: 800
+      duration: 1000
     })
     var that = this;
     wx.cloud.callFunction({
