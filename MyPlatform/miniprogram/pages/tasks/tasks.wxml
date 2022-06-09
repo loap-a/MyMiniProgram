@@ -13,13 +13,13 @@
 
   <view class="search-bar-cancel" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view> -->
   <view class="cu-bar search bg-white">
-    <select class="top-select" options="{{taskTypes}}" key="type_id" text="typeName" bind:change="typeChange"></select>
+    <select class="top-select" options="{{taskTypes}}" key="typeId" text="typeName" bind:change="typeChange"></select>
     <view class="search-form round">
       <text class="cuIcon-search"></text>
-      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
+      <input type="text" placeholder="搜索图片、文章、视频" confirm-type="search" model:value="{{searchContent}}"></input>
     </view>
 
-    <button class="search-button" size="mini" type="primary" plain="true">搜索</button>
+    <button class="search-button" size="mini" type="primary" plain="true" bindtap="handleSearch" bindinput="tapevent">搜索</button>
   </view>
 
 
