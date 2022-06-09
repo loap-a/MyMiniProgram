@@ -69,6 +69,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration: 1200
+    })
     this.setData({
       score:app.globalData.score
     });

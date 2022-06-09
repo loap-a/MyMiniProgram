@@ -15,6 +15,9 @@
     <view class="{{mainNeed? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarEmployee">
       发起方
     </view>
+      <view class="{{mainComment? 'sidebar-item-selected':'sidebar-item'}}" bindtap="handleSidebarComment">
+      评论
+    </view>
     <view class="{{thumb=='点赞'? 'sidebar-thumb':'sidebar-thumb-up'}}" bindtap="handleSidebarThumb">
       <text class="cuIcon-appreciate"></text>
       {{thumb}}
@@ -90,4 +93,23 @@
     </view>
   </view>
 
+  <view class="main-comment" wx:if="{{mainComment}}">
+    <view class="main-comment-empty" wx:if="{{selectTask.comments.length==0}}">暂无评论</view>
+    <view class="main-comment-scroll-container">
+    <scroll-view class="main-comment-scroll" wx:for="{{selectTask.comments}}" wx:key="unique">
+      <view class="main-comment-item">
+        <view class="main-comment-item-title">
+          <view class="main-comment-nickname">{{item.nickName}}</view>
+          <view class="main-comment-date">{{item.date}}</view>
+        </view>
+      <view class="main-comment-content">{{item.content}}</view>
+      </view>
+    </scroll-view>
+    </view>
+    <view class="main-comment-bottom" adjust-position="true">
+       <input model:value="{{comment}}" placeholder="  输入评论" auto-focus class="main-comment-bottom-input"  placeholder-style="margin-left:20rpx;"/>
+       <button size="mini" type="primary" bindtap="handleComment">发送</button>
+    </view>
+
+    </view>
 </view>

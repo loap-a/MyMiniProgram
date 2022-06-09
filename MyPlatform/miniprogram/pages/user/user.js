@@ -221,6 +221,11 @@ Page({
       })
     }
      else {
+      wx.showToast({
+        title: '请稍后',
+        icon:'loading',
+        duration: 800
+      })
       var today = util.formatTimeSimplify(new Date())
       wx.cloud.callFunction({
         name: 'userSignIn',
