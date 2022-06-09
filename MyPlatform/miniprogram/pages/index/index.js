@@ -246,5 +246,11 @@ Page({
     wx.switchTab({
       url: '../user/user',
     })
+  },
+  handleCreator()
+  {
+    wx.navigateTo({
+      url: '../creator/creator',
+    })
   }
 })
