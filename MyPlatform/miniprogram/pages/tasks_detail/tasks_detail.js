@@ -15,6 +15,7 @@ Page({
     mainDetail:true,
     mainTime:false,
     mainNeed:false,
+    mainComment: false,
     theme: {
         bg: "#409efe",
         fontColor: "#fff",
@@ -35,7 +36,8 @@ Page({
       introduction:"擅长模仿",
       phoneNumber:"114514",
     },
-    thumb:"点赞"
+    thumb:"点赞",
+    comment:""
 
   },
 
@@ -65,6 +67,42 @@ Page({
       
     })
   },
+
+  handleComment(){
+    var that = this;
+    wx.showToast({
+      title: '请稍后',
+      icon:'loading',
+      duration: 800
+    })
+    var today = util.formatTimeSimplify(new Date());
+    wx.cloud.callFunction({
+      name: 'userCommentTask',
+      data:{
+        comment: that.data.comment,
+        today: today,
+        taskId: that.data.selectTask._id
+      },
+      success: function(res){
+        wx.showToast({
+          title: '评论成功'
+        })
+        var currentTask = that.data.selectTask
+        currentTask.comments.push({
+          date: today,
+          content: that.data.comment,
+          nickName: res.result.nickName
+        })
+        that.setData({
+          selectTask: currentTask,
+          comment:""
+        });
+      },
+      fail: function(res){
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -216,6 +254,7 @@ Page({
       mainDetail:true,
       mainTime:false,
       mainNeed:false,
+      mainComment:false
     })
   },
   handleSidebarTime(){
@@ -223,6 +262,7 @@ Page({
       mainDetail:false,
       mainTime:true,
       mainNeed:false,
+      mainComment:false
     })
   },
   handleSidebarEmployee(){
@@ -230,6 +270,15 @@ Page({
       mainDetail:false,
       mainTime:false,
       mainNeed:true,
+      mainComment:false
+    })
+  },
+  handleSidebarComment(){
+    this.setData({
+      mainDetail:false,
+      mainTime:false,
+      mainNeed:false,
+      mainComment:true
     })
   }
 })

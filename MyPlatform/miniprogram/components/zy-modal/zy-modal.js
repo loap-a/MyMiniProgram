@@ -94,6 +94,7 @@ Component({
       wx.cloud.callFunction({
         name: 'userLogin',
         success: function(res){
+          app.globalData.nickName = res.result.nickName;
         },
         fail: function(res){
         }
