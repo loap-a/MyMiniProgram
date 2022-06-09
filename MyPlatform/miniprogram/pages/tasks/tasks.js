@@ -11,6 +11,7 @@ Page({
     tasks:[],
     imageList:[],
     fileIdList:[],
+    searchContent:"",
     currentType:'全部',
     taskTypes:[
       {typeId: '01',
@@ -86,10 +87,40 @@ Page({
       }
     })
   },
+
+  handleSearch(){
+    var that = this;
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration: 1200
+    })
+    wx.cloud.callFunction({
+      name: 'getTasksBySearch',
+      data:{
+        value: that.data.searchContent
+      },
+      success: function(res){
+        that.setData({
+          tasks: res.result.taskList,
+          imageList: res.result.imageUrlList
+        })
+      }
+    })
+  },
+
+  tapeevent(e){
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration: 800
+    })
     var that = this;
     wx.cloud.callFunction({
       name:"getAllTasks",
