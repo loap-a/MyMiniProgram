@@ -14,6 +14,18 @@ page{
   margin-left:280rpx;
   margin-top: 60rpx;
 }
+.scroll-item-image-container{
+  display: flex;
+  flex-direction: column;
+}
+.news-type{
+  line-height:25rpx;
+  height:20rpx;
+  font-size: 25rpx;
+  margin-top:13rpx;
+  margin-left: 100rpx;
+  color: #14abc8;
+}
 
 .scroll-bar{
   width:100%;
