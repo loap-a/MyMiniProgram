@@ -1,0 +1,16 @@
+<view class="creator-head">
+    <image class="creator-head-avatar" src="../../images/我.jpg"></image>
+    <view class="creator-head-name">
+        <view class="creator-head-name-item">郝**</view>
+        <view class="creator-head-name-item">AKA: 文体两开花生</view>
+        <view class="creator-head-name-item">email: 47310821@qq.com</view>
+    </view>
+</view>
+
+<view class="creator-body">
+    <view class="creator-body-detail">
+        苦读软件工程专业, 喜欢做后端开发, 相对擅长Springboot, Django, 前端设计审美真的一言难尽。
+    </view>
+
+    <image class="creator-body-wish" src="../../images/wish2.gif"></image>
+</view>

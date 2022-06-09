@@ -38,14 +38,14 @@
 <view class="middle-bar-text">活动动态</view>
 </view>
 
-<!-- <view class="middle-bar-item">
-<image class="middle-bar-image" src="../../images/科普教育.png"/>
-<view class="middle-bar-text">知识宣传</view>
-</view> -->
-
 <view class="middle-bar-item" bindtap="handleUser">
 <image class="middle-bar-image" src="../../images/个人中心.png"/>
 <view class="middle-bar-text">个人中心</view>
+</view>
+
+<view class="middle-bar-item"  bindtap="handleCreator">
+<image class="middle-bar-image" src="../../images/制作者.png"/>
+<view class="middle-bar-text">关于制作者</view>
 </view>
 
 </view>
