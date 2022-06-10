@@ -31,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+
     var that = this;
     db.collection('myValue').get().then(res=>{
       that.setData({
@@ -77,6 +78,12 @@ Page({
           tasks: res.result.taskList,
           imageList: res.result.imageUrlList
         })
+      }
+    })
+
+    wx.cloud.callFunction({
+      name: 'userLogin',
+      success:function(res){
       }
     })
 

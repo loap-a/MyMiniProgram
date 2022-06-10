@@ -34,9 +34,9 @@ Page({
   },
   taskNavigate: function(event)
   {
-    var taskJson = JSON.stringify(event.currentTarget.dataset.task);
+  
     wx.navigateTo({
-      url:'../tasks_detail/tasks_detail?task='+taskJson,
+      url:'../tasks_detail/tasks_detail?taskId='+event.currentTarget.dataset.task._id,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {}
@@ -46,7 +46,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log('user task onload')
+    wx.showToast({
+      title: '请稍后',
+      icon:'loading',
+      duration: 800
+    })
     var that = this;
     wx.cloud.callFunction({
       name: 'getUserSignedTasks',

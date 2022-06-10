@@ -18,8 +18,8 @@ exports.main = async (event, context) => {
   var comment = event.comment;
   var taskId = event.taskId;
   var today = event.today;
+  var nickName = event.nickName;
 
-  var nickName = "";
   var res = await users.where({
     _openid: openId
   }).get();
@@ -38,12 +38,6 @@ exports.main = async (event, context) => {
         signedTasks:[]
       }
     });
-    nickName="微信用户"
-
-  }
-
-  else{
-    nickName = res.data[0].nickName
   }
 
 
