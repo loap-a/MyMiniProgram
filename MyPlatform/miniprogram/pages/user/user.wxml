@@ -61,7 +61,7 @@
 
 <view class="cells-second">
 <van-cell-group inset >
-  <van-cell title="关于制作者" value="" icon="contact" is-link="true"/>
+  <van-cell title="关于制作者" value="" icon="contact" is-link="true" bindtap="handleCreator"/>
   <van-cell title="设置" value="" icon="setting-o" is-link="true" bindtap="handleSetting"/>
 </van-cell-group>
 </view>
