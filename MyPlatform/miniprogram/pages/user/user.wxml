@@ -36,8 +36,8 @@
   <image class="top-box-avatar-user" src="{{avatarUrl}}"/>
   <view class="top-box-text-user">
     <view class="top-box-text-welcome-user">欢迎回来 {{nickName}}</view>
-    <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
-    <view class="top-box-text-welcome-user">点击下方修改头像和昵称</view>
+    <!-- <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
+    <view class="top-box-text-welcome-user">点击下方修改头像和昵称</view> -->
     <!-- <view class="top-box-text-modify-user">修改个人资料</view> -->
   </view>
 </view>
@@ -55,7 +55,7 @@
 <van-cell-group inset >
   <van-cell title="我的积分: {{score}}" value="兑换奖品" icon="award-o" is-link="true" bindtap="handleScore"/>
   <van-cell title="我的活动" value="" icon="flag-o" is-link="true" bindtap="handleUserTask"/>
-  <van-cell title="修改个人资料" value="" icon="edit" is-link="true" bindtap="modifyUserProfile"/>
+  <!-- <van-cell title="修改个人资料" value="" icon="edit" is-link="true" bindtap="modifyUserProfile"/> -->
 </van-cell-group>
 </view>
 

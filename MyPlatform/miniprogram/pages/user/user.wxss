@@ -17,7 +17,7 @@ page{
   display: flex;
 }
 .top-box-text-user{
-  margin-top:90rpx;
+  margin-top:120rpx;
   margin-left:20rpx;
 }
 .top-box-avatar-user{

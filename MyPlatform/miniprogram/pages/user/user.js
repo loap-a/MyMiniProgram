@@ -12,7 +12,6 @@ Page({
   data: {
     userName: 'barkk',
     isLogin: app.globalData.login,
-    userInfo: app.globalData.userInfo,
     modalHidden: true,
     isSignin: false,
     signInModalHidden: true,
@@ -29,7 +28,7 @@ Page({
       isRound: "true"
 
     },
-    score: 0,
+    score: 1,
     date: ""
   },
 
@@ -49,15 +48,21 @@ Page({
    */
   onLoad(options) {
     var that = this;
+    if(app.globalData.login)
+    {
+      this.setData({
+        nickName: app.globalData.userInfo.nickName,
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        isLogin: app.globalData.login
+      })
+    }
     wx.cloud.callFunction({
       name: "getUserInfo",
       data: {},
       success: function (res) {
         that.setData({
-          nickName: res.result.nickName,
-          avatarUrl: res.result.avatarUrl,
           score: res.result.score,
-          isLogin: app.globalData.login,
+          isLogin: app.globalData.login
         })
         app.globalData.score = that.data.score;
         app.globalData.actives = res.result.actives;
@@ -121,7 +126,7 @@ Page({
     // })
 
 
-    // this.onLoad();
+    this.onLoad();
   },
 
   /**
@@ -197,9 +202,30 @@ Page({
   },
 
   showAction: function () {
-    this.setData({
-      modalHidden: false,
+    // this.setData({
+    //   modalHidden: false,
+    // })
+    var that = this;
+    wx.getUserProfile({
+      desc: '完善资料',
+      success: (res)=>{
+        that.setData({
+          isLogin:true,
+          avatarUrl: res.userInfo.avatarUrl,
+          nickName: res.userInfo.nickName
+        })
+        app.globalData.login=true;
+        app.globalData.userInfo = res.userInfo;
+      }
     })
+
+    wx.cloud.callFunction({
+      name: 'userLogin',
+      success:function(res){
+          that.onLoad();
+      }
+    })
+
   },
   handleSetting() {
     wx.showToast({
@@ -209,11 +235,10 @@ Page({
   },
   logout() {
     this.setData({
-      isLogin: false,
-      userInfo: null
+      isLogin: false
     })
     app.globalData.login = false;
-    app.globalData.userInfo = null;
+    // app.globalData.userInfo = null;
     wx.showToast({
       title: '退出成功'
     })

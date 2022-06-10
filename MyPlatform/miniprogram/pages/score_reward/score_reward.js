@@ -55,7 +55,6 @@ Page({
             success: function(res){
               if(res.confirm)
               {
-                that.onLoad();
               }
             }
             

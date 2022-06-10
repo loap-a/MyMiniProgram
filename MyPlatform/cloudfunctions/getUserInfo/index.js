@@ -41,7 +41,8 @@ exports.main = async (event, context) => {
     nickName:nickName,
     avatarUrl:avatarUrl,
     score: score,
-    actives: actives
+    actives: actives,
+    modified: res.data[0].modified
   }
 
 }

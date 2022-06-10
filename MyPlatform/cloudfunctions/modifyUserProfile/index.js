@@ -18,7 +18,8 @@ exports.main = async (event, context) => {
   }).update({
     data:{
       nickName:nickName,
-      avatarId:avatarId
+      avatarId:avatarId,
+      modified: true
     }
   })
   return res;

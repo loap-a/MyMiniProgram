@@ -311,8 +311,25 @@ Page({
   },
 
   showAction: function () {
-    this.setData({
-      modelHidden: false,
+    // this.setData({
+    //   modelHidden: false,
+    // })
+    var that = this;
+    wx.getUserProfile({
+      desc: '完善资料',
+      success: (res)=>{
+        app.globalData.login = true;
+        app.globalData.userInfo = res.userInfo;
+        that.setData({
+          isLogin:true
+        })
+      }
+    })
+    wx.cloud.callFunction({
+      name:'userLogin',
+      success: function(res){
+        
+      }
     })
   },
 
