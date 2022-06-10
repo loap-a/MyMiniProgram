@@ -33,6 +33,12 @@ Page({
     date: ""
   },
 
+  handleCreator(){
+    wx.navigateTo({
+      url: '../creator/creator'
+    });
+  },
+
   modifyUserProfile() {
     wx.navigateTo({
       url: '../modify_user_profile/modify_user_profile',
