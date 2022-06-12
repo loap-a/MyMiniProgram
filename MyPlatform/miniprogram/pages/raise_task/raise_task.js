@@ -22,12 +22,12 @@ Page({
       detail:"",
       imgURL:[],
       addressChoosed:false,
-      addressName:"滨海新区南开大学泰达学院",
+      addressName:"",
       addressLatitude:"39.026114",
       addressLongtitude:"117.714096",
       phoneNumber:"",
-      startDate:"2022-06-10",
-      endDate:"2022-06-20",
+      startDate:"2022-06-20",
+      endDate:"2022-06-30",
       startDateChoosed:false,
       endDateChoosed:false,
       raiserName:"",
@@ -69,20 +69,32 @@ Page({
       })
       return
     }
-    if(!(this.data.startDateChoosed && this.data.endDateChoosed))
+    if(!(this.data.startDateChoosed))
     {
       wx.showToast({
-        title: '请填写起始日期和结束日期',
+        title: '请填写起始日期',
         icon:'error'
       })
       return
     }
+
+    if(!(this.data.endDateChoosed))
+    {
+      wx.showToast({
+        title: '请填写结束日期',
+        icon:'error'
+      })
+      return
+    }
+
       if(this.data.detailImageList.length==0)
       {
         this.setData({
           detailImageList: ["cloud://cloud1-2gva005o7c08f44d.636c-cloud1-2gva005o7c08f44d-1311808483/wx.png"]
         })
       }
+      var that = this;
+
     db.collection('tasks').add({
       data:{
         title:this.data.title,
@@ -110,16 +122,24 @@ Page({
       success(res){
         wx.showToast({
           title:"成功",
-          icon:'success'
+          icon:'success',
+          duration:800,
+          success:function(res){
+            setTimeout(function() {
+              //要延时执行的代码
+              wx.switchTab({
+                url: '../index/index',
+              })
+            }, 1000) //延迟时间
+    
+          }
         });
 
 
       }
       
     })
-    wx.switchTab({
-      url: '../index/index',
-    })
+
 
   },
   chooseLocation(){

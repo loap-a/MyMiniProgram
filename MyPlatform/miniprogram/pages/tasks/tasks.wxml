@@ -23,6 +23,7 @@
   </view>
 
 
+<view class="scroll-view-container">
 <scroll-view class="scroll-view">
 
   <view class="scroll-item"
@@ -49,5 +50,5 @@
   </view>
 
 </scroll-view>
-
+</view>
 <view class="empty-hint" wx:if="{{tasks.length==0}}">{{hint}}</view>

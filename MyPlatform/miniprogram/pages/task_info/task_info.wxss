@@ -2,14 +2,21 @@
 @import "../../colorui/icon.wxss";
 page{
   height:100%;
-  /* background-color: #efeff4; */
-  background-image: linear-gradient(25deg, #376e85, #73909b, #a9b4b1, #dfd9c8);
+  background-color: #efeff4;
+  /* background-image: linear-gradient(25deg, #376e85, #73909b, #a9b4b1, #dfd9c8); */
 }
 
 .top-select{
   width: 180rpx;
   margin-left:20rpx;
 }
+
+.scroll-view{
+  width:100%;
+  /* margin-top:20rpx; */
+  /* background-image: linear-gradient(25deg, #376e85, #73909b, #a9b4b1, #dfd9c8); */
+  }
+  
 
 .empty-hint{
   margin-left:280rpx;
@@ -43,7 +50,7 @@ page{
     width:90%;
     height:220rpx;
     margin:30rpx auto;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 1);
     box-shadow:1rpx 1rpx 5rpx #c5c9ca;
     border-radius: 20rpx;
     display:flex;

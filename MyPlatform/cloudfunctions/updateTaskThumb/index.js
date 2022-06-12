@@ -4,6 +4,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 const db = cloud.database()
+const _ = db.command;
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -16,14 +17,12 @@ exports.main = async (event, context) => {
   var res = "";
   if(plus)
   {
-    var tempOpenIdList = task.thumbUser;
-    tempOpenIdList.push(openId);
     res = await tasks.where({
       _id: task._id
     }).update({
       data:{
-        thumbUp: task.thumbUp + 1,
-        thumbUser: tempOpenIdList
+        thumbUp: _.inc(1),
+        thumbUser: _.push(openId)
       }
     })
   }
@@ -35,8 +34,8 @@ exports.main = async (event, context) => {
       _id: task._id
     }).update({
       data:{
-        thumbUp: tempOpenIdList.length,
-        thumbUser: tempOpenIdList
+        thumbUp: _.inc(-1),
+        thumbUser: _.pull(openId)
       }
     })
   }
