@@ -73,5 +73,7 @@
   </view>
 </scroll-view>
 
+
+<view class="sub-space-occupy"></view>
 </view>
 

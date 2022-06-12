@@ -179,6 +179,7 @@ Page({
       fail: (res)=>{
         wx.showToast({
           title: '评论请先登录',
+          icon:'error'
         })
       }
     })
@@ -275,9 +276,7 @@ Page({
   handleSidebarThumb() {
     var that = this;
     if (that.data.thumb == '点赞') {
-      this.setData({
-        thumb: "取消"
-      })
+
       wx.cloud.callFunction({
         name: "updateTaskThumb",
         data: {
@@ -285,21 +284,25 @@ Page({
           plus: true
         },
         success: function (res) {
-
+          that.setData({
+            thumb: "取消"
+          })
         },
         fail: function (res) {}
       })
     } else {
-      this.setData({
-        thumb: "点赞"
-      })
+
       wx.cloud.callFunction({
         name: "updateTaskThumb",
         data: {
           task: that.data.selectTask,
           plus: false
         },
-        success: function (res) {},
+        success: function (res) {
+          that.setData({
+            thumb: "点赞"
+          })
+        },
         fail: function (res) {}
       })
     }

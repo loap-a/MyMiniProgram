@@ -4,9 +4,10 @@
 
 - 已将老师和助教学长微信号设为体验用户
 - AppID: wx9cdb0e0b9205e3ea
-- 介绍文档(在线版): https://nankai.feishu.cn/docx/doxcn5bHtODdCLf5FfGGuD24Rfg
+- 介绍文档(在线版): https://nankai.feishu.cn/docx/doxcnQgVuFykqu9nasNQAaMsf6g
   - 原文档在仓库中
 - 展示视频: 由于github仓库大小有限制, 所以将展示视频存于飞书云文档
+  - 迭代4: https://nankai.feishu.cn/file/boxcnho4lCk3mKae09EbB2GjoDd
   - 迭代3: https://nankai.feishu.cn/file/boxcn8h5XnXESLBuKejjCts92Qd
   - 迭代2: https://nankai.feishu.cn/file/boxcnpeL8UkJE6nM18ktWZVxDMe
   - 迭代1: https://nankai.feishu.cn/file/boxcnW7at2S7dg0MosYSioxPb1e
