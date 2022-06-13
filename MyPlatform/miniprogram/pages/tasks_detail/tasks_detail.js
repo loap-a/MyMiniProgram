@@ -37,8 +37,8 @@ Page({
       phoneNumber: "114514",
     },
     thumb: "点赞",
-    comment: ""
-
+    comment: "",
+    thumbOccupied: false
   },
 
   select(e) {
@@ -275,6 +275,19 @@ Page({
 
   handleSidebarThumb() {
     var that = this;
+    if(this.data.thumbOccupied)
+    {
+
+      return
+    }
+    else{
+      this.setData({
+        thumbOccupied: true
+      });
+      wx.showLoading({
+        title: '加载中'
+      })
+    }
     if (that.data.thumb == '点赞') {
 
       wx.cloud.callFunction({
@@ -285,10 +298,18 @@ Page({
         },
         success: function (res) {
           that.setData({
-            thumb: "取消"
+            thumb: "取消",
+            thumbOccupied: false
+          })
+          wx.showToast({
+            title: '点赞成功',
+            icon:'success'
           })
         },
-        fail: function (res) {}
+        fail: function (res) {},
+        complete: function(res){
+          wx.hideLoading();
+        }
       })
     } else {
 
@@ -300,10 +321,18 @@ Page({
         },
         success: function (res) {
           that.setData({
-            thumb: "点赞"
+            thumb: "点赞",
+            thumbOccupied:false
+          })
+          wx.showToast({
+            title: '取消成功',
+            icon:'success'
           })
         },
-        fail: function (res) {}
+        fail: function (res) {},
+        complete: function(res){
+          wx.hideLoading();
+        }
       })
     }
   },

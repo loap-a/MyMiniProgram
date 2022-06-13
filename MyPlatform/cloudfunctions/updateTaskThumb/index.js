@@ -19,6 +19,11 @@ exports.main = async (event, context) => {
   {
     res = await tasks.where({
       _id: task._id
+    }).get();
+    if(res.data[0].thumbUser.indexOf(openId)==-1)
+    {
+    res = await tasks.where({
+      _id: task._id,
     }).update({
       data:{
         thumbUp: _.inc(1),
@@ -26,12 +31,14 @@ exports.main = async (event, context) => {
       }
     })
   }
+  }
   else
   {
     var tempOpenIdList = task.thumbUser;
     tempOpenIdList.splice(tempOpenIdList.indexOf(openId),1)
     res = await tasks.where({
-      _id: task._id
+      _id: task._id,
+      thumbUser: openId
     }).update({
       data:{
         thumbUp: _.inc(-1),
