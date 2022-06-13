@@ -13,7 +13,7 @@
   - 迭代2: https://nankai.feishu.cn/file/boxcnpeL8UkJE6nM18ktWZVxDMe
   - 迭代1: https://nankai.feishu.cn/file/boxcnW7at2S7dg0MosYSioxPb1e
 - 体验版
-  - 体验版小程序网络调用很慢, 请耐心等待(完整效果见展示视频), 体验版使用中存在意料之外的bug
+  - 体验版小程序网络调用很慢, 请耐心等待(完整效果见展示视频, 体验版使用效果远不如本地调试或真机调试)
   - ![avatar](./体验版.png)
 - 由于个人主体的小程序涉及信息发布平台功能无法通过审核, 所以不得不弃用发布版
   - ![avatar](./notpass.jpg)
