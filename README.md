@@ -8,6 +8,7 @@
   - 原文档在仓库中
 - 展示视频: 由于github仓库大小有限制, 所以将展示视频存于飞书云文档
   - 迭代4: https://nankai.feishu.cn/file/boxcnho4lCk3mKae09EbB2GjoDd
+  - 迭代4简短版: https://nankai.feishu.cn/file/boxcn41YWemjkf4G0TwHWQDP3sb
   - 迭代3: https://nankai.feishu.cn/file/boxcn8h5XnXESLBuKejjCts92Qd
   - 迭代2: https://nankai.feishu.cn/file/boxcnpeL8UkJE6nM18ktWZVxDMe
   - 迭代1: https://nankai.feishu.cn/file/boxcnW7at2S7dg0MosYSioxPb1e
