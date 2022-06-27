@@ -1,0 +1,24 @@
+<!--pages/all_talk/all_talk.wxml-->
+<!-- <text>pages/all_talk/all_talk.wxml</text> -->
+
+<view class="top-bar">聊天</view>
+<view class="talks-container">
+  <view class="talks-empty" wx:if="{{all_talks.length==0}}">还没有聊天</view>
+  <view class="talks-scrollview-container">
+    <scroll-view>
+    <view class="scrollview-item-container" 
+    wx:for="{{all_talks}}"
+    wx:key="unique"
+    bindtap="talkNavigate"
+    data-talk="{{item}}"
+  >
+      <image class="scrollview-item-image" src="../../images/talkto.png"></image>
+      <view class="scrollview-item-text">
+        <view class="scrollview-item-text-name">{{message_names[index]}}</view>
+        <view class="scrollview-item-text-message">{{message_lastones[index]}}</view>
+        <view class="scrollview-item-text-date">{{message_dates[index]}}</view>
+      </view>
+    </view>
+    </scroll-view>
+  </view>
+</view>

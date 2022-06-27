@@ -22,6 +22,11 @@
       <text class="cuIcon-appreciate"></text>
       {{thumb}}
     </view>
+    <view class="sidebar-reach" bindtap="handleCommunicate">
+      <text class="cuIcon-peoplelist"></text>
+      联系
+    </view>
+
   </view>
   <view class="main-detail" wx:if="{{mainDetail}}">
     <view class="main-detail-swiper">

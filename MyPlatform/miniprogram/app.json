@@ -13,7 +13,9 @@
     "pages/map_task/map_task",
     "pages/modify_user_profile/modify_user_profile",
     "pages/score_reward/score_reward",
-    "pages/creator/creator"
+    "pages/creator/creator",
+    "pages/talk_detail/talk_detail",
+    "pages/all_talk/all_talk"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -41,6 +41,61 @@ Page({
     thumbOccupied: false
   },
 
+  handleCommunicate(){
+    var user1 = app.globalData.openId;
+    var user2 = this.data.selectTask._openid;
+    var user2Name = this.data.selectTask.raiserName;
+    var user1Name = " ";
+    if(app.globalData.login!=true)
+    {
+      wx.showToast({
+        title: '联系请先登录',
+        icon: 'error'
+      })
+
+      wx.getUserProfile({
+        desc: '报名请先登录',
+        fail: (res)=>{
+          return;
+        },
+        success:(res)=>{
+          app.globalData.login=true;
+          app.globalData.userInfo = res.userInfo;
+          wx.showToast({
+            title: '请稍后',
+            icon: 'loading',
+            duration: 800
+          })
+          user1Name = app.globalData.userInfo.nickName;
+          if(user1==user2)
+          {
+            wx.showToast({
+              title: '您不能联系自己',
+              icon:'error',
+              duration: 800
+            })
+            return;
+          }
+          wx.navigateTo({
+            url:'../talk_detail/talk_detail?user1='
+            +user1+
+            '&user2='+user2+
+            "&currentUser=1"+
+            "&type=detail"+
+            "&user1Name="+user1Name+
+            "&user2Name="+user2Name,
+      
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {}
+          })
+        }
+      })
+    }
+  
+  
+  },
+
   select(e) {
     var that = this;
     this.setData({

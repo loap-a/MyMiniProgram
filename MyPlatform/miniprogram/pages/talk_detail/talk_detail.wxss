@@ -1,0 +1,88 @@
+/* pages/talk_detail/talk_detail.wxss */
+/* pages/all_talk/all_talk.wxss */
+page{
+  background-color: #e2e1e1;
+  height:100%;
+}
+
+.top-bar{
+  text-align: center;
+  font-size:50rpx;
+  border-bottom: solid;
+  border-width: 0.5rpx;
+  border-color: #c1e0dc;
+  align-items: center;
+  background-image: linear-gradient(25deg, #e4dff6, #c1e0dc, #9bdfc3, #6ddeaa)
+}
+
+.talks-container{
+  height:800rpx;
+
+}
+
+.scrollview-item-container{
+  height:160rpx;
+  margin-top:30rpx;
+}
+
+.scrollview-item-time{
+  height:20rpx;
+  width:100%;
+  text-align: center;
+  font-size:20rpx;
+  color:grey;
+}
+
+.me{
+  width:370rpx;
+  margin-left:330rpx;
+  height:130rpx;
+  margin-top:10rpx;
+  border-radius: 30rpx;
+  background-color: #95ec69;
+  align-items: center;
+}
+
+.he{
+  width:370rpx;
+  margin-left:50rpx;
+  height:130rpx;
+  margin-top:10rpx;
+  border-radius: 30rpx;
+  background-color: #ffffff;
+  align-items: center;
+}
+
+.message-text{
+  margin-left:20rpx;
+  padding-top: 30rpx;
+  overflow-y: scroll;
+  font-size:30rpx;
+}
+
+.input-bar{
+width:100%;
+height:120rpx;
+display: flex;
+background-color: #ffffff;
+align-items: center;
+position:fixed;
+bottom:10rpx;
+}
+
+.input-bar-input{
+  margin-left:20rpx;
+  width:500rpx;
+  height:80rpx;
+  border-radius: 10rpx;
+  background-color: #d8d6d6;
+}
+
+.input-bar-button{
+  margin-left:50rpx;
+  height:80rpx;
+  width:80rpx;
+  border-radius: 20rpx;
+  align-items: center;
+
+}

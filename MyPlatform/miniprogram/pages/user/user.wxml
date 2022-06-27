@@ -65,6 +65,7 @@
 <van-cell-group inset >
   <van-cell title="我的积分: {{score}}" value="兑换奖品" icon="award-o" is-link="true" bindtap="handleScore"/>
   <van-cell title="我的活动" value="" icon="flag-o" is-link="true" bindtap="handleUserTask"/>
+  <van-cell title="我的聊天" value="" icon="comment-o" is-link="true" bindtap="handleAllTalk"/>
   <!-- <van-cell title="修改个人资料" value="" icon="edit" is-link="true" bindtap="modifyUserProfile"/> -->
 </van-cell-group>
 </view>
