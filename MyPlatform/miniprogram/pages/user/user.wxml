@@ -39,6 +39,16 @@
     <!-- <view class="top-box-text-welcome-user">企鹅关闭了获取头像和昵称的权限</view>
     <view class="top-box-text-welcome-user">点击下方修改头像和昵称</view> -->
     <!-- <view class="top-box-text-modify-user">修改个人资料</view> -->
+    <view class="top-box-text-rank">
+    <view class="top-box-text-rank-text">等级: </view>
+    <view class="top-box-text-rank-star-container">
+      <image src="../../images/rank.png" class="top-box-text-rank-star-image" wx:if="{{rank>=1}}"/>
+      <image src="../../images/rank.png" class="top-box-text-rank-star-image" wx:if="{{rank>=2}}"/>
+      <image src="../../images/rank.png" class="top-box-text-rank-star-image" wx:if="{{rank>=3}}"/>
+      <image src="../../images/rank.png" class="top-box-text-rank-star-image" wx:if="{{rank>=4}}"/>
+      <image src="../../images/rank.png" class="top-box-text-rank-star-image" wx:if="{{rank>=5}}"/>
+    </view>
+    </view>
   </view>
 </view>
 
