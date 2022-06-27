@@ -1,0 +1,21 @@
+<!--pages/talk_detail/talk_detail.wxml-->
+<view class="top-bar">{{targetName}}</view>
+<view class="talks-container">
+  <view class="talks-scrollview-container">
+    <scroll-view>
+    <view class="scrollview-item-container" 
+    wx:for="{{messages}}"
+    wx:key="unique">
+    <view class="scrollview-item-time">{{item.time}}</view>
+    <view class="{{item.activate==currentUser?'me':'he'}}">
+      <view class="message-text">{{item.message}}</view>
+    </view>
+    </view>
+    </scroll-view>
+  </view>
+</view>
+<view class="input-bar">
+<input class="input-bar-input" placeholder="  输入" model:value="{{inputMessage}}"></input>
+<button class="input-bar-button" type="primary" size="mini" bindtap="handletap">发送</button>
+</view>
+

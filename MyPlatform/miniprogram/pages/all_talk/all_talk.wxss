@@ -1,0 +1,65 @@
+/* pages/all_talk/all_talk.wxss */
+page{
+  background-color: #e2e1e1;
+  height:100%;
+}
+.top-bar{
+  text-align: center;
+  font-size:50rpx;
+  border-bottom: solid;
+  border-width: 0.5rpx;
+  border-color: #c1e0dc;
+  align-items: center;
+  background-image: linear-gradient(25deg, #e4dff6, #c1e0dc, #9bdfc3, #6ddeaa)
+}
+
+.talks-container{
+  margin-top:25rpx;
+  width:100%;
+  position:fixed;
+  background-color: white;
+  height:100%;
+}
+
+.talks-empty{
+  margin-left:300rpx;
+  margin-top:100rpx;
+}
+
+.scrollview-item-container{
+  display: flex;
+  height: 160rpx;
+  width: 100%;
+  margin-top:50rpx;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-width: 0.5rpx;
+  border-color: #b3b7b8;
+}
+
+.scrollview-item-image{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 30rpx;
+  margin-top:25rpx;
+  margin-left:30rpx;
+}
+
+.scrollview-item-text{
+  margin-top:5rpx;
+  margin-left:40rpx;
+}
+.scrollview-item-text-name{
+  font-size:50rpx;
+}
+.scrollview-item-text-message{
+  font-size:30rpx;
+  margin-left:20rpx;
+  color: grey;
+}
+.scrollview-item-text-date{
+  margin-left:350rpx;
+  margin-top:5rpx;
+  font-size:20rpx;
+  color:grey;
+}

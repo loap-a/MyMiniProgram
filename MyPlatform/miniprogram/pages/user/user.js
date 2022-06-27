@@ -236,6 +236,11 @@ Page({
       icon: 'none'
     })
   },
+  handleAllTalk(){
+    wx.navigateTo({
+      url: '../all_talk/all_talk',
+    })
+  },
   logout() {
     this.setData({
       isLogin: false
