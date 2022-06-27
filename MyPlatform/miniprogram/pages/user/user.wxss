@@ -6,6 +6,22 @@ page{
   --white: #ffffff;
 }
 
+.top-box-text-rank{
+  margin-top:20rpx;
+  display: flex;
+}
+
+.top-box-text-rank-star-container{
+  display:flex;
+}
+
+.top-box-text-rank-star-image{
+  margin-left:10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+
 .top-box-user{
   background-image: var(--gradualBlue);
   height:300rpx;

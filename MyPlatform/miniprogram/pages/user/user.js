@@ -29,6 +29,7 @@ Page({
 
     },
     score: 1,
+    rank: 0,
     date: ""
   },
 
@@ -60,9 +61,11 @@ Page({
       name: "getUserInfo",
       data: {},
       success: function (res) {
+        var rank = Math.ceil(res.result.score/2);
         that.setData({
           score: res.result.score,
-          isLogin: app.globalData.login
+          isLogin: app.globalData.login,
+          rank: rank
         })
         app.globalData.score = that.data.score;
         app.globalData.actives = res.result.actives;
