@@ -2,11 +2,13 @@
 
 文体两开花生 
 
+- 截止日期延长后在6.28添加了新的功能(等级体系, 即时聊天)
 - 已将老师和助教学长微信号设为体验用户
 - AppID: wx9cdb0e0b9205e3ea
-- 介绍文档(在线版): https://nankai.feishu.cn/file/boxcnAyICZftp11WH5ZafK2Rage
+- 介绍文档(在线版): https://nankai.feishu.cn/file/boxcnz8GMJBGUYcF5uE06o21uRh
   - 原文档在仓库中
 - 展示视频: 由于github仓库大小有限制, 所以将展示视频存于飞书云文档
+  - 迭代4.5: https://nankai.feishu.cn/file/boxcnlNHqTbBK9h4ptlnyHtdkae
   - 迭代4: https://nankai.feishu.cn/file/boxcnho4lCk3mKae09EbB2GjoDd
   - 迭代4简短版: https://nankai.feishu.cn/file/boxcn41YWemjkf4G0TwHWQDP3sb
   - 迭代3: https://nankai.feishu.cn/file/boxcn8h5XnXESLBuKejjCts92Qd
