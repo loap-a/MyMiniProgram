@@ -33,15 +33,16 @@ exports.main = async (event, context) => {
         user1Nmae:user1Name,
         user2Name:user2Name,
         messages:[{
-          activte:"1",
+          activte:"2",
           message:"你好, 我是"+user2Name,
           time: curTime
         }]
       }
     });
+    
     return {
       messages: [{
-        activte:"1",
+        activte:"2",
         message:"你好, 我是"+user2Name,
         time: curTime
       }]

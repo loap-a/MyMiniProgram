@@ -87,7 +87,20 @@ Page({
       return
     }
 
-      if(this.data.detailImageList.length==0)
+    var startDate = this.data.startDate;
+    var endDate = this.data.endDate;
+    var startNumber = parseInt(startDate.split('-')[0])*365+parseInt(startDate.split('-')[1])*30+parseInt(startDate.split('-')[2])
+    var endNumber = parseInt(endDate.split('-')[0])*365+parseInt(endDate.split('-')[1])*30+parseInt(endDate.split('-')[2])
+    if(startNumber>endNumber)
+    {
+      wx.showToast({
+        title: '日期填写错误',
+        icon:'error'
+      })
+      return
+    }
+
+    if(this.data.detailImageList.length==0)
       {
         this.setData({
           detailImageList: ["cloud://cloud1-2gva005o7c08f44d.636c-cloud1-2gva005o7c08f44d-1311808483/wx.png"]
